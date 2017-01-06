@@ -1,13 +1,8 @@
 class ImagesController < ApplicationController
     def index
-        @Product = Product.find(params[:product_id])
-
+        @product = Product.find(params[:product_id])
+        @image = Image.find(params[:id])
         @images = @product.images
-
-        respond_to do |format|
-            format.html # index.html.erb
-            format.json { render json: @images }
-        end
    end
 
     def show
@@ -18,4 +13,10 @@ class ImagesController < ApplicationController
             format.json { render json: @image }
         end
      end
+
+    private
+
+    def image_params
+        params.require(:image).permit(:product_id, :image)
+    end
 end

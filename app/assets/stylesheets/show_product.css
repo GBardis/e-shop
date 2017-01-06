@@ -2,8 +2,6 @@
     			Call Bootstrap
 *********************************************/
 
-@import url("bootstrap/bootstrap.min.css");
-@import url("bootstrap-override.css");
 @import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
 
 /*********************************************
@@ -139,4 +137,20 @@
 
 .service-image-left>center>img, .service-image-right>center>img {
     max-height: 155px;
+}
+
+
+/* CUSTOM */
+
+.col-md-12 {
+    padding: 20px;
+    overflow: hidden;
+}
+
+.service-items a {
+    display: inline;
+}
+
+#mainimage {
+    padding: 30px;
 }
