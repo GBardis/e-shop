@@ -1,8 +1,14 @@
 class ImagesController < ApplicationController
     def index
         @product = Product.find(params[:product_id])
-        @image = Image.find(params[:id])
+        @images = Image.find(params[:id])
+
         @images = @product.images
+
+        respond_to do |format|
+            format.html # index.html.erb
+            format.json { render json: @images }
+        end
    end
 
     def show
@@ -18,5 +24,5 @@ class ImagesController < ApplicationController
 
     def image_params
         params.require(:image).permit(:product_id, :image)
-    end
+  end
 end

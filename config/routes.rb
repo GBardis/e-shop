@@ -1,14 +1,12 @@
 Rails.application.routes.draw do
     mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
     resources :products
-    resources :images
     resources :categories do
         resources :products do
         end
     end
-
+    resources :images
     resources :messages
-
     root 'products#index'
     get 'products/show' => 'products#show'
 

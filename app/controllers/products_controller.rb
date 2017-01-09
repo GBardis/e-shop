@@ -1,43 +1,32 @@
 class ProductsController < ApplicationController
     before_action :set_category
-    before_action :image_urls
+
     def index
         @products = if @category.present?
-                        Product.where(category_id: @category)
+                        Product.where(category_id: @category).page params[:page]
                     else
-                        Product.all
+                        Product.all.page params[:page]
                     end
-        @categories = Category.all.where(parent_id: nil)
-        @subcategories = Category.all.where.not(parent_id: nil)
-        @products = Product.find(params[:id])
-        @images = @products.images
-        @image_urls = []
-        @products.images.each do |image|
-            @image_urls.push(image.image.url)
-        end
-
-        respond_to do |format|
-            format.html # index.html.erb
-            format.json { render json: @images }
-        end
+        @categories = Category.all.where(parent_id: nil).page params[:page]
+        @subcategories = Category.all.where.not(parent_id: nil).page params[:page]
     end
 
-    # def show
-    # @classified = Classified.find(params[:id])
-    #  @photos = @classified.photos # CW
-    #  @image_urls = []
-    #  @classified.photos.each do |photo|
-    #      @image_urls.push(photo.image.url)
-    #  end
-    #  respond_to do |format|
-    # format.html # show.html.erb
-    # format.json { render json: @classified }
-    # end
-    # end
     def image_urls
-        @products = Product.find(params[:id])
-        @images = @products.images
-  end
+        @product = Product.find(params[:id])
+        @images = @product.images
+end
+    #     def show
+    #         @products = Product.find(params[:id])
+    #         @images = @products.images
+    #         @image_urls = []
+    #         @products.images.each do |image|
+    #             @image_urls.push(image.image.url)
+    #         end
+    #         respond_to do |format|
+    #             format.html # show.html.erb
+    #             format.json { render json: @classified }
+    #         end
+    #        end
 
     private
 
@@ -46,6 +35,6 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-        params.require(:product).permit(:title, :description, :price, :stock, :category_id, :images, :product_id, :category)
+        params.require(:product).permit(:title, :description, :price, :stock, :category_id, :image, :products_id, :category)
     end
 end

@@ -25,7 +25,14 @@ gem 'rubocop'
 gem 'paperclip', '~> 5.1'
 
 gem 'simple_form', '~> 3.3', '>= 3.3.1'
+
 gem 'binding_of_caller'
+
+gem 'kaminari', '~> 0.17.0'
+
+gem 'bootstrap4-kaminari-views'
+
+gem 'rails-i18n', '~> 5.0.0' # For 5.0.x
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'

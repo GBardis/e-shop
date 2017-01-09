@@ -67,7 +67,7 @@ RailsAdmin.config do |config|
 
         show_in_app
         dropzone do
-            only Product # Example Album
+            only Image, Product # Example Album
         end
         show
         edit
