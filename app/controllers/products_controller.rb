@@ -7,14 +7,14 @@ class ProductsController < ApplicationController
                     else
                         Product.all.page params[:page]
                     end
-        @categories = Category.all.where(parent_id: nil).page params[:page]
-        @subcategories = Category.all.where.not(parent_id: nil).page params[:page]
+        @categories = Category.all.where(parent_id: nil)
+        @subcategories = Category.all.where.not(parent_id: nil)
     end
 
-    def image_urls
-        @product = Product.find(params[:id])
-        @images = @product.images
-end
+    def show
+        @products = Product.find(params[:id])
+        @images = @products.images
+      end
     #     def show
     #         @products = Product.find(params[:id])
     #         @images = @products.images
@@ -35,6 +35,10 @@ end
     end
 
     def product_params
-        params.require(:product).permit(:title, :description, :price, :stock, :category_id, :image, :products_id, :category)
+        params.require(:product).permit(:title, :description, :price, :stock, :category_id, :image, :product_id, :category)
     end
+
+    def image_params
+        params.require(:image).permit(:product_id, :image)
+  end
 end

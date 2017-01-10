@@ -20,20 +20,15 @@
     padding=0;
 }
 
-@media screen and (max-width: 768px) {
-    #content {
-        display: none;
-    }
-    #buttons {
-        display: none;
-    }
-    #list {
-        display: none;
-    }
-    #grid {
-        display: none;
-    }
-    /* show it on small screens */
+#addcart {
+    margin: auto;
+}
+
+
+/*divise*/
+
+#edit_profile {
+    padding-top: 25px;
 }
 
 
@@ -60,6 +55,25 @@
         width: 0;
     }
 }*/
+
+
+/*Products*/
+
+@media screen and (max-width: 768px) {
+    #content {
+        display: none;
+    }
+    #buttons {
+        display: none;
+    }
+    #list {
+        display: none;
+    }
+    #grid {
+        display: none;
+    }
+    /* show it on small screens */
+}
 
 .glyphicon {
     margin-right: 5px;

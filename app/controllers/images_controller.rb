@@ -13,6 +13,7 @@ class ImagesController < ApplicationController
 
     def show
         @image = Image.find(params[:id])
+        @products = @image.products
 
         respond_to do |format|
             format.html # show.html.erb
