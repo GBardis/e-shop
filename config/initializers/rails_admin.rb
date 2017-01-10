@@ -4,35 +4,42 @@ RailsAdmin.config do |config|
     end
     config.model 'Category' do
         list do
-            field:name
-            field:subcategories
-            # field :title
-            # field :description
-            # field :price
-            # field :stock
+            field :name
+            field :subcategories
+            items_per_page 20
         end
-
-        exclude_fields :category_id
+        show do
+            field :name
+            field :subcategories
+        end
+        edit do
+            field :name
+            field :subcategories
+        end
     end
 
-    # config.model 'Product' do
-    # list do
+    config.model 'Product' do
+        list do
+            field :title
+            field :description
+            field :price
+            field :stock
+            field :images
+            items_per_page 20
+        end
+        exclude_fields :created_at, :updated_at
+    end
 
-    # field :image
-    # field :title
-    # field :description
-    # field :price
-    # field :stock
-    # end
+    config.model 'Image' do
+        list do
+            items_per_page 20
+        end
+    end
 
-    # end
     # config.model 'Category' do
-    # list do
-
-    # field :name
-
+    # field :products do
+    #  nested_form false
     # end
-    #  exclude_fields :products_id
     # end
 
     ### Popular gems integration
@@ -62,6 +69,8 @@ RailsAdmin.config do |config|
         dashboard # mandatory
         index # mandatory
         new
+        # except ['SomeModel']
+        # end
         export
         bulk_delete
 
