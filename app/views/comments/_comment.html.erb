@@ -1,0 +1,17 @@
+<div class="well">
+    <h3><%= comment.title %></h3>
+    <p class="text-muted">Added by
+       <strong>
+            <% if !user_signed_in?  %>
+                <%= comment.author %>
+            <%else%>
+                <%= current_user.name %>
+                <%= current_user.lastname %>
+            <%end%>
+        </strong> on
+    <%= l(comment.created_at, format: '%B, %d %Y ') %>
+    </p>
+    <blockquote>
+        <p><%= comment.body %></p>
+    </blockquote>
+</div>

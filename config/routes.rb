@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
     mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-    resources :products
+    root 'products#index'
 
     resources :categories do
         resources :products do
@@ -13,8 +13,8 @@ Rails.application.routes.draw do
     end
     resources :images
     resources :messages
-    root 'products#index'
-
+    resources :products
+    resources :comments, only: [:index, :new, :create]
     devise_for :users, controllers: { registrations: 'registrations' }
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
