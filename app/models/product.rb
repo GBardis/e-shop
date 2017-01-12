@@ -6,6 +6,8 @@ class Product < ApplicationRecord
     paginates_per 5
     max_paginates_per 6
 
+    ratyrate_rateable 'product'
+
     def create_associated_image(image)
         images.create(image: image)
   end

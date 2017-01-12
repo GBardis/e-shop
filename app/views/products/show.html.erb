@@ -11,11 +11,21 @@
                 </div>
                 <div class="col-md-6">
                     <div class="product-title"><%= @products.title%></div>
-                    <div class="product-desc"><%= @products.description%></div>
-                    <div class="product-rating"><i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star-o"></i> </div>
                     <hr>
-                    <div class="product-price"><%= @products.price%></div>
-                    <div class="product-stock">In Stock</div>
+                    <div class="product-desc"><%= @products.description%></div>
+                    <%  if current_user %>
+                        <hr>
+                        <div class="small-2 large-2 columns">
+                            Αξιολόγηση: <%= rating_for  @products, 'product',half_show: true,enable_half: true,disable_after_rate: true,cancel: true %>
+                        </div>
+                    <% end%>
+                    <hr>
+                    <div class="product-price"><%= @products.price%> €</div>
+                    <% if @products.stock > 0 %>
+                        <div class="product-stock">In Stock</div>
+                    <%else%>
+                        <div class="product-stock" style="color:#FF0000">Out Of Stock</div>
+                    <%end%>
                     <hr>
                     <div class="btn-group cart">
                         <button type="button" class="btn btn-success">
@@ -41,6 +51,21 @@
                     <div class="tab-pane fade in active" id="service-one">
                         <section class="container product-info">
                             The Corsair Gaming Series GS600 power supply is the ideal price-performance solution for building or upgrading a Gaming PC. A single +12V rail provides up to 48A of reliable, continuous power for multi-core gaming PCs with multiple graphics cards. The ultra-quiet, dual ball-bearing fan automatically adjusts its speed according to temperature, so it will never intrude on your music and games. Blue LEDs bathe the transparent fan blades in a cool glow. Not feeling blue? You can turn off the lighting with the press of a button.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

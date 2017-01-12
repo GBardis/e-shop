@@ -5,4 +5,6 @@ class User < ApplicationRecord
            :recoverable, :rememberable, :trackable, :validatable
     has_many :messages
     has_many :comments
+
+    ratyrate_rater
 end

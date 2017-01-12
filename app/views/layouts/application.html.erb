@@ -4,7 +4,6 @@
         <title>EShop</title>
         <%= csrf_meta_tags %>
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
@@ -42,8 +41,6 @@
                 </div>
                 <div class = "collapse navbar-collapse" id = "example-navbar-collapse">
                     <ul class = "nav navbar-nav">
-                        <li class = "active"><a href = "#">iOS</a></li>
-                        <li><a href = "#">SVN</a></li>
                         <li class = "dropdown">
                             <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">
                                 Java
@@ -92,23 +89,20 @@
                     </ul>
                 </div>
             </nav>
-            <% if flash[:notice] %>
-                <div class="alert alert-success"><%= flash[:notice] %></div>
-            <% end %>
             <% if flash[:alert] %>
-                <div class="alert alert-warning"><%= flash[:alert] %></div>
-            <% end %>
-        </div>
-        <div class="container">
-            <% flash.each do |key, value| %>
-                <div class="alert alert-<%= key %>">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    <%= value %>
+                <div class="alert alert-warning alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <%= flash[:alert] %>
                 </div>
-            <% end %>
-        </div>
-        <div class="container">
+            <%end%>
+            <% if flash[:notice] %>
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <%= flash[:notice] %>
+                <%end%>
+            </div>
         </div>
         <%= yield %>
     </body>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </html>
