@@ -27,13 +27,33 @@ RailsAdmin.config do |config|
             field :images
             items_per_page 20
         end
-        exclude_fields :created_at, :updated_at
+        edit do
+            field :title
+            field :description
+            field :price
+            field :stock
+            field :category
+            field :images
+        end
     end
 
     config.model 'Image' do
         list do
             items_per_page 20
         end
+    end
+
+    config.model 'AverageCache' do
+        visible false
+    end
+    config.model 'RatingCache' do
+        visible false
+    end
+    config.model 'OverallAverage' do
+        visible false
+    end
+    config.model 'Rate' do
+        visible false
     end
 
     # config.model 'Category' do
@@ -69,11 +89,8 @@ RailsAdmin.config do |config|
         dashboard # mandatory
         index # mandatory
         new
-        # except ['SomeModel']
-        # end
         export
         bulk_delete
-
         show_in_app
         dropzone do
             only Product # Example Album
