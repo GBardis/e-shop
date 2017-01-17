@@ -11,10 +11,19 @@ Rails.application.routes.draw do
         resources :images do
         end
     end
+
+    resources :products do
+        resources :comments
+    end
+
     resources :images
     resources :messages
     resources :products
-    resources :comments, only: [:index, :new, :create]
+    resources :comments
     devise_for :users, controllers: { registrations: 'registrations' }
+
+    resource :cart, only: [:show]
+    resources :order_items, only: [:create, :update, :destroy]
+
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

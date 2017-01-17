@@ -24,11 +24,50 @@
     margin: auto;
 }
 
+.navbar-default {
+    background-color: #ff9900;
+    border-color: #030033;
+}
+
 
 /*divise*/
 
 #edit_profile {
     padding-top: 25px;
+}
+
+
+/*products - show */
+
+#image {
+    margin-top: 2% !important;
+    border: 1px solid #e9e9e9;
+    padding: 30px;
+}
+
+.carousel-inner>.item>img {
+    margin: auto;
+    height: auto;
+    width: 100;
+}
+
+.carousel {
+    /*padding: 5px;*/
+    background-color: #fff;
+}
+
+.carousel-control {
+    background-image: none !important;
+}
+
+.carousel img {
+    text-align: center;
+}
+
+.carousel-inner {
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 
@@ -372,4 +411,55 @@
 .carousel-inner>.item>img, .carousel-inner>.item>a>img {
     width: 70%;
     margin: auto;
+}
+
+
+/*comments*/
+
+body {
+    padding-top: 30px;
+}
+
+.widget .panel-body {
+    padding: 0px;
+}
+
+.widget .list-group {
+    margin-bottom: 0;
+}
+
+.widget .panel-title {
+    display: inline
+}
+
+.widget .label-info {
+    float: right;
+}
+
+.widget li.list-group-item {
+    border-radius: 0;
+    border: 0;
+    border-top: 1px solid #ddd;
+}
+
+.widget li.list-group-item:hover {
+    background-color: rgba(86, 61, 124, .1);
+}
+
+.widget .mic-info {
+    color: #666666;
+    font-size: 11px;
+}
+
+.widget .action {
+    margin-top: 5px;
+}
+
+.widget .comment-text {
+    font-size: 12px;
+}
+
+.widget .btn-block {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
 }

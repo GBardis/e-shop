@@ -6,15 +6,18 @@ RailsAdmin.config do |config|
         list do
             field :name
             field :subcategories
+            field :products
             items_per_page 20
         end
         show do
             field :name
             field :subcategories
+            field :products
         end
         edit do
             field :name
             field :subcategories
+            field :products
         end
     end
 
@@ -25,6 +28,7 @@ RailsAdmin.config do |config|
             field :price
             field :stock
             field :images
+            field :category
             items_per_page 20
         end
         edit do
@@ -39,6 +43,8 @@ RailsAdmin.config do |config|
 
     config.model 'Image' do
         list do
+            field :product
+            field :image
             items_per_page 20
         end
     end
