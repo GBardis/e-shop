@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     devise_for :users, controllers: { registrations: 'registrations' }
 
     resource :cart, only: [:show]
-    resources :order_items, only: [:create, :update, :destroy]
+    resources :order_items, only: [:create, :update, :destroy], defaults: { format: 'js' } # musts set default values because files are .js not erb #
 
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -1,37 +1,47 @@
-<!-- Place somewhere in the <body> of your page -->
 <% @products.images.each do |image|%>
-    <div id="slider" class="flexslider">
+    <div class="flexslider">
         <ul class="slides">
-            <li>
-                <%= image_tag @products.images.first.image %>
+            <li data-thumb="../assets/images/kitchen_adventurer_cheesecake_brownie.jpg">
+                <%= image_tag image.image%>
             </li>
-            <li>
-                <img src="slide2.jpg" />
+            <li data-thumb="../assets/images/kitchen_adventurer_lemon.jpg">
+                <img src="../assetsimages/kitchen_adventurer_lemon.jpg" />
             </li>
-            <li>
-                <img src="slide3.jpg" />
+            <li data-thumb="../assets/images/kitchen_adventurer_donut.jpg">
+                <img src="../assetsimages/kitchen_adventurer_donut.jpg" />
             </li>
-            <li>
-                <img src="slide4.jpg" />
+            <li data-thumb="app/assets/images/kitchen_adventurer_caramel.jpg">
+                <img src="app/assets/images/kitchen_adventurer_caramel.jpg" />
             </li>
-            <!-- items mirrored twice, total of 12 -->
-        </ul>
-    </div>
-    <div id="carousel" class="flexslider">
-        <ul class="slides">
-            <li>
-                <img src="slide1.jpg" />
-            </li>
-            <li>
-                <img src="slide2.jpg" />
-            </li>
-            <li>
-                <img src="slide3.jpg" />
-            </li>
-            <li>
-                <img src="slide4.jpg" />
-            </li>
-            <!-- items mirrored twice, total of 12 -->
         </ul>
     </div>
 <%end%>
+<!-- jQuery -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/libs/jquery-1.7.min.js">\x3C/script>')
+</script>
+<!-- FlexSlider -->
+<script defer src="../jquery.flexslider.js"></script>
+<script type="text/javascript">
+    $(function(){
+                                                                                                                    SyntaxHighlighter.all();
+                                                                                                                  });
+                                                                                                                  $(window).load(function(){
+                                                                                                                    $('.flexslider').flexslider({
+                                                                                                                      animation: "slide",
+                                                                                                                      controlNav: "thumbnails",
+                                                                                                                      start: function(slider){
+                                                                                                                        $('body').removeClass('loading');
+                                                                                                                      }
+                                                                                                                    });
+                                                                                                                  });
+</script>
+<!-- Syntax Highlighter -->
+<script type="text/javascript" src="../assets/javascripts/shCore.js"></script>
+<script type="text/javascript" src="../assets/javascripts/shBrushXml.js"></script>
+<script type="text/javascript" src="../assets/javascripts/shBrushJScript.js"></script>
+<!-- Optional FlexSlider Additions -->
+<script src="../assets/javascripts/jquery.easing.js"></script>
+<script src="../assets/javascripts/jquery.mousewheel.js"></script>
+<script defer src="../assets/javascripts/demo.js"></script>

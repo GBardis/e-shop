@@ -46,6 +46,9 @@ gem 'jquery-turbolinks'
 
 gem 'shareable'
 
+gem 'flexslider'
+gem 'deadweight', '~> 0.2.2'
+
 # gem 'rmagick'
 gem 'yaml_db'
 

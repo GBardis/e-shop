@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
          end
         @categories = Category.all.where(parent_id: nil)
         @subcategories = Category.all.where.not(parent_id: nil)
-        # @order_item = current_order.order_items.new
+        @order_item = current_order.order_items.new
     end
 
     def show

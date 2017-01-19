@@ -8,24 +8,18 @@
         <meta property="og:description"   content="EShop" />
         <meta property="og:image"         content="public/images/4/koupa-agapis.jpg" />
         <%= csrf_meta_tags %>
-        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <% if request.ssl? %>
+            <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' %>
+            <%= javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' %>
+        <% else %>
+            <%= stylesheet_link_tag 'http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' %>
+            <%= javascript_include_tag 'http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' %>
+        <% end %>
     </head>
     <body>
-        <div id="fb-root"></div>
-        <script>
-            (function(d, s, id) {
-                                                                                                                                                                                                                                                                                                                                      var js, fjs = d.getElementsByTagName(s)[0];
-                                                                                                                                                                                                                                                                                                                                      if (d.getElementById(id)) return;
-                                                                                                                                                                                                                                                                                                                                      js = d.createElement(s); js.id = id;
-                                                                                                                                                                                                                                                                                                                                      js.src = "//connect.facebook.net/el_GR/sdk.js#xfbml=1&version=v2.8";
-                                                                                                                                                                                                                                                                                                                                      fjs.parentNode.insertBefore(js, fjs);
-                                                                                                                                                                                                                                                                                                                                    }(document, 'script', 'facebook-jssdk'));
-        </script>
         <!--<div class="page-header">
             <h1>Aποψη</h1>
         </div>-->
@@ -88,7 +82,7 @@
                                     </li>
                                 <%end%>
                                 <li>
-                                    <h1 class="cart-text"><%#= render 'layouts/cart_text' %></h1>
+                                    <%= render 'layouts/cart_text' %>
                                 </li>
                             </ul>
                         </li>
