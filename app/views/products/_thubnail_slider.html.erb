@@ -1,7 +1,7 @@
 <% @products.images.each do |image|%>
     <div class="flexslider">
         <ul class="slides">
-            <li data-thumb="../assets/images/kitchen_adventurer_cheesecake_brownie.jpg">
+            <li  value="<%= image_tag image.image%>">
                 <%= image_tag image.image%>
             </li>
             <li data-thumb="../assets/images/kitchen_adventurer_lemon.jpg">
@@ -25,17 +25,17 @@
 <script defer src="../jquery.flexslider.js"></script>
 <script type="text/javascript">
     $(function(){
-                                                                                                                    SyntaxHighlighter.all();
-                                                                                                                  });
-                                                                                                                  $(window).load(function(){
-                                                                                                                    $('.flexslider').flexslider({
-                                                                                                                      animation: "slide",
-                                                                                                                      controlNav: "thumbnails",
-                                                                                                                      start: function(slider){
-                                                                                                                        $('body').removeClass('loading');
-                                                                                                                      }
-                                                                                                                    });
-                                                                                                                  });
+                                                                                                                                                    SyntaxHighlighter.all();
+                                                                                                                                                  });
+                                                                                                                                                  $(window).load(function(){
+                                                                                                                                                    $('.flexslider').flexslider({
+                                                                                                                                                      animation: "slide",
+                                                                                                                                                      controlNav: "thumbnails",
+                                                                                                                                                      start: function(slider){
+                                                                                                                                                        $('body').removeClass('loading');
+                                                                                                                                                      }
+                                                                                                                                                    });
+                                                                                                                                                  });
 </script>
 <!-- Syntax Highlighter -->
 <script type="text/javascript" src="../assets/javascripts/shCore.js"></script>

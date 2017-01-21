@@ -8,16 +8,11 @@
         <meta property="og:description"   content="EShop" />
         <meta property="og:image"         content="public/images/4/koupa-agapis.jpg" />
         <%= csrf_meta_tags %>
-        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => "reload" %>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <% if request.ssl? %>
-            <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' %>
-            <%= javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' %>
-        <% else %>
-            <%= stylesheet_link_tag 'http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' %>
-            <%= javascript_include_tag 'http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' %>
-        <% end %>
+        <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' %>
+        <%= javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' %>
     </head>
     <body>
         <!--<div class="page-header">
@@ -39,8 +34,7 @@
         <div class="container">
             <nav class = "navbar navbar-default" role = "navigation">
                 <div class = "navbar-header">
-                    <button type = "button" class = "navbar-toggle"
-         data-toggle = "collapse" data-target = "#example-navbar-collapse">
+                    <button type = "button" class = "navbar-toggle" data-toggle = "collapse" data-target = "#example-navbar-collapse">
                         <span class = "sr-only">Toggle navigation</span>
                         <span class = "icon-bar"></span>
                         <span class = "icon-bar"></span>

@@ -1,33 +1,31 @@
-  <button type="button" class="btn btn-primary" data-toggle="collapse" data-target=".collapse">Κάνε Ένα Σχόλιο</button>
+<button type="button" class="btn btn-primary" data-toggle="collapse" data-target=".collapse">Κάνε Ένα Σχόλιο</button>
 <div class="collapse">
-    <div class='container'>
-        <%= form_for ([@products,@products.comments.build]) do |f| %>
-            <% if @products.errors.any? %>
-                <div id="error_explanation">
-                    <h2><%= pluralize(@products.errors.count, "error") %> prohibited this comment from being saved:</h2>
-                    <ul>
-                        <% @products.errors.full_messages.each do |msg| %>
-                            <li><%= msg %></li>
-                        <% end %>
-                    </ul>
-                </div>
-            <%end %>
-            <div class="form-group">
-                <%= f.label :title %>
-                <%= f.text_field :title, class: 'form-control' %>
+    <%= form_for ([@products,@products.comments.build]) do |f| %>
+        <% if @products.errors.any? %>
+            <div id="error_explanation">
+                <h2><%= pluralize(@products.errors.count, "error") %> prohibited this comment from being saved:</h2>
+                <ul>
+                    <% @products.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                    <% end %>
+                </ul>
             </div>
-            <% if !user_signed_in?  %>
-                <div class="form-group">
-                    <%= f.label :author %>
-                    <%= f.text_field :author, class: 'form-control', required: true %>
-                </div>
-            <%end%>
+        <%end %>
+        <div class="form-group">
+            <%= f.label :title %>
+            <%= f.text_field :title, class: 'form-control' %>
+        </div>
+        <% if !user_signed_in?  %>
             <div class="form-group">
-                <%= f.label :body %>
-                <%= f.text_area :body, required: true %>
-                <%#= tinymce %>
+                <%= f.label :author %>
+                <%= f.text_field :author, class: 'form-control', required: true %>
             </div>
-            <%= f.submit class: 'btn btn-primary' %>
-        <% end %>
-    </div>
+        <%end%>
+        <div class="form-group">
+            <%= f.label :body %>
+            <%= f.text_area :body, class: 'tinymce' , :placeholder => "", required: true %>
+            <%#= tinymce %>
+            <%= f.submit nil ,class: 'btn btn-primary' %>
+        </div>
+    <% end %>
 </div>
