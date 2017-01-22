@@ -19,7 +19,7 @@
                         <%= f.label :email %>
                         <%= f.email_field :email, autofocus: true, class: 'form-control' %>
                     </div>
-                    
+
                     <div class="form-group">
                         <%= f.label :password %>
                         <%= f.password_field :password, class: 'form-control' %>
@@ -33,7 +33,7 @@
                 <% end %>
             </div>
         </div>
-        <%#= render 'devise/shared/links' %>
+        <%= render 'devise/shared/links' %>
     </div>
     <div class="col-md-6">
         <div class="panel panel-default devise-bs">
@@ -61,6 +61,6 @@
                 <% end %>
             </div>
         </div>
-        <%= render 'devise/shared/links' %>
+        <%#= render 'devise/shared/links' %>
     </div>
 </div>
