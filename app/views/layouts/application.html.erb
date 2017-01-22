@@ -15,6 +15,8 @@
         <%= javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' %>
     </head>
     <body>
+
+
         <!--<div class="page-header">
             <h1>Aποψη</h1>
         </div>-->
@@ -65,7 +67,7 @@
                             <ul class="nav navbar-nav navbar-right">
                                 <% if user_signed_in? %>
                                     <li>
-                                        <%= link_to "Εξοδος", destroy_user_session_path, :method => 'delete' %>
+                                        <%= link_to "Εξοδος", destroy_user_session_path, :method => 'get' %>
                                     </li>
                                     <li>
                                         <%= link_to "Προφίλ", edit_user_registration_path %>
@@ -83,6 +85,7 @@
                     </ul>
                 </div>
             </nav>
+            <!--<div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="false"></div>-->
             <% if flash[:alert] %>
                 <div class="alert alert-warning alert-dismissible" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>

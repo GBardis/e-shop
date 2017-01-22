@@ -48,10 +48,23 @@ gem 'shareable'
 
 gem 'flexslider'
 
-gem 'deadweight', '~> 0.2.2'
+#gem 'deadweight', '~> 0.2.2'
 
-#gem 'rmagick'
+gem 'bootstrap-social-rails'
+gem 'font-awesome-rails'
+
+# gem 'rmagick'
 gem 'yaml_db'
+gem 'omniauth'
+gem 'omniauth-oauth2'
+gem 'omniauth-facebook'
+gem 'omniauth-github'
+gem 'omniauth-google-oauth2'
+#gem 'google-api-client'
+gem 'omniauth-linkedin-oauth2'
+gem 'omniauth-twitter'
+gem 'twitter'
+gem 'koala'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
