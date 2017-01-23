@@ -1,30 +1,30 @@
 source 'https://rubygems.org'
 
-gem 'devise', '~> 4.2'
+gem 'devise'
 
-gem 'devise-i18n', '~> 1.1', '>= 1.1.1'
+gem 'devise-i18n'
 
-gem 'rails_admin', '~> 1.1'
+gem 'rails_admin'
 
-gem 'rails_admin_dropzone', '~> 1.0', '>= 1.0.8'
+gem 'rails_admin_dropzone'
 
-gem 'dropzonejs-rails', '~> 0.7.3'
+gem 'dropzonejs-rails'
 
 gem 'devise-bootstrap-views'
 
-gem 'awesome_nested_set', '~> 3.1', '>= 3.1.1'
+gem 'awesome_nested_set'
 
-gem 'better_errors', '~> 2.1', '>= 2.1.1'
+gem 'better_errors'
 
-gem 'htmlbeautifier', '~> 0.0.9'
+gem 'htmlbeautifier'
 
-gem 'ruby-beautify', '~> 0.92.2'
+gem 'ruby-beautify'
 
 gem 'rubocop'
 
-gem 'paperclip', '~> 5.1'
+gem 'paperclip'
 
-gem 'simple_form', '~> 3.3', '>= 3.3.1'
+gem 'simple_form'
 
 gem 'binding_of_caller'
 
@@ -32,9 +32,26 @@ gem 'kaminari', '~> 0.17.0'
 
 gem 'bootstrap4-kaminari-views'
 
-gem 'rails-i18n', '~> 5.0.0' # For 5.0.x
+gem 'rails-i18n'
 
-gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
+gem 'jquery-ui-rails'
+
+gem 'closure_tree'
+
+gem 'bootstrap-sass'
+
+gem 'ratyrate'
+
+gem 'jquery-turbolinks'
+
+gem 'shareable'
+
+gem 'flexslider'
+
+gem 'deadweight', '~> 0.2.2'
+
+#gem 'rmagick'
+gem 'yaml_db'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'

@@ -12,9 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require jquery.turbolinks
+//= require jquery.raty
+//= require jquery.flexslider
+//= require jquery.flexslider-min
+//= require ratyrate
 //= require tinymce
 //= require_tree .
+
 
 //products.js
 $(document).ready(function() {

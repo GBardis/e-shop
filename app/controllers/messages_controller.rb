@@ -9,7 +9,11 @@ class MessagesController < ApplicationController
         @user = current_user
 
         if @message.save
+<<<<<<< HEAD
             # mail="mail@gmail.com"
+=======
+          
+>>>>>>> addcomments
             UserMailer.contact_email(@user).deliver_now
         end
     end

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
     mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-    resources :products
-
+    root 'products#index'
+    post '/rate' => 'rater#create', :as => 'rate'
     resources :categories do
         resources :products do
         end
@@ -11,10 +11,19 @@ Rails.application.routes.draw do
         resources :images do
         end
     end
+
+    resources :products do
+        resources :comments
+    end
+
     resources :images
     resources :messages
-    root 'products#index'
-
+    resources :products
+    resources :comments
     devise_for :users, controllers: { registrations: 'registrations' }
+
+    resource :cart, only: [:show]
+    resources :order_items, only: [:create, :update, :destroy], defaults: { format: 'js' } # musts set default values because files are .js not erb #
+
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
