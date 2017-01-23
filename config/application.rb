@@ -7,22 +7,20 @@ require 'rails/all'
 Bundler.require(*Rails.groups)
 
 module EShop
-  class Application < Rails::Application
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration should go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded.
-    ActionMailer::Base.smtp_settings = {
+    class Application < Rails::Application
+        # Settings in config/environments/* take precedence over those specified here.
+        # Application configuration should go into files in config/initializers
+        # -- all .rb files in that directory are automatically loaded.
+        ActionMailer::Base.smtp_settings = {
 
-    :address    => 'smtp.gmail.com',
-    :domain     => 'mail.google.com',
-    :port       => 587,
-    :username   => 'georgebardis1990@gmail.com',
-    :password   => 'trelos777',
-    :authentication => 'login',
-    :enable_starttls_auto => true
+            address: 'smtp.gmail.com',
+            domain: 'mail.google.com',
+            port: 587,
+            username: 'mail@gmail.com@gmail.com',
+            password: 'password',
+            authentication: 'login',
+            enable_starttls_auto: true
 
-
-
-   }
-  end
+        }
+    end
 end
