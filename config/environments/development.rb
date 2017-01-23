@@ -64,6 +64,5 @@ Rails.application.configure do
         password: 'password',
         authentication: 'login',
         enable_starttls_auto: true
-
     }
 end
