@@ -16,8 +16,8 @@ module EShop
             address: 'smtp.gmail.com',
             domain: 'mail.google.com',
             port: 587,
-            username: 'georgebardis1990@gmail.com',
-            password: 'trelos777',
+            username: 'mail@gmail.com',
+            password: 'password',
             authentication: 'login',
             enable_starttls_auto: true
 

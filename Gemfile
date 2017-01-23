@@ -48,10 +48,11 @@ gem 'shareable'
 
 gem 'flexslider'
 
-#gem 'deadweight', '~> 0.2.2'
+# gem 'deadweight', '~> 0.2.2'
 
 gem 'bootstrap-social-rails'
 gem 'font-awesome-rails'
+gem 'font-awesome-sass'
 
 # gem 'rmagick'
 gem 'yaml_db'
@@ -60,7 +61,7 @@ gem 'omniauth-oauth2'
 gem 'omniauth-facebook'
 gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
-#gem 'google-api-client'
+# gem 'google-api-client'
 gem 'omniauth-linkedin-oauth2'
 gem 'omniauth-twitter'
 gem 'twitter'

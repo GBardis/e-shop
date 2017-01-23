@@ -14,8 +14,6 @@
 //= require jquery_ujs
 //= require jquery.turbolinks
 //= require jquery.raty
-//= require jquery.flexslider
-//= require jquery.flexslider-min
 //= require ratyrate
 //= require tinymce
 //= require_tree .
@@ -35,5 +33,14 @@ $(document).ready(function() {
             sideslider.click(function(event){
                 $(sel).toggleClass('in');
                 $(sel2).toggleClass('out');
+            });
+        });
+
+
+
+        $(document).ready(function(){
+            //Handles menu drop down
+            $('.dropdown-menu').find('form').click(function (e) {
+                e.stopPropagation();
             });
         });

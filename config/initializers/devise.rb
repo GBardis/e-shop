@@ -245,12 +245,12 @@ Devise.setup do |config|
     config.sign_out_via = :delete ,:get
     require 'devise/orm/active_record'
 API_KEYS = YAML::load_file("#{Rails.root}/config/api_keys.yml")[Rails.env]
-config.sign_out_via = :get
-config.omniauth :facebook, ENV["FACEBOOK_KEY"], ENV["FACEBOOK_SECRET"], { :scope => 'email', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
-config.omniauth :twitter, ENV["TWITTER_KEY"], ENV["TWITTER_SECRET"], { :scope => 'r_fullprofile, r_emailaddress', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
-config.omniauth :linkedin, ENV["LINKEDIN_KEY"], ENV["LINKEDIN_SECRET"], { :scope => 'r_basicprofile r_emailaddress', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
-config.omniauth :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET'], scope: "user, public_repo"
-config.omniauth :google_oauth2, ENV['GOOGLE_KEY'], ENV['GOOGLE_SECRET'], {}
+    config.sign_out_via = :get
+config.omniauth :facebook,'693479040943708','55a9075afa8ccdc8bff08c516a38b5cf', { :scope => 'email', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
+config.omniauth :twitter, 'aaqiMPFN3tLj6zH4LrvoUmDja','4fShTIoEsrujPRlA6xkiS1x2MlmguDMnGwev9rLORLF0m3ncQy', { :scope => 'r_fullprofile, r_emailaddress', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
+config.omniauth :linkedin, API_KEYS["LINKEDIN_KEY"], API_KEYS["LINKEDIN_SECRET"], { :scope => 'r_basicprofile r_emailaddress', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
+config.omniauth :github, API_KEYS['GITHUB_KEY'], API_KEYS['GITHUB_SECRET'], scope: "user, public_repo"
+config.omniauth :google_oauth2, '225657000813-9f29lo8detvkhc33ho1af85a3rv62bks.apps.googleusercontent.com', 'vfZZp8CSns3GPNB_MzSur2V4', {}
     # ==> OmniAuth
     # Add a new OmniAuth provider. Check the wiki for more information on setting
     # up on your models and hooks.
