@@ -1,0 +1,20 @@
+<h1>Articles Search</h1>
+<%= form_for search_path, method: :get do |f| %>
+    <p>
+        <%= f.label "Search for" %>
+        <%= text_field_tag :q, params[:q] %>
+        <%= submit_tag "Go", name: nil %>
+    </p>
+<% end %>
+<ul>
+    <% @products.each do |product| %>
+        <li>
+            <h3><%= link_to highlighted_title(product), product_path(product._id) %></h3>
+            <% if product.try(:highlight).try(:text) %>
+                <% product.highlight.text.each do |snippet| %>
+                    <p><%= snippet.html_safe %>...</p>
+                <% end %>
+            <% end %>
+        </li>
+    <% end %>
+</ul>

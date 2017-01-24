@@ -48,6 +48,10 @@ gem 'shareable'
 
 gem 'flexslider'
 
+gem 'elasticsearch-rails'
+
+gem 'elasticsearch-model'
+
 # gem 'deadweight', '~> 0.2.2'
 
 gem 'bootstrap-social-rails'

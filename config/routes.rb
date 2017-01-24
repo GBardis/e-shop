@@ -2,6 +2,7 @@ Rails.application.routes.draw do
     mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
     root 'products#index'
     post '/rate' => 'rater#create', :as => 'rate'
+    get 'search', to: 'search#search'
     resources :categories do
         resources :products do
         end

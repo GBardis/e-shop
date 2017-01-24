@@ -7,7 +7,7 @@
                 class="glyphicon glyphicon-th"></span>Grid</a>
         </div>
     </div>
-    <%= paginate @products, theme: 'twitter-bootstrap-4',:pagination_class => "pagination-small pagination-centered" %>
+    <%#= paginate @products, theme: 'twitter-bootstrap-4',:pagination_class => "pagination-small pagination-centered" %>
     <div id="categories-list" class="row list-group">
         <% @products.each do |product| %>
             <%= render "product_row", product: product, order_item: @order_item %>
