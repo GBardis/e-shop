@@ -3,14 +3,12 @@
     <head>
         <title>EShop</title>
         <%= csrf_meta_tags %>
-        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => "reload" %>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     </head>
     <body>
         <!--<div class="page-header">
@@ -42,8 +40,8 @@
                         Αποψη
                     <%end%>
                 </div>
-                <div class = "collapse navbar-collapse" id = "example-navbar-collapse">
-                    <ul class = "nav navbar-nav">
+                <div class = "collapse navbar-collapse" >
+                    <ul class = "nav navbar-nav navbar-left">
                         <% Category.all.where(:parent_id => nil).each do |parent| %>
                             <li class="dropdown">
                                 <%= link_to parent.name , category_products_path(parent),  class:  'dropdown-toggle' , 'data-toggle' => 'dropdown' %>
@@ -64,18 +62,7 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <%= link_to  cart_path, class: "btn btn-link btn-md" do %>
-                                <i class="glyphicon glyphicon-shopping-cart"></i>
-                                <% if current_order.order_items.size == 0%>
-                                <%else%>
-                                    <i class="items"><%= current_order.order_items.size%></i>
-                                <%end%>
-                                <% if current_order.subtotal == 0 %>
-                                    Καλάθι
-                              <%else%>
-                                    Καλάθι<%= number_to_currency current_order.subtotal%>
-                                <%end%>
-                            <%end%>
+                            <%= render 'layouts/cart_text'%>
                         </li>
                         <% if user_signed_in? %>
                             <li>
@@ -90,31 +77,33 @@
                             </li>
                         <%end%>
                         <li class="dropdown">
-                            <a href="http://www.jquery2dotnet.com" class="dropdown-toggle" data-toggle="dropdown">Sign in <b class="caret"></b></a>
+                            <a class="dropdown-toggle" data-toggle="dropdown">Σύνδεση <b class="caret"></b></a>
                             <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
                                 <li>
                                     <%= render 'layouts/sign_up_forms' %>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
                     <!-- /.navbar-collapse -->
-                </nav>
-                <!--<div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="false"></div>-->
-                <% if flash[:alert] %>
-                    <div class="alert alert-warning alert-dismissible" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <%= flash[:alert] %>
-                    </div>
-                <%end%>
-                <% if flash[:notice] %>
-                    <div class="alert alert-success alert-dismissible" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <%= flash[:notice] %>
-                    <%end%>
                 </div>
+            </nav>
+            <!--<div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="false"></div>-->
+            <% if flash[:alert] %>
+                <div class="alert alert-warning alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <%= flash[:alert] %>
+                </div>
+            <%end%>
+            <% if flash[:notice] %>
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <%= flash[:notice] %>
+                <%end%>
             </div>
-            <%= yield %>
-        </body>
-        <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    </html>
+        </div>
+        <%= yield %>
+    </body>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+</html>

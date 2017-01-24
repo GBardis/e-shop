@@ -242,15 +242,15 @@ Devise.setup do |config|
     # config.navigational_formats = ['*/*', :html]
 
     # The default HTTP method used to sign out a resource. Default is :delete.
-    config.sign_out_via = :delete ,:get
+    config.sign_out_via = :delete, :get
     require 'devise/orm/active_record'
-API_KEYS = YAML::load_file("#{Rails.root}/config/api_keys.yml")[Rails.env]
+    API_KEYS = YAML.load_file("#{Rails.root}/config/api_keys.yml")[Rails.env]
     config.sign_out_via = :get
-config.omniauth :facebook,'693479040943708','55a9075afa8ccdc8bff08c516a38b5cf', { :scope => 'email', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
-config.omniauth :twitter, 'aaqiMPFN3tLj6zH4LrvoUmDja','4fShTIoEsrujPRlA6xkiS1x2MlmguDMnGwev9rLORLF0m3ncQy', { :scope => 'r_fullprofile, r_emailaddress', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
-config.omniauth :linkedin, API_KEYS["LINKEDIN_KEY"], API_KEYS["LINKEDIN_SECRET"], { :scope => 'r_basicprofile r_emailaddress', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
-config.omniauth :github, API_KEYS['GITHUB_KEY'], API_KEYS['GITHUB_SECRET'], scope: "user, public_repo"
-config.omniauth :google_oauth2, '225657000813-9f29lo8detvkhc33ho1af85a3rv62bks.apps.googleusercontent.com', 'vfZZp8CSns3GPNB_MzSur2V4', {}
+    config.omniauth :facebook, '', '', scope: 'email', client_options: { ssl: { ca_file: '/usr/lib/ssl/certs/ca-certificates.crt' } }
+    config.omniauth :twitter, '', '', scope: 'r_fullprofile, r_emailaddress', client_options: { ssl: { ca_file: '/usr/lib/ssl/certs/ca-certificates.crt' } }
+    config.omniauth :linkedin, API_KEYS['LINKEDIN_KEY'], API_KEYS['LINKEDIN_SECRET'], scope: 'r_basicprofile r_emailaddress', client_options: { ssl: { ca_file: '/usr/lib/ssl/certs/ca-certificates.crt' } }
+    config.omniauth :github, API_KEYS['GITHUB_KEY'], API_KEYS['GITHUB_SECRET'], scope: 'user, public_repo'
+    config.omniauth :google_oauth2, '', '', {}
     # ==> OmniAuth
     # Add a new OmniAuth provider. Check the wiki for more information on setting
     # up on your models and hooks.

@@ -7,6 +7,6 @@
     <% if current_order.subtotal == 0 %>
         Καλάθι
     <%else%>
-        Καλάθι<%= number_to_currency current_order.subtotal%>
+        Καλάθι (<%= number_to_currency current_order.subtotal%>)
     <%end%>
 <%end%>

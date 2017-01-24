@@ -16,9 +16,7 @@ class ProductsController < ApplicationController
     def show
         @products = Product.find(params[:id])
         @order_item = current_order.order_items.new
-        respond to do |format|
-            format.js { render js: @order_item }
-        end
+
         @comments = Comment.where(product_id: @products).order('created_at DESC')
         # @images = @product.images
         @image_urls = []
