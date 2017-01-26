@@ -1,73 +1,75 @@
 <div class="container-fluid">
-    <div class="content-wrapper">
-        <div class="item-container">
-            <div class="container">
-                <%# @products.images.each do |image|%>
-                    <%#= image_tag image.image, {:id => 'item-display'} %>
-                    <%#end%>
-                    <div class="col-md-9" id="image">
-                        <%= carousel_for @image_urls %>
-                        <%#= render partial: "products/thubnail_slider"%>
-                    </div>
-                    <%= form_for @order_item, remote: true do |f| %>
-                        <div class="col-md-3">
-                            <div class="product-title"><%= @products.title%></div>
-                            <hr>
-                            <%  if current_user %>
-                                <div class="small-2 large-2 columns">
-                                    Αξιολόγηση: <%= rating_for  @products, 'product',half_show: true,enable_half: true,disable_after_rate: true %>
-                                </div>
-                            <% end%>
-                            <hr>
-                            <div class="product-price"><%= number_to_currency( @products.price,:unit => "€")%> </div>
-                            <% if @products.stock > 0 %>
-                                <div class="product-stock">In Stock</div>
-                            <%else%>
-                                <div class="product-stock" style="color:#FF0000">Out Of Stock</div>
-                            <%end%>
-                            <hr>
-                            <div class="btn-group cart">
-                                <%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
-                            </div>
-                            <hr />
-                            <div class="btn-group cart">
-                                <%= f.hidden_field :product_id, value: @products.id %>
-                                <%= f.submit "Add to Cart", class: "btn btn-success" %>
-                            </div>
-                        <%end%>
-                        <hr>
-                        <div class="btn-group wishlist">
-                            <button type="button" class="btn btn-danger">
-                                Add to wishlist
+  <div class="content-wrapper">
+    <div class="item-container">
+      <div class="container">
+        <%# @products.images.each do |image|%>
+          <%#= image_tag image.image, {:id => 'item-display'} %>
+          <%#end%>
+          <div class="col-md-9" id="image">
+            <%= carousel_for @image_urls %>
+            <%#= render partial: "products/thubnail_slider"%>
+          </div>
+          <%= form_for @order_item, remote: true do |f| %>
+            <div class="col-md-3">
+              <div class="product-title"><%= @products.title%></div>
+              <hr>
+              <%  if current_user %>
+                <div class="small-2 large-2 columns">
+                  Αξιολόγηση: <%= rating_for  @products, 'product',half_show: true,enable_half: true,disable_after_rate: true %>
+                </div>
+              <% end%>
+              <hr>
+              <div class="product-price"><%= number_to_currency( @products.price,:unit => "€")%> </div>
+              <% if @products.stock > 0 %>
+                <div class="product-stock">In Stock</div>
+              <%else%>
+                <div class="product-stock" style="color:#FF0000">Out Of Stock</div>
+              <%end%>
+              <hr>
+              <div class="btn-group cart">
+                <%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
+              </div>
+              <hr />
+              <div class="btn-group cart">
+                <%= f.hidden_field :product_id, value: @products.id %>
+                <%= f.submit "Add to Cart", class: "btn btn-success" %>
+              </div>
+            <%end%>
+            <hr>
+            <div class="btn-group wishlist">
+              <button type="button" class="btn btn-danger">
+                Add to wishlist
 						</button>
-                        </div>
-                        <hr>
-                        <div class="product-stock"><%= facebook_button :facebook=> {:send=> 'true', :url=> 'https://www.facebook.com/Άποψη-Δώρα-Κάρτες-277237362334845'} %></div>
-                    </div>
-                </div>
             </div>
+            <hr>
+            <div class="product-stock"><%= facebook_button :facebook=> {:send=> 'true', :url=> 'https://www.facebook.com/Άποψη-Δώρα-Κάρτες-277237362334845'} %></div>
+          </div>
         </div>
-        <div class="container-fluid">
-            <div class="col-md-12 product-info">
-                <ul id="myTab" class="nav nav-tabs nav_tabs">
-                    <li class="active"><a href="#service-one" data-toggle="tab">DESCRIPTION</a></li>
-                    <li><a href="#service-two" data-toggle="tab">ΣΧΟΛΙΑ <span class="label label-info">
-                                <%= @products.comments.count%></span></li>
-                    </a>
-                </ul>
-                <div id="myTabContent" class="tab-content">
-                    <div class="tab-pane fade in active" id="service-one">
-                        <section class="container product-info">
-                            <%= @products.description%>
-                        </section>
-                    </div>
-                    <div class="tab-pane fade in active" id="service-two">
-                        <section class="container product-info">
-                            <%= render partial: "comments/comment"%>
-                        </section>
-                    </div>
-                </div>
-                <hr>
-            </div>
-        </div>
+      </div>
     </div>
+  </div>
+  <div class="container-fluid">
+    <div class="col-md-12 product-info">
+      <ul id="myTab" class="nav nav-tabs nav_tabs">
+        <li class="active"><a href="#service-one" data-toggle="tab">DESCRIPTION</a></li>
+        <li><a href="#service-two" data-toggle="tab">ΣΧΟΛΙΑ <span class="label label-info">
+              <%= @products.comments.count%></span></li>
+        </a>
+      </ul>
+      <div class="tab-pane fade" id="service-one">
+        <div id="myTabContent" class="tab-content">
+          <section class="container product-info">
+            <%= @products.description%>
+          </section>
+        </div>
+      </div>
+      <div  class="tab-pane fade" id="service-two">
+        <div id="myTabContent" class="tab-content">
+          <section class="container product-info">
+            <%= render partial: "comments/comment"%>
+          </section>
+        </div>
+      </div>
+      <hr/>
+    </div>
+  </div>

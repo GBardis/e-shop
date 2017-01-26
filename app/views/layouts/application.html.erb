@@ -1,109 +1,109 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>EShop</title>
-        <%= csrf_meta_tags %>
-        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <!-- Latest compiled and minified JavaScript -->
-    </head>
-    <body>
-        <!--<div class="page-header">
+  <head>
+    <title>EShop</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+  </head>
+  <body>
+    <!--<div class="page-header">
             <h1>Aποψη</h1>
         </div>-->
-        <div class="container">
-            <!-- Topper w/ logo -->
-            <div class="row hidden-xs topper">
-                <div class="col-xs-7 col-sm-7">
-                    <a href=""><img am-TopLogo alt="SECUREVIEW"   class="img-responsive"></a>
-                </div>
-                <div class="col-xs-5 col-xs-offset-1 col-sm-5 col-sm-offset-0 text-right ">
-                    <p am-CallNow>CALL</p>
-                </div>
-            </div>
+    <div class="container">
+      <!-- Topper w/ logo -->
+      <div class="row hidden-xs topper">
+        <div class="col-xs-7 col-sm-7">
+          <a href=""><img am-TopLogo alt="SECUREVIEW"   class="img-responsive"></a>
         </div>
-        <!-- End Topper -->
-        <!-- Navigation -->
-        <div class="container">
-            <nav class = "navbar navbar-default" role = "navigation">
-                <div class = "navbar-header">
-                    <button type = "button" class = "navbar-toggle" data-toggle = "collapse" data-target = "#example-navbar-collapse">
-                        <span class = "sr-only">Toggle navigation</span>
-                        <span class = "icon-bar"></span>
-                        <span class = "icon-bar"></span>
-                        <span class = "icon-bar"></span>
-                    </button>
-                    <%= link_to root_path,class:"navbar-brand" do  %>
-                        Αποψη
+        <div class="col-xs-5 col-xs-offset-1 col-sm-5 col-sm-offset-0 text-right ">
+          <p am-CallNow>CALL</p>
+        </div>
+      </div>
+    </div>
+    <!-- End Topper -->
+    <!-- Navigation -->
+    <div class="container">
+      <nav class = "navbar navbar-default" role = "navigation">
+        <div class = "navbar-header">
+          <button type = "button" class = "navbar-toggle" data-toggle = "collapse" data-target = "#example-navbar-collapse">
+            <span class = "sr-only">Toggle navigation</span>
+            <span class = "icon-bar"></span>
+            <span class = "icon-bar"></span>
+            <span class = "icon-bar"></span>
+          </button>
+          <%= link_to root_path,class:"navbar-brand" do  %>
+            Αποψη
                     <%end%>
-                </div>
-                <div class = "collapse navbar-collapse" >
-                    <ul class = "nav navbar-nav navbar-left">
-                        <% Category.all.where(:parent_id => nil).each do |parent| %>
-                            <li class="dropdown">
-                                <%= link_to parent.name , category_products_path(parent),  class:  'dropdown-toggle' , 'data-toggle' => 'dropdown' %>
-                                <ul class="dropdown-menu">
-                                    <% parent.subcategories.each do |child|%>
-                                        <li><%= link_to child.name , category_products_path(child) %></li>
-                                    <%end%>
-                                </ul>
-                            </li>
-                        <%end%>
-                        <li>
-                            <% if current_user %>
-                                <%if current_user.admin %>
-                                    <%= link_to "Admin", rails_admin.dashboard_path%>
-                                <%end%>
-                            <%end%>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <%= render 'layouts/cart_text'%>
-                        </li>
-                        <% if user_signed_in? %>
-                            <li>
-                                <%= link_to "Εξοδος", destroy_user_session_path, method: 'get' %>
-                            </li>
-                            <li>
-                                <%= link_to "Προφίλ", edit_user_registration_path %>
-                            </li>
-                        <%else%>
-                            <li>
-                                <%= link_to "Εγγραφή", new_user_registration_path %>
-                            </li>
-                        <%end%>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown">Σύνδεση <b class="caret"></b></a>
-                            <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
-                                <li>
-                                    <%= render 'layouts/sign_up_forms' %>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <!-- /.navbar-collapse -->
-                </div>
-            </nav>
-            <!--<div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="false"></div>-->
-            <% if flash[:alert] %>
-                <div class="alert alert-warning alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <%= flash[:alert] %>
-                </div>
-            <%end%>
-            <% if flash[:notice] %>
-                <div class="alert alert-success alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <%= flash[:notice] %>
-                <%end%>
-            </div>
         </div>
-        <%= yield %>
-    </body>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+        <div class = "collapse navbar-collapse" >
+          <ul class = "nav navbar-nav navbar-left">
+            <% Category.all.where(:parent_id => nil).each do |parent| %>
+              <li class="dropdown">
+                <%= link_to parent.name , category_products_path(parent),  class:  'dropdown-toggle' , 'data-toggle' => 'dropdown' %>
+                <ul class="dropdown-menu">
+                  <% parent.subcategories.each do |child|%>
+                    <li><%= link_to child.name , category_products_path(child) %></li>
+                  <%end%>
+                </ul>
+              </li>
+            <%end%>
+            <li>
+              <% if current_user %>
+                <%if current_user.admin %>
+                  <%= link_to "Admin", rails_admin.dashboard_path%>
+                <%end%>
+              <%end%>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <%= render 'layouts/cart_text'%>
+            </li>
+            <% if user_signed_in? %>
+              <li>
+                <%= link_to "Εξοδος", destroy_user_session_path, method: 'get' %>
+              </li>
+              <li>
+                <%= link_to "Προφίλ", edit_user_registration_path %>
+              </li>
+            <%else%>
+              <li>
+                <%= link_to "Εγγραφή", new_user_registration_path %>
+              </li>
+            <%end%>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown">Σύνδεση <b class="caret"></b></a>
+              <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
+                <li>
+                  <%= render 'layouts/sign_up_forms' %>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <!-- /.navbar-collapse -->
+        </div>
+      </nav>
+      <!--<div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="false"></div>-->
+      <% if flash[:alert] %>
+        <div class="alert alert-warning alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <%= flash[:alert] %>
+        </div>
+      <%end%>
+      <% if flash[:notice] %>
+        <div class="alert alert-success alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <%= flash[:notice] %>
+        <%end%>
+      </div>
+    </div>
+    <%= yield %>
+  </body>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </html>

@@ -43,7 +43,7 @@ class Product < ApplicationRecord
         images.create(image: image)
   end
 end
-# Delete the previous articles index in Elasticsearch
+# Delete the previous products index in Elasticsearch
 begin
     Product.__elasticsearch__.client.indices.delete index: Product.index_name
 rescue
