@@ -20,6 +20,7 @@
 
 body {
     margin-top: 30px;
+    background-color: red;
 }
 
 #login-nav input {
@@ -33,6 +34,49 @@ body {
 
 #addcart {
     margin: auto;
+}
+
+
+/* header*/
+
+#custom-bootstrap-menu {
+    height: 120px;
+    margin: 10px;
+    padding-bottom: 5px;
+}
+
+#text {
+    margin: auto;
+    padding-left: 325px;
+    padding-top: 30px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#custom-bootstrap-menu.navbar-default {}
+
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a {}
+
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a:hover, #custom-bootstrap-menu.navbar-default .navbar-nav>li>a:focus {
+    color: red;
+}
+
+#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a, #custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:hover, #custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:focus {
+    color: black;
+}
+
+#custom-bootstrap-menu.navbar-default .navbar-toggle {}
+
+#custom-bootstrap-menu.navbar-default .navbar-toggle:hover, #custom-bootstrap-menu.navbar-default .navbar-toggle:focus {}
+
+#custom-bootstrap-menu.navbar-default .navbar-toggle .icon-bar {}
+
+#custom-bootstrap-menu.navbar-default .navbar-toggle:hover .icon-bar, #custom-bootstrap-menu.navbar-default .navbar-toggle:focus .icon-bar {}
+
+#footer {
+    width: 80%;
+    margin: auto;
+    padding-bottom: 50px;
 }
 
 
