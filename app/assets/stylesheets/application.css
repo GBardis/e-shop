@@ -13,7 +13,6 @@
  *= require_tree .
  *= require_self
  *= require jquery-ui
- *= require flexslider.css
  *= require bootstrap-social
  *= require font-awesome
  */

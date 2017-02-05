@@ -14,5 +14,5 @@ class Product < ApplicationRecord
 
   def create_associated_image(image)
     images.create(image: image)
-end
+  end
 end

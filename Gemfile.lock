@@ -98,8 +98,6 @@ GEM
     faraday (0.10.1)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.17)
-    flexslider (2.2.0)
-      sass-rails (>= 3.1.0)
     font-awesome-rails (4.7.0.1)
       railties (>= 3.2, < 5.1)
     font-awesome-sass (4.7.0)
@@ -361,7 +359,6 @@ DEPENDENCIES
   devise-bootstrap-views
   devise-i18n
   dropzonejs-rails
-  flexslider
   font-awesome-rails
   font-awesome-sass
   htmlbeautifier

@@ -34,10 +34,9 @@
             <%= button_tag(type: 'submit', class: "btn btn-info btn-sm ") do%>
               <i class="fa fa-refresh"></i>
             <%end%>
-            <%= link_to order_item, { data: { confirm: "Are you sure you wish to delete the product '#{order_item.product.title}' from your cart?" }, method: :delete, remote: true, class: "btn btn-danger btn-sm" } do %>
+            <%= link_to order_item,  method: :delete, remote: true, class: "btn btn-danger btn-sm"  do %>
               <i class="fa fa-trash-o"></i>
             <%end%>
-            <%= check_box_tag "product_ids[]",order_item.id%>
           </td>
         </tr>
       </tbody>

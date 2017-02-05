@@ -12,24 +12,18 @@
     There are no items in your shopping cart.  Please <%= link_to "go back", root_path %> and add some items to your cart.
   </p>
 <% else %>
-  <%= form_tag destroy_multiple_order_items_path, method: :delete do %>
-    <% @order_items.each do |order_item| %>
-      <%= render 'carts/cart_row', product: order_item.product, order_item: order_item, show_total: true %>
-    <% end %>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 pull-left">
-          <%= link_to root_path, class: "btn btn-warning" do %>
-            <i class="fa fa-angle-left"></i> Continue Shopping</a>
-        <%end%>
-      </div>
-      <div class="col-md-2 pull-left">
-        <%= submit_tag "destroy_multiple" , class: "btn btn-warning" do %>
+  <% @order_items.each do |order_item| %>
+    <%= render 'carts/cart_row', product: order_item.product, order_item: order_item, show_total: true %>
+  <% end %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 pull-left">
+        <%= link_to root_path, class: "btn btn-warning" do %>
           <i class="fa fa-angle-left"></i> Continue Shopping</a>
       <%end%>
     </div>
   <%end%>
-  <div class="col-md-2 pull-right">
+  <div class="col-md-3 pull-right">
     <a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a>
   </div>
 </div>
@@ -40,8 +34,7 @@
 <div class="container">
   <div class="col-lg-2 pull-right">
     <p align="right">
-      <strong>Σύνολο <%number_to_currency current_order.subtotal%></strong>
+      <strong>Σύνολο <%= number_to_currency current_order.subtotal%></strong>
     </p>
   </div>
 </div>
-<% end %>
