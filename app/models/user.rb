@@ -6,6 +6,8 @@ class User < ApplicationRecord
   has_many :authorizations
   has_many :messages
   has_many :comments
+  has_many :favorites
+  has_many :favorite_products, through: :favorites, source: :favorited, source_type: 'Product'
 
   ratyrate_rater
   def self.new_with_session(params, session)
@@ -17,7 +19,7 @@ class User < ApplicationRecord
     else
       super
     end
-end
+  end
   # def password_required?
   #  super && provider.black?
   # end
@@ -37,11 +39,11 @@ end
         else
           user.save
         end
-     end
+      end
       authorization.username = auth.info.nickname
       authorization.user_id = user.id
       authorization.save
-   end
+    end
     authorization.user
-end
+  end
 end

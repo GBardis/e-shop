@@ -36,10 +36,10 @@
               </div>
             <%end%>
             <hr>
-            <div class="btn-group wishlist">
-              <button type="button" class="btn btn-danger">
-                Add to wishlist
-						</button>
+            <div class="btn-group wishlist" >
+              <section id ="favorite">
+                <%= render  'products/favorites'%>
+              </section>
             </div>
             <hr>
             <div class="product-stock"><%= facebook_button :facebook=> {:send=> 'true', :url=> 'https://www.facebook.com/Άποψη-Δώρα-Κάρτες-277237362334845'} %></div>
@@ -66,7 +66,10 @@
       <div  class="tab-pane fade" id="service-two">
         <div id="myTabContent" class="tab-content" >
           <section class="container product-info" id="refresh">
-            <%= render :partial => "products/comment"%>
+            <%= render 'products/comment'%>
+          </section>
+          <section class="container product-info" id="refresh_form">
+            <%= render 'products/comment_form'%>
           </section>
         </div>
       </div>

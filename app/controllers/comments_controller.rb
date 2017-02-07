@@ -5,13 +5,15 @@ class CommentsController < ApplicationController
     @comment = @products.comments.create(comment_params)
     @comment.user_id = current_user.id
     @comment.save
-
+    respond_to do |format|
+      format.js { render 'comments/create' }
+    end
     if @comment.save
       flash[:success] = 'Your comment was successfully added!'
-      respond_to do |format|
-        format.html { redirect_to product_path(@products) }
-        format.js
-      end
+    # respond_to do |format|
+    # format.html { redirect_to product_path(@products) }
+    #  format.js
+    # end
     # redirect_to product_path(@products)
     else
       render 'new'
@@ -21,12 +23,9 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-    # respond_to do |format|
-    # format.html { redirect_to product_path(@products) }
-    # ormat.json { head :no_content }
-    # format.js { render layout: false }
-
-    # redirect_to product_path(@products)
+    respond_to do |format|
+      format.js { render 'comments/destroy' }
+    end
   end
 
   private

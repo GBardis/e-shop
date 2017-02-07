@@ -25,6 +25,23 @@ class ProductsController < ApplicationController
     end
   end
 
+  def favorite
+    type = params[:type]
+    @products = Product.find(params[:id])
+    if type == 'favorite'
+      current_user.favorites << @products
+      respond_to do |format|
+        format.js { render 'create.js.erb' }
+      end
+    else
+      type == 'unfavorite'
+      current_user.favorites.delete(@products)
+      respond_to do |format|
+        format.js { render 'destroy.js.erb' }
+      end
+    end
+  end
+
   private
 
   def set_category
