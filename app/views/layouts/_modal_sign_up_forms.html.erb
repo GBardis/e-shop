@@ -1,0 +1,45 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="row">
+      <div class="col-md-12">
+        <%= form_for(:user, url:  session_path(:user),html: {class: :form}) do |f| %>
+          <div class="form-group">
+            <%= f.email_field :email, autofocus: true, class: 'form-control',id: "exampleInputEmail2",placeholder:"Email" %>
+          </div>
+          <div class="form-group">
+            <%= f.password_field :password, autocomplete: 'off', class: 'form-control',id: "exampleInputPassword2",placeholder:"Password" %>
+          </div>
+          <div class="checkbox">
+            <%= f.label :remember_me do %>
+              <%= f.check_box :remember_me %> <%= t('.remember_me', default: 'Remember me') %>
+            <% end %>
+          </div>
+          <div class="form-group">
+            <%= f.submit  t('.sign_in', default: 'Sign in'), class: 'btn btn-success btn-block' %>
+          </div>
+        <% end %>
+      </form>
+    </div>
+  </div>
+</li>
+<li class="divider"></li>
+<li>
+  <h4 align="center">Συνδεθείτε με</h4>
+  <div class="social-buttons">
+    <%= link_to user_facebook_omniauth_authorize_path(),class:"btn btn-facebook btn-block"  do %>
+      <i class="fa fa-facebook"></i> Facebook
+    <%end%>
+    <hr>
+    <%= link_to user_twitter_omniauth_authorize_path(),class: "btn btn-twitter btn-block" do %>
+      <i class="fa fa-twitter"></i> Twitter
+
+    <%end%>
+    <hr>
+    <%= link_to user_google_oauth2_omniauth_authorize_path(),class: "btn btn-google btn-block" do %>
+      <i class="fa fa-google"></i> Google
+
+    <%end%>
+    <br>
+  </div>
+</div>
+</div>

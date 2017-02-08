@@ -1,9 +1,13 @@
-<% unless current_user.favorite_products.exists?(id: product.id) %>
-  <%= link_to favorite_products_path(product_id: product),class: "btn btn-heart", method: :post,:remote => true do  %>
-    <i class="fa fa-heart-o" aria-hidden="true" style="font-size:25px;color:red"></i>
-  <%end%>
-<% else %>
-  <%= link_to favorite_product_path(product),class: "btn btn-heart", method: :delete,:remote => true do  %>
-    <i class="fa fa-heart" aria-hidden="true" style="font-size:25px;color:red"></i>
+<%if current_user%>
+  <% unless current_user.favorite_products.exists?(id: product.id) %>
+    <%= link_to favorite_products_path(product_id: product),class: "btn btn-heart", method: :post,:remote => true do  %>
+      <i class="fa fa-heart-o" aria-hidden="true" style="font-size:25px;color:red"></i>
+    <%end%>
+  <% else %>
+    <%= link_to favorite_product_path(product),class: "btn btn-heart", method: :delete,:remote => true do  %>
+      <i class="fa fa-heart" aria-hidden="true" style="font-size:25px;color:red"></i>
+    <% end %>
   <% end %>
+<%else%>
+  <i class="fa fa-heart-o" aria-hidden="true" style="font-size:25px;color:red"></i>
 <% end %>

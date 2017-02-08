@@ -16,7 +16,6 @@
 //= require jquery.raty
 //= require ratyrate
 //= require tinymce
-//= require bootstrap
 //= require_tree .
 
 

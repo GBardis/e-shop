@@ -22,9 +22,8 @@ Rails.application.routes.draw do
   resources :products
   # resources :comments
   devise_for :users, controllers: { registrations: 'registrations', omniauth_callbacks: 'omniauth_callbacks' }
-  # unauthenticated :user do
-  # root to: 'products#index', as: :unauthenticated_root
-  # end
+
+
 
   resource :cart, only: [:show]
   resources :order_items, only: [:create, :update, :destroy] # , defaults: { format: 'js' }

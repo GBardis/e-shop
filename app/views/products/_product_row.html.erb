@@ -5,11 +5,11 @@
         <%= image_tag product.images.first.image.url,class: ".img-responsive",width: "200", height: "200"%>
       <%end%>
       <hr>
-    <%else%>
+    <% else%>
       <%= link_to product_path(product) do %>
         <img class="group list-group-image" src="http://placehold.it/400x250/000/fff" alt="" />
       <%end%>
-    <%end%>
+    <% end%>
     <%= form_for order_item, remote: true do |f| %>
       <div class="caption">
         <h4 class ="group inner list-group-item-heading"><%= product.title %></h4>

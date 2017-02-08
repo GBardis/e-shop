@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
     @products = if @category.present?
                   Product.where(category_id: @category).page params[:page]
                 else
-                  Product.all.page params[:page]
+                  Product.all.joins(:images).page params[:page]
      end
     @categories = Category.all.where(parent_id: nil)
     @subcategories = Category.all.where.not(parent_id: nil)
@@ -25,22 +25,6 @@ class ProductsController < ApplicationController
     end
   end
 
-  def favorite
-    type = params[:type]
-    @products = Product.find(params[:id])
-    if type == 'favorite'
-      current_user.favorites << @products
-      respond_to do |format|
-        format.js { render 'create.js.erb' }
-      end
-    else
-      type == 'unfavorite'
-      current_user.favorites.delete(@products)
-      respond_to do |format|
-        format.js { render 'destroy.js.erb' }
-      end
-    end
-  end
 
   private
 
