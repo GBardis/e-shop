@@ -1,20 +1,18 @@
 <div class="container">
-    <div class="well well-sm" id = "content">
-        <strong>Category Title</strong>
-        <div class="btn-group" id = "buttons">
-            <a href="#" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
-                </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
+  <div class="well well-sm" id = "content">
+    <strong>Category Title</strong>
+    <div class="btn-group" id = "buttons">
+      <a href="#" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
+        </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
                 class="glyphicon glyphicon-th"></span>Grid</a>
-        </div>
     </div>
-    <%= paginate @products, theme: 'twitter-bootstrap-4',:pagination_class => "pagination-small pagination-centered" %>
-    <div id="categories-list" class="row list-group">
-        <% @products.each do |product| %>
-            <%= render "product_row", product: product, order_item: @order_item %>
-        <% end %>
-    </div>
-    <div class ="container">
-        <nav class = "navbar navbar-default navbar-fixed-bottom" role = "navigation">
-        </nav>
-    </div>
+  </div>
+  <%= paginate @products, theme: 'twitter-bootstrap-4',:pagination_class => "pagination-small pagination-centered" %>
+  <div id="categories-list" class="row list-group">
+    <% @products.each do |product| %>
+      <%= render "product_row", product: product, order_item: @order_item %>
+    <% end %>
+  </div>
 </div>
+<nav class = "navbar navbar-default navbar-bottom" role = "navigation" id = "footer">
+</nav>

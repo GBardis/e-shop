@@ -14,8 +14,6 @@
 //= require jquery_ujs
 //= require jquery.turbolinks
 //= require jquery.raty
-//= require jquery.flexslider
-//= require jquery.flexslider-min
 //= require ratyrate
 //= require tinymce
 //= require_tree .
@@ -23,17 +21,33 @@
 
 //products.js
 $(document).ready(function() {
-    $('#list').click(function(event){event.preventDefault();$('#categories-list .item').addClass('list-group-item');});
-    $('#grid').click(function(event){event.preventDefault();$('#categories-list .item').removeClass('list-group-item');$('#categories-list .item').addClass('grid-group-item');});
+  $('#list').click(function(event) {
+    event.preventDefault();
+    $('#categories-list .item').addClass('list-group-item');
+  });
+  $('#grid').click(function(event) {
+    event.preventDefault();
+    $('#categories-list .item').removeClass('list-group-item');
+    $('#categories-list .item').addClass('grid-group-item');
+  });
 });
 
 //menu.js
 $(document).ready(function() {
-            var sideslider = $('[data-toggle=collapse-side]');
-            var sel = sideslider.attr('data-target');
-            var sel2 = sideslider.attr('data-target-2');
-            sideslider.click(function(event){
-                $(sel).toggleClass('in');
-                $(sel2).toggleClass('out');
-            });
-        });
+  var sideslider = $('[data-toggle=collapse-side]');
+  var sel = sideslider.attr('data-target');
+  var sel2 = sideslider.attr('data-target-2');
+  sideslider.click(function(event) {
+    $(sel).toggleClass('in');
+    $(sel2).toggleClass('out');
+  });
+});
+
+
+
+$(document).ready(function() {
+  //Handles menu drop down
+  $('.dropdown-menu').find('form').click(function(e) {
+    e.stopPropagation();
+  });
+});

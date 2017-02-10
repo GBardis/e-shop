@@ -13,8 +13,18 @@
  *= require_tree .
  *= require_self
  *= require jquery-ui
- *= require flexslider.css
+ *= require bootstrap-social
+ *= require font-awesome
  */
+
+body {
+    margin-top: 30px;
+    background-color: red;
+}
+
+#login-nav input {
+    margin-bottom: 15px;
+}
 
 * {
     margin=0;
@@ -25,9 +35,47 @@
     margin: auto;
 }
 
-.navbar-default {
-    background-color: #ff9900;
-    border-color: #030033;
+
+/* header*/
+
+#custom-bootstrap-menu {
+    height: 120px;
+    margin: 10px;
+    padding-bottom: 5px;
+}
+
+#text {
+    margin: auto;
+    padding-left: 325px;
+    padding-top: 30px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#custom-bootstrap-menu.navbar-default {}
+
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a {}
+
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a:hover, #custom-bootstrap-menu.navbar-default .navbar-nav>li>a:focus {
+    color: red;
+}
+
+#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a, #custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:hover, #custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:focus {
+    color: black;
+}
+
+#custom-bootstrap-menu.navbar-default .navbar-toggle {}
+
+#custom-bootstrap-menu.navbar-default .navbar-toggle:hover, #custom-bootstrap-menu.navbar-default .navbar-toggle:focus {}
+
+#custom-bootstrap-menu.navbar-default .navbar-toggle .icon-bar {}
+
+#custom-bootstrap-menu.navbar-default .navbar-toggle:hover .icon-bar, #custom-bootstrap-menu.navbar-default .navbar-toggle:focus .icon-bar {}
+
+#footer {
+    width: 80%;
+    margin: auto;
+    padding-bottom: 50px;
 }
 
 
@@ -251,9 +299,6 @@
     			Call Bootstrap
 *********************************************/
 
-@import url("bootstrap/bootstrap.min.css");
-@import url("bootstrap-override.css");
-@import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
 
 /*********************************************
         		Theme Elements
@@ -463,4 +508,52 @@ body {
 .widget .btn-block {
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
+}
+
+
+/* CART */
+
+.table>tbody>tr>td, .table>tfoot>tr>td {
+    vertical-align: middle;
+}
+
+@media screen and (max-width: 600px) {
+    table#cart tbody td .form-control {
+        width: 20%;
+        display: inline !important;
+    }
+    .actions .btn {
+        width: 36%;
+        margin: 1.5em 0;
+    }
+    .actions .btn-info {
+        float: left;
+    }
+    .actions .btn-danger {
+        float: right;
+    }
+    table#cart thead {
+        display: none;
+    }
+    table#cart tbody td {
+        display: block;
+        padding: .6rem;
+        min-width: 320px;
+    }
+    table#cart tbody tr td:first-child {
+        background: #333;
+        color: #fff;
+    }
+    table#cart tbody td:before {
+        content: attr(data-th);
+        font-weight: bold;
+        display: inline-block;
+        width: 8rem;
+    }
+    table#cart tfoot td {
+        display: block;
+    }
+    table#cart tfoot td .btn {
+        display: block;
+    }
 }

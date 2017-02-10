@@ -1,18 +1,40 @@
 <% if !@order_item.nil? && @order_item.errors.any? %>
-    <div class="alert alert-danger">
-        <ul>
-            <% @order_item.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-            <% end %>
-        </ul>
-    </div>
+  <div class="alert alert-danger">
+    <ul>
+      <% @order_item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
 <% if @order_items.size == 0 %>
-    <p class="text-center">
-        There are no items in your shopping cart.  Please <%= link_to "go back", root_path %> and add some items to your cart.
+  <p class="text-center">
+    There are no items in your shopping cart.  Please <%= link_to "go back", root_path %> and add some items to your cart.
   </p>
 <% else %>
-    <% @order_items.each do |order_item| %>
-        <%= render 'carts/cart_row', product: order_item.product, order_item: order_item, show_total: true %>
-    <% end %>
-<% end %>
+  <% @order_items.each do |order_item| %>
+    <%= render 'carts/cart_row', product: order_item.product, order_item: order_item, show_total: true %>
+  <% end %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 pull-left">
+        <%= link_to root_path, class: "btn btn-warning" do %>
+          <i class="fa fa-angle-left"></i> Continue Shopping</a>
+      <%end%>
+    </div>
+  <%end%>
+  <div class="col-md-3 pull-right">
+    <a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a>
+  </div>
+</div>
+</div>
+<br />
+<br />
+<br />
+<div class="container">
+  <div class="col-lg-2 pull-right">
+    <p align="right">
+      <strong>Σύνολο <%= number_to_currency current_order.subtotal%></strong>
+    </p>
+  </div>
+</div>
