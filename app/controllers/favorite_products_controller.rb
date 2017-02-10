@@ -3,6 +3,7 @@ class FavoriteProductsController < ApplicationController
   def create
     Favorite.create(favorited: @products, user: current_user, product_id: @products.id)
     respond_to do |format|
+      # format.js { render 'layouts/flash_messages.js.erb' } # { flash.now[:notice] = 'Προστέθηκε Στα Αγαπημένα' }
       format.js { render 'favorites/create.js.erb' }
     end
     # redirect_to @products, notice: 'Προστέθηκε Στα Αγαπημένα '
@@ -15,6 +16,8 @@ class FavoriteProductsController < ApplicationController
   def destroy
     Favorite.where(favorited_id: @products.id, user_id: current_user.id).first.destroy
     respond_to do |format|
+      # format.html { alert:'Αφαιρέθηκε απο τα Αγαπημένα' }
+      # format.js { render 'layouts/flash_messages.js.erb' }
       format.js { render 'favorites/destroy.js.erb' }
     end
 

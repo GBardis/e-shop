@@ -23,8 +23,6 @@ Rails.application.routes.draw do
   # resources :comments
   devise_for :users, controllers: { registrations: 'registrations', omniauth_callbacks: 'omniauth_callbacks' }
 
-
-
   resource :cart, only: [:show]
   resources :order_items, only: [:create, :update, :destroy] # , defaults: { format: 'js' }
   # musts set default values because files are .js not html #
