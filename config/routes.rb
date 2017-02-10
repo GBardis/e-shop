@@ -11,10 +11,12 @@ Rails.application.routes.draw do
     resources :images do
     end
   end
+  resources :products do
+    put :favorite, on: member
+  end
 
   resources :products do
-    resources :comments, only: [:create, :destroy], defaults: { format: 'js' } do
-    end
+    resources :comments, only: [:create, :destroy] # , defaults: { format: 'js' } do
   end
 
   resources :images
@@ -27,11 +29,8 @@ Rails.application.routes.draw do
   # end
 
   resource :cart, only: [:show]
-  resources :order_items, only: [:create, :update, :destroy], defaults: { format: 'js' } do
-    collection do
-      delete :destroy_multiple
-    end
-  end # musts set default values because files are .js not erb #
+  resources :order_items, only: [:create, :update, :destroy] # , defaults: { format: 'js' } do
+  # musts set default values because files are .js not erb #
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

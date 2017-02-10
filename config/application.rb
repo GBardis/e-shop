@@ -15,23 +15,13 @@ module EShop
     # -- all .rb files in that directory are automatically loaded.
     ActionMailer::Base.smtp_settings = {
 
-<<<<<<< HEAD
-            address: 'smtp.gmail.com',
-            domain: 'mail.google.com',
-            port: 587,
-            username: 'mail@gmail.com@gmail.com',
-            password: 'password',
-            authentication: 'login',
-            enable_starttls_auto: true
-=======
       address: 'smtp.gmail.com',
       domain: 'mail.google.com',
       port: 587,
-      username: 'mail@gmail.com',
+      username: 'mail@gmail.com@gmail.com',
       password: 'password',
       authentication: 'login',
       enable_starttls_auto: true
->>>>>>> addsociallogin
 
     }
   end

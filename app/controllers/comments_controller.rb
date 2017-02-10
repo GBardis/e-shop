@@ -7,10 +7,9 @@ class CommentsController < ApplicationController
     @comment.save
 
     if @comment.save
-      flash[:success] = 'Your comment was successfully added!'
+      flash.now[:notice] = 'Your comment was successfully added!'
       respond_to do |format|
-        format.html { redirect_to product_path(@products) }
-        format.js
+        format.js { render 'comments/create.js.erb' }
       end
     # redirect_to product_path(@products)
     else
@@ -21,12 +20,10 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-    # respond_to do |format|
-    # format.html { redirect_to product_path(@products) }
-    # ormat.json { head :no_content }
-    # format.js { render layout: false }
-
-    # redirect_to product_path(@products)
+    flash.now[:alert] = 'Your comment was successfully added!'
+    respond_to do |format|
+      format.js { render 'comments/destroy.js.erb' }
+    end
   end
 
   private
