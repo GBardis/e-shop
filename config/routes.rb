@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     end
   end
   resources :products do
-    put :favorite, on: member
+    put :favorite, on: :member
   end
 
   resources :products do
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   # unauthenticated :user do
   # root to: 'products#index', as: :unauthenticated_root
   # end
-
+  resource :favorite, only: [:show]
   resource :cart, only: [:show]
   resources :order_items, only: [:create, :update, :destroy] # , defaults: { format: 'js' } do
   # musts set default values because files are .js not erb #

@@ -1,5 +1,4 @@
 class ProductsController < ApplicationController
-  # before_action :set_product
   before_action :set_category
 
   def index
@@ -14,14 +13,33 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @products = Product.find(params[:id])
+    @product = Product.find(params[:id])
     @order_item = current_order.order_items.new
 
-    @comments = Comment.where(product_id: @products).order('created_at DESC')
+    @comments = Comment.where(product_id: @product).order('created_at DESC')
     # @images = @product.images
     @image_urls = []
-    @products.images.each do |image|
+    @product.images.each do |image|
       @image_urls.push(image.image.url)
+    end
+  end
+
+  def favorite
+    type = params[:type]
+    @product = Product.find(params[:id])
+    if type == 'favorite'
+      current_user.favorites << @product
+      respond_to do |format|
+        format.js { render 'favorite_actions/favorite.js.erb' }
+      end
+    elsif type == 'unfavorite'
+      current_user.favorites.delete(@product)
+      respond_to do |format|
+        format.js { render 'favorite_actions/favorite.js.erb' }
+      end
+    else
+      # Type missing, nothing happens
+      redirect_to :back # , notice: 'Nothing happened.'
     end
   end
 
@@ -29,10 +47,6 @@ class ProductsController < ApplicationController
 
   def set_category
     @category = Category.find(params[:category_id]) if params[:category_id]
-  end
-
-  def set_product
-    @products = Product.find(params[:id])
   end
 
   def product_params

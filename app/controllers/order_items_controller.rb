@@ -2,7 +2,7 @@ class OrderItemsController < ApplicationController
   def create
     # if @order.nil?
     @order = current_order
-    @order_item = @order.order_items.new
+    @order_item = @order.order_items.new(order_item_params)
     @order.save
     session[:order_id] = @order.id
     respond_to do |format|
@@ -40,6 +40,6 @@ class OrderItemsController < ApplicationController
   private
 
   def order_item_params
-    params.require(:order_item).permit(:quantity, :product_id)
+    params.require(:order_item).permit(:quantity, :product_id, :order_id, :user_id)
   end
 end

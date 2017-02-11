@@ -1,0 +1,2 @@
+$("#favorite").html("<%= escape_javascript(render 'favorite_actions/favorite') %>")
+$("#favorite_index-<%=@product.id%>").html("<%= escape_javascript(render('favorite_actions/favorite_index',  product: @product)) %>")

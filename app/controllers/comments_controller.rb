@@ -2,12 +2,12 @@ class CommentsController < ApplicationController
   before_action :find_product
 
   def create
-    @comment = @products.comments.create(comment_params)
+    @comment = @product.comments.create(comment_params)
     @comment.user_id = current_user.id
     @comment.save
 
     if @comment.save
-      flash.now[:notice] = 'Your comment was successfully added!'
+      # flash.now[:notice] = 'Your comment was successfully added!'
       respond_to do |format|
         format.js { render 'comments/create.js.erb' }
       end
@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-    flash.now[:alert] = 'Your comment was successfully added!'
+    # flash.now[:alert] = 'Your comment was successfully added!'
     respond_to do |format|
       format.js { render 'comments/destroy.js.erb' }
     end
@@ -29,7 +29,7 @@ class CommentsController < ApplicationController
   private
 
   def find_product
-    @products = Product.find(params[:product_id])
+    @product = Product.find(params[:product_id])
   end
 
   def comment_params
