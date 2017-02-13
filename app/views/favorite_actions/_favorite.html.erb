@@ -1,11 +1,11 @@
 <% if current_user%>
   <%if current_user.favorite_products.collect(&:product_id).include?(@product.id) %>
     <%= link_to  favorite_product_path(@product, type: "unfavorite") , :remote => true , style: ("color:#FF0000" "size:45"), method: :put do  %>
-      <i class="fa fa-star-o" aria-hidden="true" style="font-size:48px;color:#e6b800"></i>
+      <i class="fa fa-star" aria-hidden="true" style="font-size:48px;color:#e6b800"></i>
     <%end%>
   <%else%>
     <%= link_to  favorite_product_path(@product, type: "favorite") ,:remote => true , style: ("color:#000000" "size:45"), method: :put do %>
-      <i class="fa fa-star" aria-hidden="true" style="font-size:48px;color:#e6b800"></i>
+      <i class="fa fa-star-o" aria-hidden="true" style="font-size:48px;color:#e6b800"></i>
     <% end %>
   <%end%>
 <%end%>

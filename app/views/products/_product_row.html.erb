@@ -3,7 +3,7 @@
     <%= form_for order_item, remote: true do |f| %>
       <% if product.images.exists? %>
         <%= link_to product_path(product) do %>
-          <%= image_tag product.images.first.image.url,class: ".img-responsive",width: "200", height: "200"%>
+          <%= image_tag product.images.first.image.url,class: "img-responsive",width: "200", height: "200"%>
         <%end%>
         <hr>
       <%else%>

@@ -1,0 +1,7 @@
+<% if current_user%>
+  <%if current_user.favorite_products.collect(&:product_id).include?(product.id) %>
+    <%= link_to  favorite_product_path(product, type: "deletefavorite") ,class: "delete_favorite", :remote => true , method: :put do  %>
+      <i class="fa fa-trash" aria-hidden="true" style="font-size:25px"></i>
+    <%end%>
+  <%end%>
+<%end%>

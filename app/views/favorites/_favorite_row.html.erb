@@ -1,1 +1,49 @@
-<%= product.title%>
+<div class="container" id="favorite_row">
+  <div class="row" >
+    <%= form_for order_item, remote: true do |f| %>
+      <div class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]">
+        <ul class="event-list">
+          <li>
+            <time >
+              <%= link_to product_path(product) do %>
+                <%= image_tag product.images.first.image.url,class: "img-rounded img-responsive",width: "100", height: "100"%>
+              <%end%>
+            </time>
+            <div class="info">
+              <h2 class="title">
+                <%= product.title %>
+              </h2>
+              <p class="desc">
+                <%= product.description%>
+              </p>
+              <ul>
+                <li style="width:50%;">
+                  <%= rating_for  product, 'product',half_show: true,enable_half: true,disable_after_rate: true %>
+                </li>
+                <li style="width:50%;">
+                  <%=  number_to_currency( product.price,:unit => "€") %>
+                </li>
+              </ul>
+            </div>
+            <div class="social">
+              <ul>
+                <li class="facebook" style="width:33%;">
+                  <%= render partial: 'favorite_actions/favorite_option' ,locals: {product: product} %>
+                </li>
+                <br/>
+              </br/>
+              <li class="google-plus" style="width:33%;">
+                <%= f.hidden_field :quantity, value: 1, class: "form-control", min: 1 %>
+                <%= f.hidden_field :product_id, value: product.id %>
+                <%= button_tag(type: "submit")   do  %>
+                  <i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:25px;margin-left:3px;"></i>
+                <%end%>
+              <%end%>
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>

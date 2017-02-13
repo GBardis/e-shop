@@ -1,20 +1,20 @@
 class OrderItemsController < ApplicationController
   def create
-    # if @order.nil?
-    @order = current_order
-    @order_item = @order.order_items.new(order_item_params)
-    @order.save
-    session[:order_id] = @order.id
-    respond_to do |format|
-      format.js { render 'order_items/create.js.erb' }
+    if @order.nil?
+      @order = current_order
+      @order_item = @order.order_items.new(order_item_params)
+      @order.save
+      session[:order_id] = @order.id
+      respond_to do |format|
+        format.js { render 'order_items/create.js.erb' }
+      end
+    else
+      @order = current_order
+      @order_item = @order.order_items.find(params[:id])
+      @order_item.current_order.quantity += 1
+      @order_item.update_attributes(order_item.quantity)
+      @order_items = @order.order_items
     end
-    # else
-    #  @order = current_order
-    # @order_item = @order.order_items.find(params[:id])
-    #  @order_item.quantity += 1
-    #  @order_item.update_attributes(order_item.quantity)
-    # @order_items = @order.order_items
-    # end
   end
 
   def update

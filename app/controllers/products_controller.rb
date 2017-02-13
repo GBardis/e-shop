@@ -37,6 +37,11 @@ class ProductsController < ApplicationController
       respond_to do |format|
         format.js { render 'favorite_actions/favorite.js.erb' }
       end
+    elsif type == 'deletefavorite'
+      current_user.favorites.delete(@product)
+      respond_to do |format|
+        format.js { render 'favorite_actions/favorite_delete.js.erb' }
+      end
     else
       # Type missing, nothing happens
       redirect_to :back # , notice: 'Nothing happened.'
