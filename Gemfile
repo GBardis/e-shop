@@ -46,6 +46,8 @@ gem 'jquery-turbolinks'
 
 gem 'shareable'
 
+gem 'elevatezoom-rails', '~> 1.0'
+
 # gem 'flexslider'
 # gem 'piggybak'
 

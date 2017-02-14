@@ -59,9 +59,9 @@ RailsAdmin.config do |config|
   config.model 'OverallAverage' do
     visible false
   end
-  config.model 'Rate' do
-    visible false
-  end
+  #  config.model 'Rate' do
+  # visible false
+  # end
 
   # config.model 'Category' do
   # field :products do

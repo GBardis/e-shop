@@ -2,57 +2,53 @@
   <div class="content-wrapper">
     <div class="item-container">
       <div class="container">
-        <%# @products.images.each do |image|%>
-          <%#= image_tag image.image, {:id => 'item-display'} %>
-          <%#end%>
-          <div class="col-md-9" id="image">
-            <%= carousel_for @image_urls %>
-            <%#= render partial: "products/thubnail_slider"%>
-          </div>
-          <%= form_for @order_item, remote: true do |f| %>
-            <div class="col-md-3">
-              <div class="product-title"><%= @product.title%></div>
-              <hr>
-              <%  if current_user %>
-                <div class="small-2 large-2 columns">
-                  Αξιολόγηση: <%= rating_for  @product, 'product',half_show: true,enable_half: true,disable_after_rate: true %>
-                </div>
-              <% end%>
-              <hr>
-              <div class="product-price"><%= number_to_currency( @product.price,:unit => "€")%> </div>
-              <% if @product.stock > 0 %>
-                <div class="product-stock">In Stock</div>
-              <%else%>
-                <div class="product-stock" style="color:#FF0000">Out Of Stock</div>
-              <%end%>
-              <hr>
-              <div class="btn-group cart">
-                <%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
+        <div class="col-md-9" id="image">
+          <%= render partial: "products/thubnail_slider"%>
+        </div>
+        <%= form_for @order_item, remote: true do |f| %>
+          <div class="col-md-3">
+            <div class="product-title"><%= @product.title%></div>
+            <hr>
+            <%  if current_user %>
+              <div class="small-2 large-2 columns">
+                Αξιολόγηση: <%= rating_for  @product, 'product',half_show: true,enable_half: true,disable_after_rate: true %>
               </div>
-              <hr />
-              <div class="btn-group cart">
-                <%= f.hidden_field :product_id, value: @product.id %>
-                <%= f.submit "Add to Cart", class: "btn btn-success" %>
-              </div>
+            <% end%>
+            <hr>
+            <div class="product-price"><%= number_to_currency( @product.price,:unit => "€")%> </div>
+            <% if @product.stock >= 0 %>
+              <div class="product-stock">In Stock</div>
+            <%else%>
+              <div class="product-stock" style="color:#FF0000">Out Of Stock</div>
             <%end%>
             <hr>
-            <div class="btn-group wishlist" >
-              <strong>Προσθήκη Στα Αγαπημένα</strong>
-              <br/>
-              <br/>
-              <section id ="favorite">
-                <%= render  'favorite_actions/favorite'%>
-              </section>
+            <div class="btn-group cart">
+              <%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
             </div>
-            <br/>
-            <br/>
-            <div class="product-stock"><%= facebook_button :facebook=> {:send=> 'true', :url=> 'https://www.facebook.com/Άποψη-Δώρα-Κάρτες-277237362334845'} %></div>
-          </div>
+            <hr />
+            <div class="btn-group cart">
+              <%= f.hidden_field :product_id, value: @product.id %>
+              <%= f.submit "Add to Cart", class: "btn btn-success" %>
+            </div>
+          <%end%>
           <hr>
+          <div class="btn-group wishlist" >
+            <strong>Προσθήκη Στα Αγαπημένα</strong>
+            <br/>
+            <br/>
+            <section id ="favorite">
+              <%= render  'favorite_actions/favorite'%>
+            </section>
+          </div>
+          <br/>
+          <br/>
+          <div class="product-stock"><%= facebook_button :facebook=> {:send=> 'true', :url=> 'https://www.facebook.com/Άποψη-Δώρα-Κάρτες-277237362334845'} %></div>
         </div>
+        <hr>
       </div>
     </div>
   </div>
+</div>
 </div>
 <div class="container-fluid">
   <div class="col-md-12 product-info">

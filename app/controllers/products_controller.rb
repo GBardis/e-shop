@@ -17,7 +17,7 @@ class ProductsController < ApplicationController
     @order_item = current_order.order_items.new
 
     @comments = Comment.where(product_id: @product).order('created_at DESC')
-    # @images = @product.images
+
     @image_urls = []
     @product.images.each do |image|
       @image_urls.push(image.image.url)
@@ -43,8 +43,8 @@ class ProductsController < ApplicationController
         format.js { render 'favorite_actions/favorite_delete.js.erb' }
       end
     else
-      # Type missing, nothing happens
-      redirect_to :back # , notice: 'Nothing happened.'
+
+      redirect_to :back
     end
   end
 

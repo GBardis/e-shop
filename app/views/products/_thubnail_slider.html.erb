@@ -1,47 +1,16 @@
-<% @products.images.each do |image|%>
-    <div class="flexslider">
-        <ul class="slides">
-            <li  value="<%= image_tag image.image%>">
-                <%= image_tag image.image%>
-            </li>
-            <li data-thumb="../assets/images/kitchen_adventurer_lemon.jpg">
-                <img src="../assetsimages/kitchen_adventurer_lemon.jpg" />
-            </li>
-            <li data-thumb="../assets/images/kitchen_adventurer_donut.jpg">
-                <img src="../assetsimages/kitchen_adventurer_donut.jpg" />
-            </li>
-            <li data-thumb="app/assets/images/kitchen_adventurer_caramel.jpg">
-                <img src="app/assets/images/kitchen_adventurer_caramel.jpg" />
-            </li>
-        </ul>
-    </div>
-<%end%>
-<!-- jQuery -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script>
-    window.jQuery || document.write('<script src="js/libs/jquery-1.7.min.js">\x3C/script>')
+  $(document).ready(function() {
+                                              $('.pgwSlideshow').pgwSlideshow();
+                                              });
 </script>
-<!-- FlexSlider -->
-<script defer src="../jquery.flexslider.js"></script>
-<script type="text/javascript">
-    $(function(){
-                                                                                                                                                    SyntaxHighlighter.all();
-                                                                                                                                                  });
-                                                                                                                                                  $(window).load(function(){
-                                                                                                                                                    $('.flexslider').flexslider({
-                                                                                                                                                      animation: "slide",
-                                                                                                                                                      controlNav: "thumbnails",
-                                                                                                                                                      start: function(slider){
-                                                                                                                                                        $('body').removeClass('loading');
-                                                                                                                                                      }
-                                                                                                                                                    });
-                                                                                                                                                  });
+<%#= carousel_for @image_urls %>
+<script>
+  $("#zoom_01").elevateZoom();
 </script>
-<!-- Syntax Highlighter -->
-<script type="text/javascript" src="../assets/javascripts/shCore.js"></script>
-<script type="text/javascript" src="../assets/javascripts/shBrushXml.js"></script>
-<script type="text/javascript" src="../assets/javascripts/shBrushJScript.js"></script>
-<!-- Optional FlexSlider Additions -->
-<script src="../assets/javascripts/jquery.easing.js"></script>
-<script src="../assets/javascripts/jquery.mousewheel.js"></script>
-<script defer src="../assets/javascripts/demo.js"></script>
+<ul class="pgwSlideshow">
+  <% @product.images.each do |image|%>
+    <li>
+      <%= image_tag image.image.url, alt: @product.title, id: "zoom_01",data: { zoom_image: image.image.url}%>
+    </li>
+  <%end%>
+</ul>
