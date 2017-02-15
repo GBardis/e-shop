@@ -24,7 +24,7 @@ gem 'rubocop'
 
 gem 'paperclip'
 
-gem 'simple_form'
+# gem 'simple_form'
 
 gem 'binding_of_caller'
 
@@ -38,7 +38,7 @@ gem 'jquery-ui-rails'
 
 gem 'closure_tree'
 
-gem 'bootstrap-sass'
+# gem 'bootstrap-sass'
 
 gem 'ratyrate'
 
@@ -46,7 +46,7 @@ gem 'jquery-turbolinks'
 
 gem 'shareable'
 
-gem 'elevatezoom-rails', '~> 1.0'
+# gem 'elevatezoom-rails', '~> 1.0'
 
 # gem 'flexslider'
 # gem 'piggybak'
@@ -117,4 +117,3 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'tinymce-rails'
-# gem 'will_paginate'

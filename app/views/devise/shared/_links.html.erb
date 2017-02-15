@@ -1,37 +1,37 @@
 <div class="links">
-    <% #if controller_name != 'sessions' %>
-    <%#= link_to t('.sign_in', default: 'Sign in'), new_session_path(resource_name) %><br />
-    <% #end %>
-    <% if devise_mapping.registerable? && controller_name != 'registrations' %>
-        <%= link_to t('.sign_up', default: 'Sign up'), new_registration_path(resource_name) %><br />
-    <% end %>
-    <% if devise_mapping.recoverable? && controller_name != 'passwords' %>
-        <%= link_to t('.forgot_your_password', default: 'Forgot your password?'), new_password_path(resource_name) %><br />
-    <% end %>
-    <% if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-        <%= link_to t('.didn_t_receive_confirmation_instructions', default: "Didn't receive confirmation instructions?"), new_confirmation_path(resource_name) %><br />
-    <% end %>
-    <% if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
-        <%= link_to t('.didn_t_receive_unlock_instructions', default: "Didn't receive unlock instructions?"), new_unlock_path(resource_name) %><br />
-    <% end %>
-    <%# if devise_mapping.omniauthable? %>
-    <%# resource_class.omniauth_providers.each do |provider| %>
-        <%#= link_to t('.sign_in_with_provider', provider: provider.to_s.titleize, default: "Sign in with #{provider.to_s.titleize}"), omniauth_authorize_path(resource_name, provider) %><br />
-        <%# end %>
-        <%# end %>
-        <%= link_to user_facebook_omniauth_authorize_path(),class:  "btn btn-block btn-social btn-facebook" do %>
-            <span class="fa fa-facebook"></span> Συνδεθείτε με facebook
+  <% #if controller_name != 'sessions' %>
+  <%#= link_to t('.sign_in', default: 'Sign in'), new_session_path(resource_name) %><br />
+  <% #end %>
+  <% if devise_mapping.registerable? && controller_name != 'registrations' %>
+    <%= link_to t('.sign_up', default: 'Sign up'), new_registration_path(resource_name) %><br />
+  <% end %>
+  <%# if devise_mapping.recoverable? && controller_name != 'passwords' %>
+  <%#= link_to t('.forgot_your_password', default: 'Forgot your password?'), new_password_path(resource_name) %><br />
+  <%# end %>
+  <% if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+    <%= link_to t('.didn_t_receive_confirmation_instructions', default: "Didn't receive confirmation instructions?"), new_confirmation_path(resource_name) %><br />
+  <% end %>
+  <% if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
+    <%= link_to t('.didn_t_receive_unlock_instructions', default: "Didn't receive unlock instructions?"), new_unlock_path(resource_name) %><br />
+  <% end %>
+  <%# if devise_mapping.omniauthable? %>
+  <%# resource_class.omniauth_providers.each do |provider| %>
+    <%#= link_to t('.sign_in_with_provider', provider: provider.to_s.titleize, default: "Sign in with #{provider.to_s.titleize}"), omniauth_authorize_path(resource_name, provider) %><br />
+    <%# end %>
+    <%# end %>
+    <%= link_to user_facebook_omniauth_authorize_path(),class:  "btn btn-block btn-social btn-facebook" do %>
+      <span class="fa fa-facebook"></span> Συνδεθείτε με facebook
 
     <%end%>
-        <hr>
-        <%= link_to user_twitter_omniauth_authorize_path(),class: "btn btn-block btn-social btn-twitter" do %>
-            <span class="fa fa-twitter"></span> Συνδεθείτε με Twitter
+    <hr>
+    <%= link_to user_twitter_omniauth_authorize_path(),class: "btn btn-block btn-social btn-twitter" do %>
+      <span class="fa fa-twitter"></span> Συνδεθείτε με Twitter
 
     <%end%>
-        <hr>
-        <%= link_to user_google_oauth2_omniauth_authorize_path(),class: "btn btn-block btn-social btn-google" do %>
-            <span class="fa fa-google"></span> Συνδεθείτε με Google
+    <hr>
+    <%= link_to user_google_oauth2_omniauth_authorize_path(),class: "btn btn-block btn-social btn-google" do %>
+      <span class="fa fa-google"></span> Συνδεθείτε με Google
 
     <%end%>
-        <br>
-    </div>
+    <br>
+  </div>

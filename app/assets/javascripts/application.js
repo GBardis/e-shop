@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require jquery.turbolinks
 //= require jquery.raty
-//= require jquery.elevatezoom
 //= require ratyrate
 //= require tinymce
 //= require_tree .

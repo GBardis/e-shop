@@ -1,0 +1,114 @@
+#cart .btn {
+    color: #fff;
+    background: #22292e;
+    text-align: left;
+    padding: 0;
+    margin: 12px 0 0 0;
+    font-size: 16px;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+#cart .btn .fa-shopping-cart {
+    background: #fcb500;
+    color: #22292e;
+    line-height: none;
+    padding: 9px 8px;
+    font-size: 25px;
+    margin-right: 20px;
+}
+
+#cart .btn span#cart-total {
+    color: #777d80;
+    font-size: 15px;
+    padding: 0 8px 0 5px;
+    text-transform: uppercase;
+}
+
+#cart .btn i.fa-caret-down {
+    color: #fab005;
+    margin-left: 10px;
+}
+
+#cart .dropdown-menu {
+    min-width: 100%;
+    margin-top: 10px;
+    background: #22292e;
+    color: #fff;
+    border: none;
+    z-index: 1001;
+    padding: 5px;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+#cart .open>.dropdown-menu {
+    display: block;
+}
+
+#cart .dropdown-menu table {
+    margin-bottom: 10px;
+}
+
+#cart .dropdown-menu table, #cart .dropdown-menu table td {
+    background: none;
+    border: none;
+}
+
+#cart .dropdown-menu table.hcart td, .line-bottom {
+    border-bottom: 1px solid #54575b;
+}
+
+.line-top, .btn-block1 {
+    border-top: 1px solid #54575b;
+}
+
+#cart .btn-block1 {
+    padding: 20px 0 0;
+}
+
+#cart .btn-block1 a {
+    padding: 8px 12px;
+    margin-left: 10px;
+    text-transform: uppercase;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+#cart .btn-block1 a:hover, #cart .btn-block1 a+a {
+    background: #ffb400;
+    color: #fff;
+}
+
+#cart .btn-block1 a, #cart .btn-block1 a+a:hover {
+    background: #fff;
+    color: #252a2f;
+}
+
+#cart .dropdown-menu li>div {
+    min-width: 427px;
+    padding: 0 10px;
+}
+
+#cart .dropdown-menu li p {
+    margin: 20px 0;
+}
+
+#cart .dropdown-menu table.total {}
+
+#cart .dropdown-menu table.total td {
+    padding: 2px 8px;
+}
+
+#cart .dropdown-menu table td a {
+    color: #ffb400;
+}
+
+#cart .dropdown-menu table td a:hover {
+    color: #fff;
+}

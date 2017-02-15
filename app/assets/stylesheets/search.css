@@ -1,0 +1,37 @@
+.main-header {
+    padding: 25px;
+    padding-bottom: 0;
+}
+
+#search {
+    margin: 12px 0 0 0;
+}
+
+#search .input-group {}
+
+#search .input-group .form-control {
+    background: #252a2f;
+    border: solid #525c66;
+    border-width: 1px 0 1px 1px;
+    color: #878a8c;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+#search .input-group .btn {
+    background: #252a2f;
+    border: solid #525c66;
+    border-width: 1px 1px 1px 0;
+    color: #ffb400;
+    height: 46px;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}

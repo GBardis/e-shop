@@ -47,3 +47,7 @@ body {
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
 }
+
+#refresh_form {
+    margin-top: 0;
+}

@@ -26,23 +26,26 @@
                 <li style="width:33%;">
                   <%= f.hidden_field :quantity, value: 1, class: "form-control", min: 1 %>
                   <%= f.hidden_field :product_id, value: product.id %>
-                  <%= f.submit "Add to Cart", class: "btn btn-success" %>
+                  <%=button_tag class: "btn btn-primary" do %>
+                    <i class="fa fa-shopping-cart" aria-hidden="true"style="font-size:15px"></i>
+                  <%end%>
                 <%end%>
               </li>
             </ul>
           </div>
           <div class="social">
             <ul>
-              <li class="facebook" style="width:33%;">
+              <li class="facebook" style="width:33%;" >
                 <%= render partial: 'favorite_actions/favorite_option' ,locals: {product: product} %>
               </li>
-              <br/>
-            </br/>
-            <br/>
-          </ul>
-        </div>
-      </li>
+            </br>
+          </br>
+        </br>
+      </br>
     </ul>
   </div>
+</li>
+</ul>
+</div>
 </div>
 </div>

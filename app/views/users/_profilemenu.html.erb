@@ -1,0 +1,57 @@
+<%= render "users/profile_nav"%>
+<div class="col-xs-12 col-sm-9 " id="user_profile">
+  <div class="row">
+    <div class="col-xs-12 col-md-7 col-md-9">
+      <h3><strong>Καλώς Ήρθατε</strong></h3>
+      <p id="text_welcome">
+        Καλώς ήρθατε στο προφίλ σας. Επιλέξτε παρακάτω για να ενημερώσετε
+  τα προσωπικά σας στοιχεία, τις διευθύνσεις ακόμα μπορείτε να δείτε
+  τις προηγούμενες αγορές σας
+  </p>
+    </div>
+    <div class="col-xs-12 col-md-5 col-md-3">
+      <%= link_to root_path, class: "btn btn-danger btn-lg" do %>
+        <i class="fa fa-angle-left"></i> Continue Shopping</a>
+    <%end%>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-sm-6">
+    <ul class="list-group" id="ul_content">
+      <li class="list-group-item" id="edit_content" >
+        <h5 style=""><strong>Επεξεργασία Λογαριασμού</strong></h5>
+      </li>
+      <li class="list-group-item" style="border-bottom: 1px solid black" id="button_text">
+        <p >Εδώ μπορείτε να επεξεργασθείτε το προφίλ σας</p>
+      </li>
+      <li class="list-group-item" id="button_content">
+        <%=link_to "Επεξεργασία ",edit_user_registration_path(),class: "btn btn-primary btn-md"   %>
+      </li>
+    </ul>
+    <ul class="list-group" id="ul_content">
+      <li class="list-group-item" id="edit_content" >
+        <h5 style=""><strong>Αλλαγή Διεύθυνσης</strong></h5>
+      </li>
+      <li class="list-group-item" style="border-bottom: 1px solid black" id="button_text">
+        <p >Αλλαγή ή προσθήκη διεύθυνσης</p>
+      </li>
+      <li class="list-group-item" id="button_content">
+        <%=link_to "Επεξεργασία",edit_user_registration_path(),class: "btn btn-primary btn-md"   %>
+      </li>
+    </ul>
+  </div>
+  <div class="col-xs-12 col-sm-6">
+    <ul class="list-group" id="ul_content">
+      <li class="list-group-item" id="edit_content" >
+        <h5 style=""><strong>Ιστορικό Παραγγελιών</strong></h5>
+      </li>
+      <li class="list-group-item" style="border-bottom: 1px solid black" id="button_text">
+        <p>Προβολή ιστορικού παραγγελίων, εμφάνιση λεπτομεριών παραγγελίας </p>
+      </li>
+      <li class="list-group-item" id="button_content">
+        <%=link_to "Παραγγελίες",edit_user_registration_path(),class: "btn btn-primary btn-md"   %>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
