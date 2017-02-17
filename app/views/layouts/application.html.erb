@@ -12,108 +12,13 @@
   </head>
   <body>
     <div class="page-header" id="top_header">
-      <div class="header-top" >
-        <div class="container" id="first_header">
-          <div class="col-sm-7 col-xs-12" id="left_nav" >
-            <ul class="nav navbar-nav"  >
-              <li>
-                <%= link_to root_path do  %>
-                  <i class="fa fa-home" aria-hidden="true"></i><label>HOME</label>
-                <%end%>
-              </li>
-            </ul>
-          </div>
-          <div class="col-sm-5 col-xs-12">
-            <ul class="nav navbar-nav"  >
-              <li>
-                <%= render 'layouts/cart_text'%>
-              </li>
-              <li>
-                <%= link_to "Αγαπήμενα", favorite_path %>
-              </li>
-              <% if user_signed_in? %>
-                <li>
-                  <%= link_to  profile_path(current_user) do %>
-                    <%= label_tag current_user.name %> <i class="fa fa-user-circle" aria-hidden="true"></i>
-                  <%end%>
-                </li>
-                <li>
-                  <%= link_to  destroy_user_session_path, method: 'get' do %>
-                    <label>Εξοδος</label><i class="fa fa-sign-out" aria-hidden="true"></i>
-                  <%end%>
-                </li>
-              <%else%>
-                <li>
-                  <%= link_to  new_user_session_path do  %>
-                    <label>Σύνδεση</label><i class="fa fa-sign-in" aria-hidden="true"></i>
-                  <%end%>
-                </li>
-                <li>
-                  <%= link_to new_user_registration_path do  %>
-                    <label>Εγγραφή</label><i class="fa fa-sign-in" aria-hidden="true"></i>
-                  <%end%>
-                </li>
-              <%end%>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <%= render "layouts/header_top"%>
       <div class="container">
-        <div class="main-header">
-          <div class="col-md-4">
-            <h1 style="color:#ffb95e;text-align: center;">Αποψη</h1>
-          </div>
-          <div class="col-md-4 ">
-            <%= render "layouts/search"%>
-          </div>
-          <div class="col-md-4" >
-            <%= render "layouts/cart_dropdown"%>
-          </div>
-        </div>
-        <div id="custom-bootstrap-menu" class="navbar navbar-default " role="navigation">
-          <div class="container-fluid">
-            <div class="navbar-header"><a class="navbar-brand" href="#">Brand</a>
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-menubuilder"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-              </button>
-            </div>
-            <div class="collapse navbar-collapse navbar-menubuilder">
-              <ul class="nav navbar-nav navbar-left">
-                <% Category.all.where(:parent_id => nil).each do |parent| %>
-                  <li class="dropdown">
-                    <%= link_to parent.name , category_products_path(parent),  class:  'dropdown-toggle' , 'data-toggle' => 'dropdown' %>
-                    <ul class="dropdown-menu">
-                      <% parent.subcategories.each do |child|%>
-                        <li><%= link_to child.name , category_products_path(child) %></li>
-                      <%end%>
-                    </ul>
-                  </li>
-                <%end%>
-                <li>
-                  <% if current_user %>
-                    <%if current_user.admin %>
-                      <%= link_to "Admin", rails_admin.dashboard_path%>
-                    <%end%>
-                  <%end%>
-                </li>
-              </ul>
-            </ul>
-          </div>
-        </div>
+        <%= render "layouts/header_bottom"%>
       </div>
     </div>
-  </div>
-  <div class="container"style="margin-top:0;">
-    <% if flash[:alert] %>
-      <div class="alert alert-warning alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <%= flash[:alert] %>
-      </div>
-    <%end%>
-    <% if flash[:notice] %>
-      <div class="alert alert-success alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <%= flash[:notice] %>
-      <%end%>
+    <div class="container" style="margin-top:0;">
+      <%= render "layouts/flash_messages"%>
     </div>
     <%= yield %>
   </body>

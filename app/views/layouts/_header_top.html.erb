@@ -1,0 +1,50 @@
+<div class="header-top" >
+  <div class="container" id="first_header" >
+    <div class="col-sm-7 col-xs-12" style="padding-left:0;">
+      <ul class="nav navbar-nav navbar-left"  >
+        <li>
+          <%= link_to root_path do  %>
+            <i class="fa fa-home" aria-hidden="true" ></i> <label>Αρχική</label>
+          <%end%>
+        </li>
+        <li>
+          <%= link_to favorite_path do  %>
+            <label>Αγαπημένα</label>  <i class="fa fa-heart" aria-hidden="true"></i>
+          <%end%>
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm-5 col-xs-12" style="padding-right:0;">
+      <ul class="nav navbar-nav navbar-right"  >
+        <li>
+          <%= link_to new_message_path do %>
+            <label>Επικοινωνία</label>  <i class="fa fa-envelope" aria-hidden="true"></i>
+          <%end%>
+        </li>
+        <% if user_signed_in? %>
+          <li>
+            <%= link_to  profile_path(current_user) do %>
+              <%= label_tag current_user.name %> <i class="fa fa-user-circle" aria-hidden="true"></i>
+            <%end%>
+          </li>
+          <li>
+            <%= link_to  destroy_user_session_path, method: 'get' do %>
+              <label>Εξοδος</label>  <i class="fa fa-sign-out" aria-hidden="true"></i>
+            <%end%>
+          </li>
+        <%else%>
+          <li>
+            <%= link_to  new_user_session_path do  %>
+              <label>Σύνδεση</label>  <i class="fa fa-sign-in" aria-hidden="true"></i>
+            <%end%>
+          </li>
+          <li>
+            <%= link_to new_user_registration_path do  %>
+              <label>Εγγραφή</label>  <i class="fa fa-sign-in" aria-hidden="true"></i>
+            <%end%>
+          </li>
+        <%end%>
+      </ul>
+    </div>
+  </div>
+</div>

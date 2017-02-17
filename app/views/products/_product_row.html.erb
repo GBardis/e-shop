@@ -1,34 +1,33 @@
-<div class="item  col-xs-12 col-md-12 col-lg-4">
-  <div class="thumbnail">
-    <%= form_for order_item, remote: true do |f| %>
-      <% if product.images.exists? %>
+<div class="col-xs-12 col-sm-6 col-md-3" style="margin-top:5%;">
+  <%= form_for order_item, remote: true do |f| %>
+    <div class="col-item">
+      <div class="photo">
         <%= link_to product_path(product) do %>
-          <%= image_tag product.images.first.image.url,class: "img-responsive",width: "200", height: "200", data: { action: 'zoom' }%>
+          <%= image_tag product.images.first.image.url,class: "img-thumbnail img-responsive"%>
         <%end%>
-        <hr>
-      <%else%>
-        <script>
-          $('#zoom_02').ezPlus();
-        </script>
-        <%= link_to product_path(product) do %>
-          <img class="group list-group-image" src="http://placehold.it/400x250/000/fff" alt="" id="zoom_02" data-zoom-image="http://placehold.it/400x250/000/fff" width="411" />
-        <%end%>
-      <%end%>
-      <div class="caption">
-        <h4 class ="group inner list-group-item-heading"><%= product.title %></h4>
-        <!--<p class = "group inner list-group-item-text"><%= product.description %></p>-->
+      </div>
+      <div class="info">
         <div class="row">
-          <div class="col-xs-12 col-md-5 ">
-            <p class="lead"><%=  number_to_currency( product.price,:unit => "€") %></p>
+          <div class="price col-md-6">
+            <h5> <%= product.title %></h5>
+            <h5 class="price-text-color"><%=  number_to_currency( product.price,:unit => "€") %></h5>
           </div>
-          <div class="col-xs-12 col-md-5 ">
-            <%= f.hidden_field :quantity, value: 1, class: "form-control", min: 1 %>
-            <%= f.hidden_field :product_id, value: product.id %>
-            <%= f.submit "Add to Cart", class: "btn btn-danger" %>
-          </div>
-          <div class ="col-xs-12 col-md-2" id="favorite_index-<%=product.id%>">
+          <div class="rating hidden-sm col-md-6" id="favorite_index-<%=product.id%>">
             <%= render partial: 'favorite_actions/favorite_index' ,locals: {product: product} %>
           </div>
+        </div>
+        <div class="separator clear-left">
+          <p class="btn-add">
+            <%= f.hidden_field :quantity, value: 1, class: "form-control", min: 1 %>
+            <%= f.hidden_field :product_id, value: product.id %>
+            <%= f.submit "Καλάθι", class: "btn btn-danger btn-sm" %>
+          </p>
+          <p class="btn-details">
+            <%= link_to product_path(product) ,class:"hidden-sm" do %>
+              <i class="fa fa-list"></i>More details</p>
+          <%end%>
+        </div>
+        <div class="clearfix">
         </div>
       </div>
     </div>
