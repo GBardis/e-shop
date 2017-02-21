@@ -1,5 +1,5 @@
 <%= link_to  cart_path, class: "btn-md" do %>
-  <i class="glyphicon glyphicon-shopping-cart"></i>
+  <i class="glyphicon glyphicon-shopping-cart" id ="cart"></i>
   <% if current_order.order_items.size == 0%>
   <%else%>
     <i class="items"><%= current_order.order_items.size%></i>

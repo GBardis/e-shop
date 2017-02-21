@@ -1,0 +1,2 @@
+$("#favorite").html("<%= escape_javascript(render :partial => 'products/favorites') %>")
+$("#favorites-<%=@products.id%>").html("<%= escape_javascript(render('products/favorites_index', product: @products)) %>")

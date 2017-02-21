@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :authorizations
   has_many :messages
   has_many :comments
+
   has_many :favorite_products, dependent: :destroy
   has_many :favorites, through: :favorite_products, source: :product
 

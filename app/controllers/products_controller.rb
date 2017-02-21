@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
     @products = if @category.present?
                   Product.where(category_id: @category).page params[:page]
                 else
-                  Product.all.page params[:page]
+                  Product.all.joins(:images).page params[:page]
      end
     @categories = Category.all.where(parent_id: nil)
     @subcategories = Category.all.where.not(parent_id: nil)

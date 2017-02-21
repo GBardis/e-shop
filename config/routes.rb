@@ -18,12 +18,13 @@ Rails.application.routes.draw do
   resources :products do
     resources :comments, only: [:create, :destroy] # , defaults: { format: 'js' } do
   end
-
+  resources :favorite_products, only: [:create, :destroy, :show] # , defaults: { format: 'js' }
   resources :images
   resources :messages
   resources :products
   # resources :comments
   devise_for :users, controllers: { registrations: 'registrations', omniauth_callbacks: 'omniauth_callbacks' }
+
   # unauthenticated :user do
   # root to: 'products#index', as: :unauthenticated_root
   # end
