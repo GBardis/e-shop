@@ -1,12 +1,20 @@
 class ProductsController < ApplicationController
   before_action :set_category
+  helper_method :sort_column, :sort_direction
 
   def index
     @products = if @category.present?
-                  Product.where(category_id: @category).page params[:page]
+                  Product.where(category_id: @category).order(sort_column + ' ' + sort_direction).page params[:page]
+
                 else
+<<<<<<< HEAD
                   Product.all.joins(:images).page params[:page]
      end
+=======
+                  Product.all.order(sort_column + ' ' + sort_direction).page params[:page]
+
+  end
+>>>>>>> Add_Profile
     @categories = Category.all.where(parent_id: nil)
     @subcategories = Category.all.where.not(parent_id: nil)
     @order_item = current_order.order_items.new
@@ -49,6 +57,14 @@ class ProductsController < ApplicationController
   end
 
   private
+
+  def sort_column
+    %w(price created_at).include?(params[:sort]) ? params[:sort] : 'created_at'
+  end
+
+  def sort_direction
+    %w(asc desc).include?(params[:direction]) ? params[:direction] : 'desc'
+  end
 
   def set_category
     @category = Category.find(params[:category_id]) if params[:category_id]

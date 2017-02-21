@@ -1,0 +1,43 @@
+<div class=" col-sx-12 col-sm-3 " id="user_profile" >
+  <ul class="list-group">
+    <li class="list-group-item">
+      <p align="center">
+        <strong>Λογαριασμός</strong>
+      </p>
+    </li>
+    <%=link_to   edit_user_registration_path() do   %>
+      <li class="list-group-item" id="sibar_li">
+        <span>Επεξεργασία Στοιχείων</span><i class="fa fa-chevron-right" aria-hidden="true" id="icon_right"></i>
+      </li>
+    <%end%>
+    <%= link_to  favorite_path do   %>
+      <li class="list-group-item" id="sibar_li">
+        <span>Αγαπήμενα</span>  <i class="fa fa-chevron-right" aria-hidden="true" id="icon_right"></i>
+      </li>
+    <%end%>
+  </ul>
+  <ul class="list-group" id="margin_ul">
+    <li class="list-group-item">
+      <p align="center">
+        <strong>Διευθύνσης</strong>
+      </p>
+    </li>
+    <a href="/about-us">
+      <li class="list-group-item" id="sibar_li">
+        Αλλαγή Διεύθυνσης<i class="fa fa-chevron-right" aria-hidden="true" id="icon_right"></i>
+      </li>
+    </a>
+  </ul>
+  <ul class="list-group" id="margin_ul">
+    <li class="list-group-item">
+      <p align="center">
+        <strong>Παραγγελίες</strong>
+      </p>
+    </li>
+    <a href="/about-us">
+      <li class="list-group-item" id="sibar_li">
+        Ιστορικό Παραγγελιών<i class="fa fa-chevron-right" aria-hidden="true" id="icon_right"></i>
+      </li>
+    </a>
+  </ul>
+</div>

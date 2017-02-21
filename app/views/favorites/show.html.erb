@@ -1,3 +1,5 @@
-<div class="favorite-cart">
-  <%= render "favorite_cart" %>
-</div>
+<% if user_signed_in? %>
+  <div class="favorite-cart">
+    <%= render "favorite_cart" %>
+  </div>
+<%end%>

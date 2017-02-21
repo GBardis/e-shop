@@ -1,0 +1,21 @@
+<% if current_user.orders.last.order_items.size == 0 %>
+  <div id="cart" class="btn-group btn-block">
+    <button type="button" data-toggle="dropdown" class="btn btn-block btn-lg dropdown-toggle">
+      <i class="fa fa-shopping-cart"></i>
+      <span class="hidden-md">Το Καλάθι είναι Άδειο </span>
+    </button>
+  <%else%>
+    <div id="cart" class="btn-group btn-block">
+      <button type="button" data-toggle="dropdown" class="btn btn-block btn-lg dropdown-toggle">
+        <i class="fa fa-shopping-cart"></i>
+        <span class="hidden-md">Καλάθι:</span>
+        <span id="cart-total">
+          <% if current_user.orders.last%>
+            <%=current_user.orders.last.order_items.size%>-(<%= number_to_currency current_user.orders.last.subtotal%>)
+
+          <%end%>
+        </span>
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <%= render 'layouts/cart_dropdown_row' %>
+    <% end %>

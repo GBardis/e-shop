@@ -42,7 +42,9 @@
           </div>
           <br/>
           <br/>
-          <div class="product-stock"><%= facebook_button :facebook=> {:send=> 'true', :url=> 'https://www.facebook.com/Άποψη-Δώρα-Κάρτες-277237362334845'} %></div>
+          <div class="product-stock">
+            <%= facebook_button :facebook=> {:send=> 'true', :url=> 'https://www.facebook.com/Άποψη-Δώρα-Κάρτες-277237362334845'}  %>
+          </div>
         </div>
         <hr>
       </div>
@@ -53,19 +55,11 @@
 <div class="container-fluid">
   <div class="col-md-12 product-info">
     <ul id="myTab" class="nav nav-tabs nav_tabs">
-      <li class="active"><a href="#service-one" data-toggle="tab">DESCRIPTION</a></li>
       <li><a href="#service-two" data-toggle="tab">ΣΧΟΛΙΑ <span class="label label-info">
             <%= @product.comments.count%></span></li>
       </a>
     </ul>
-    <div class="tab-pane fade " id="service-one">
-      <div id="myTabContent" class="tab-content">
-        <section class="container product-info">
-          <%= @product.description%>
-        </section>
-      </div>
-    </div>
-    <div  class="tab-pane fade " id="service-two">
+    <div  class="tab-pane fade in active " id="service-two">
       <div id="myTabContent" class="tab-content" >
         <section class="container product-info" id="refresh">
           <%= render 'comments/comment'%>

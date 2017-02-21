@@ -22,12 +22,11 @@ Rails.application.routes.draw do
   resources :images
   resources :messages
   resources :products
-  # resources :comments
+  get '/profile/:id' => 'users#show', as: :profile
+  get '/orders/:id' => 'orders#show', as: :orders
   devise_for :users, controllers: { registrations: 'registrations', omniauth_callbacks: 'omniauth_callbacks' }
 
-  # unauthenticated :user do
-  # root to: 'products#index', as: :unauthenticated_root
-  # end
+
   resource :favorite, only: [:show]
   resource :cart, only: [:show]
   resources :order_items, only: [:create, :update, :destroy] # , defaults: { format: 'js' } do

@@ -224,5 +224,6 @@
     padding: 8px;
 }
 
-
+.pgwSlideshow .ps-current ul {
+    padding-left: 0;
 }

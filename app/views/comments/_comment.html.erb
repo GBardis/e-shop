@@ -26,14 +26,18 @@
                   <p><%= comment.body.html_safe %></p>
                 </div>
                 <div class="action">
-                  <button type="button" class="btn btn-primary btn-xs" title="Edit">
+                  <!--<button type="button" class="btn btn-primary btn-xs" title="Edit">
                     <span class="glyphicon glyphicon-pencil"></span>
                   </button>
                   <button type="button" class="btn btn-success btn-xs" title="Approved">
                     <span class="glyphicon glyphicon-ok"></span>
-                  </button>
-                  <%= link_to [comment.product,comment],data: {confirm: 'Are you Sure'},method: :delete,remote: true,class: "btn btn-danger btn-xs"  do %>
-                    <span class="glyphicon glyphicon-trash"></span>
+                  </button>-->
+                  <% if current_user %>
+                    <%if current_user.admin %>
+                      <%= link_to [comment.product,comment],data: {confirm: 'Are you Sure'},method: :delete,remote: true,class: "btn btn-danger btn-xs"  do %>
+                        <span class="glyphicon glyphicon-trash"></span>
+                      <%end%>
+                    <%end%>
                   <%end%>
                 </div>
               </div>
@@ -45,5 +49,4 @@
     </div>
   <%end%>
 </div>
-<%#= render "products/comment_form"%>
 </div>

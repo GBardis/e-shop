@@ -2,6 +2,7 @@ class OrderItemsController < ApplicationController
   def create
     if @order.nil?
       @order = current_order
+      @order.user_id = current_user.id
       @order_item = @order.order_items.new(order_item_params)
       @order.save
       session[:order_id] = @order.id
@@ -19,6 +20,7 @@ class OrderItemsController < ApplicationController
 
   def update
     @order = current_order
+    @order.user_id = current_user.id
     @order_item = @order.order_items.find(params[:id])
     @order_item.update_attributes(order_item_params)
     @order_items = @order.order_items
@@ -29,6 +31,7 @@ class OrderItemsController < ApplicationController
 
   def destroy
     @order = current_order
+    @order.user_id = current_user.id
     @order_item = @order.order_items.find(params[:id])
     @order_item.destroy
     @order_items = @order.order_items

@@ -1,16 +1,13 @@
 <script>
   $(document).ready(function() {
-                                              $('.pgwSlideshow').pgwSlideshow();
-                                              });
+                $('.pgwSlideshow').pgwSlideshow();
+                });
 </script>
 <%#= carousel_for @image_urls %>
-<script>
-  $("#zoom_01").elevateZoom();
-</script>
 <ul class="pgwSlideshow">
   <% @product.images.each do |image|%>
     <li>
-      <%= image_tag image.image.url, alt: @product.title, id: "zoom_01",data: { zoom_image: image.image.url}%>
+      <%= image_tag image.image.url, alt: @product.title%>
     </li>
   <%end%>
 </ul>

@@ -1,58 +1,3 @@
-/*#favorite_cart {
-    padding-top: 10%;
-}
-
-#delete_button {
-    margin-right: 15px;
-    margin-bottom: 45px !important;
-}
-
-#cart_button {
-    margin-right: 15px;
-}
-
-.glyphicon {
-    margin-right: 5px;
-}
-
-.section-box h2 {
-    margin-top: 0px;
-}
-
-.section-box h2 a {
-    font-size: 15px;
-}
-
-.glyphicon-heart {
-    color: #e74c3c;
-}
-
-.glyphicon-comment {
-    color: #27ae60;
-}
-
-.separator {
-    padding-right: 5px;
-    padding-left: 5px;
-}
-
-.section-box hr {
-    margin-top: 0;
-    margin-bottom: 5px;
-    border: 0;
-    border-top: 1px solid rgb(199, 199, 199);
-}
-
-99);
-
-}
-
-/*******************************************************************************/
-
-
-/*@import url("http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,400italic");
-@import url("//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css");*/
-
 body {
     padding: 60px 0px;
     background-color: rgb(220, 220, 220);
@@ -167,7 +112,6 @@ body {
 
 .event-list>li>.info>ul>li:hover, .event-list>li>.social>ul>li:hover {
     color: rgb(30, 30, 30);
-    background-color: rgb(200, 200, 200);
 }
 
 .facebook a, .twitter a, .google-plus a {
@@ -257,4 +201,22 @@ body {
         width: 40px;
         padding: 10px 0px 9px;
     }
+}
+
+l>ul {
+    border-left: 1px solid rgb(230, 230, 230);
+}
+
+.event-list>li>.social>ul>li {
+    display: block;
+    padding: 0px;
+}
+
+.event-list>li>.social>ul>li>a {
+    display: block;
+    width: 40px;
+    padding: 10px 0px 9px;
+}
+
+
 }

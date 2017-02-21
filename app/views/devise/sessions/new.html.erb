@@ -1,26 +1,59 @@
-<div class="panel panel-default devise-bs">
-  <div class="panel-heading">
-    <h4><%= t('.sign_in', default: 'Sign in') %></h4>
-  </div>
-  <div class="panel-body">
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: 'form' }) do |f| %>
-      <div class="form-group">
-        <%= f.label :email %>
-        <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+<div class="container">
+  <div class="col-md-6 " id= "user_profile">
+    <div class="panel panel-default devise-bs" >
+      <div class="panel-heading">
+        <h4><%= t('.sign_in', default: 'Sign in') %></h4>
       </div>
-      <div class="form-group">
-        <%= f.label :password %>
-        <%= f.password_field :password, autocomplete: 'off', class: 'form-control' %>
-      </div>
-      <% if devise_mapping.rememberable? %>
-        <div class="checkbox">
-          <%= f.label :remember_me do %>
-            <%= f.check_box :remember_me %> <%= t('.remember_me', default: 'Remember me') %>
+      <div class="panel-body">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: 'form' }) do |f| %>
+          <div class="form-group">
+            <%= f.label :email %>
+            <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :password %>
+            <%= f.password_field :password, autocomplete: 'off', class: 'form-control' %>
+          </div>
+          <% if devise_mapping.rememberable? %>
+            <div class="checkbox">
+              <%= f.label :remember_me do %>
+                <%= f.check_box :remember_me %> <%= t('.remember_me', default: 'Remember me') %>
+              <% end %>
+            </div>
+          <% end %>
+          <%= f.submit  t('.sign_in', default: 'Sign in'), class: 'btn btn-primary' %>
+        <% end %>
+        <div style="margin-top:10px;">
+          <% if devise_mapping.recoverable? && controller_name != 'passwords' %>
+            <%= link_to t('.forgot_your_password', default: 'Ξεχάσατε τον κωδικό πρόσβασης;'), new_password_path(resource_name) %><br />
           <% end %>
         </div>
-      <% end %>
-      <%= f.submit  t('.sign_in', default: 'Sign in'), class: 'btn btn-primary' %>
-    <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 " id= "user_profile">
+    <div class="row">
+      <div class="col-md-12" style="padding-top:0;">
+        <ul class="list-group" >
+          <li class="list-group-item" id="edit_content" >
+            <h5 style=""><strong>Νέος Πελάτης</strong></h5>
+          </li>
+          <li class="list-group-item" style="border-bottom: 1px solid black" id="button_text">
+            <p>
+              Αν αυτή είναι η πρώτη φορά κάνετε τα ψώνια σας μαζί μας, το μόνο που έχετε να κάνετε είναι να καταχωρήσετε ένα λογαριασμό. Έχοντας ένα λογαριασμό σας επιτρέπει να δείτε το ιστορικό των παραγγελιών σας, την ολοκλήρωση της παραγγελίας γρηγορότερα και να λαμβάνετε ειδικές προσφορές.</p>
+          </li>
+          <li class="list-group-item" id="button_content">
+            <% if devise_mapping.registerable? && controller_name != 'registrations' %>
+              <%= link_to t('.sign_up', default: 'Εγγραφή'), new_registration_path(resource_name),class: "btn btn-primary btn-md" %><br />
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <%= render 'devise/shared/links' %>
+      </div>
+    </div>
   </div>
 </div>
-<%= render 'devise/shared/links' %>
