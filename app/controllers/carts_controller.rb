@@ -1,7 +1,7 @@
 class CartsController < ApplicationController
   before_action :validate_authorization_for_user
   def show
-    @order_items = current_order.order_items
+    @order_items = current_user.orders.last.order_items
   end
 
   def validate_authorization_for_user

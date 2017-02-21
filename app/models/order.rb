@@ -4,6 +4,7 @@ class Order < ActiveRecord::Base
   after_create :set_order_status # rails 5 only else before_create :set_order_status#
   # before_validation :setorder_status
   has_many :order_items
+  # has_many :products, through: :order_items
 
   before_save :update_subtotal
 
