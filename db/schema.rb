@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20170210224644) do
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
-<<<<<<< HEAD
+
   create_table "favorite_products", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "product_id"
@@ -75,19 +75,6 @@ ActiveRecord::Schema.define(version: 20170210224644) do
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_favorite_products_on_product_id", using: :btree
     t.index ["user_id"], name: "index_favorite_products_on_user_id", using: :btree
-=======
-  create_table "favorites", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "favorited_type"
-    t.integer  "favorited_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.integer  "product_id"
-    t.index ["favorited_type", "favorited_id"], name: "index_favorites_on_favorited_type_and_favorited_id", using: :btree
-    t.index ["product_id"], name: "index_favorites_on_product_id", using: :btree
-    t.index ["user_id"], name: "index_favorites_on_user_id", using: :btree
->>>>>>> addfavorites
-  end
 
   create_table "images", force: :cascade do |t|
     t.integer  "product_id"
