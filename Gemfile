@@ -57,7 +57,7 @@ gem 'bootstrap-social-rails'
 gem 'font-awesome-rails'
 gem 'font-awesome-sass'
 
-# gem 'rmagick'
+ gem 'rmagick'
 gem 'yaml_db'
 gem 'omniauth'
 gem 'omniauth-oauth2'

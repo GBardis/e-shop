@@ -2,8 +2,6 @@ class UsersController < ApplicationController
   before_action :validate_authorization_for_user
   def show; end
 
-  def orders; end
-
   def validate_authorization_for_user
     unless current_user
       redirect_to new_user_session_path

@@ -7,7 +7,7 @@
           <h5 style=""><strong>Παραγγελίες</strong></h5>
         </li>
         <li class="list-group-item" style="border-bottom: 1px solid black" id="button_text">
-          <p >Εδώ μπορείτε να δείτε τις παλίες παραγγελίες και την κατάσταση τωω παραγγελιών </p>
+          <p >Εδώ μπορείτε να δείτε τις παλίες παραγγελίες και την κατάσταση των παραγγελιών </p>
         </li>
         <li class="list-group-item" id="button_content">
           <%=link_to "Επεξεργασία ",edit_user_registration_path(),class: "btn btn-primary btn-md"   %>
@@ -16,5 +16,8 @@
     </div>
   </div>
   <div class="row">
+    <% @order.each do |order|%>
+      <%= render 'orders/orders_row', order: order%>
+    <%end%>
   </div>
 </div>
