@@ -1,0 +1,150 @@
+.heading
+{
+    margin-top: 5px;
+    padding-bottom: 15px;
+
+    text-align: center;
+}
+.ImgBut
+{
+    margin-top: 15px;
+}
+
+#orders_data
+{
+    padding-bottom: 5px;
+
+    text-align: center;
+}
+
+#order_main_div
+{
+    border: solid #ddd 1px;
+}
+#order_row
+{
+    padding-right: 15px;
+    padding-left: 15px;
+}
+/*order_details*/
+
+#order_details_header h2
+{
+    font-weight: bold;
+}
+#order_details_header
+{
+    padding-left: 0;
+}
+
+#order_details_row_header
+{
+    margin-top: 3%;
+}
+
+#header_button a
+{
+    float: right;
+}
+#header_button
+{
+    margin-top: 20px;
+    padding-right: 0;
+}
+#button_left
+{
+    margin-right: 10px;
+}
+#address ul
+{
+    padding-left: 0;
+
+    list-style-type: none;
+}
+#address
+{
+    padding-left: 0;
+}
+#order_details ul
+{
+    padding-left: 0;
+
+    list-style-type: none;
+}
+#order_details
+{
+    padding-left: 0;
+}
+#order_details_stats
+{
+    margin-top: 6%;
+
+    border: solid #ddd 1px;
+}
+#order_details_stats h4
+{
+    border-bottom: solid #ddd 1px;
+}
+#details_left
+{
+    padding-left: 0;
+
+    border-right: solid #ddd 1px;
+}
+#order_items_row
+{
+    margin-top: 6%;
+
+    border: solid #ddd 1px;
+}
+#order_items_row h4
+{
+    border-bottom: solid #ddd 1px;
+}
+#address_home ul
+{
+    padding-left: 0;
+
+    list-style-type: none;
+}
+
+
+/*media query*/
+@media only screen and (max-width: 768px)
+{
+    #order_details_header
+    {
+        padding-left: 15px;
+
+        text-align: center;
+    }
+    #header_button a
+    {
+        float: none;
+
+        min-width: 100%;
+        margin-bottom: 5px;
+    }
+    #header_button
+    {
+        padding-right: 15px;
+    }
+    #order_details_stats
+    {
+        /*padding-right: 15px;
+        padding-left: 15px;*/
+    }
+    #order_main_div
+    {
+        border: solid #ddd 1px!important;
+        border-right: solid #ddd 1px!important;
+    }
+    #order_row
+    {
+        /*border: solid #ddd 1px!important;*/
+    }
+    #btn_info
+    {
+        min-width: 100% !important;
+    }
+}

@@ -1,9 +1,10 @@
 class OrdersController < ApplicationController
   def show
-    @order = current_user.orders # unless current_user.orders.in_progress
+    @orders = current_user.orders.order('created_at DESC') # unless current_user.orders.in_progress
   end
 
   def order_details
-    @order_details = current_user.orders.last.order_items
+    @order = Order.find(params[:id])
+    @order_details = current_user.orders.last.order_items.order('created_at DESC')
   end
 end

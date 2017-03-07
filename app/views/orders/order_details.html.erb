@@ -1,4 +1,77 @@
-<% @order_details.each do |item|%>
-  <%= item.unit_price%>
-  <%= item.product.title%>
-<%end%>
+<div class="container-fluid">
+  <div class="row" id="order_details_row_header">
+    <div class="col-xs-12 col-sm-5 col-md-5" id="order_details_header">
+      <h2>Επιβεβαίωση παραγγελίας</h2>
+      <p>
+        Ευχαριστούμε για την τοποθέτηση της παραγγελίας σας.
+        </p>
+    </div>
+    <div class="col-xs-12 col-sm-7 col-md-7" id="header_button">
+      <%= link_to root_path, class: "btn btn-danger btn-lg", id:"button_right" do %>
+        <i class="fa fa-angle-left"></i> <label>Continue Shopping</label>
+      <%end%>
+      <%= link_to orders_path(current_user), class: "btn btn-danger btn-lg",id:"button_left" do %>
+        <i class="fa fa-angle-left"></i> <label>Παραγγελίες</label>
+      <%end%>
+    </div>
+  </div>
+  <div class="row" id="order_details_stats">
+    <div class="col-xs-12 col-sm-6 col-md-6" id="details_left" >
+      <div class="col-xs-12 col-sm-12">
+        <h4><i class="fa fa-list-alt" aria-hidden="true"></i> <label>Πληροφορίες Απόδειξης</label></h4>
+        <div class="col-xs-12 col-sm-5 col-md-6" id="address">
+          <ul>
+            <li>  <%= current_user.name%> <%= current_user.lastname%></li>
+            <li> T.K</span>
+            <li>Address </li>
+            <li>perioxh </li>
+            <li>Address </li>
+          </ul>
+        </div>
+        <div class="col-xs-12 col-sm-7 col-md-6" id="order_details">
+          <ul>
+            <li><label>order id:</label>  <%= @order.id%></li>
+            <li><label>Ημερομηνία:</label>  <%= @order.created_at.strftime("%d %b. %Y %T")%></li>
+            <li><label>Κατάσταση:</label>  <%= @order.status%></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-6" id="address_home">
+      <h4><i class="fa fa-home" aria-hidden="true"></i>  <label>Πληροφορίες Διεύθυνσης</label></h4>
+      <ul>
+        <li>  <%= current_user.name%> <%= current_user.lastname%></li>
+        <li> T.K</span>
+        <li>Address </li>
+        <li>perioxh </li>
+        <li>Address </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row" id="order_items_row">
+    <div class="col-xs-12">
+      <h4><label>Πληροφορίες Παραγγελίας</label></h4>
+      <div class="esconde" id="opdRetro">
+        <table class="table table-striped table-hover ">
+          <thead>
+            <tr class="bg-primary">
+              <th>Προιόν</th>
+              <th>Ποσότητα</th>
+              <th>Τιμή</th>
+              <th>Συνολική Τιμή</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @order_details.each do |item|%>
+              <tr>
+                <td><%= item.product.title%></td>
+                <td><%= item.quantity%></td>
+                <td><%= number_to_currency(item.unit_price,:unit => "€")%></td>
+                <td><%= number_to_currency(item.total_price,:unit => "€")%></td>
+              </tr>
+            <%end%>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
