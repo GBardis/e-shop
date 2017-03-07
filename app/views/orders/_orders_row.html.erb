@@ -1,0 +1,39 @@
+<div class="col-sm-12" id="order_main_div">
+  <div class="col col-xs-12 col-sm-2" id="orders_data">
+    <div class="heading">
+      order id
+            </div>
+    <div class="dataOrderNumber">
+      <span ><%= order.id%></span>
+    </div>
+  </div>
+  <div class="col col-xs-12 col-sm-2" id="orders_data">
+    <div class="heading">
+      order status
+            </div>
+    <div class="dataOrderStatus">
+      <span ><%=order.status%></span>
+    </div>
+  </div>
+  <div class="col col-xs-12 col-sm-3" id="orders_data">
+    <div class="heading">
+      order date/time
+            </div>
+    <div class="data">
+      <span><%= order.created_at.strftime("%d %b. %Y %T")%></span>
+    </div>
+  </div>
+  <div class="col col-xs-12 col-sm-2" id="orders_data">
+    <div class="heading">
+      order total
+            </div>
+    <div class="dataOrderTotal">
+      <span><%= order.subtotal%></span>
+    </div>
+  </div>
+  <div class="col col-last col-xs-12 col-sm-3" id="orders_data">
+    <div class="ImgBut">
+      <%= link_to "Λεπτομέριες Παραγγελίας", order_details_path(order), class: "btn btn-info", id:"btn_info"%>
+    </div>
+  </div>
+</div>

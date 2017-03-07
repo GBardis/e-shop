@@ -1,54 +1,83 @@
 /**index**/
 
-#icon_right {
-    float: right;
+#icon_right
+{
     position: relative;
+
+    float: right;
 }
 
-#margin_ul {
+#margin_ul
+{
     margin-top: 30px;
 }
 
-#user_profile {
+#user_profile
+{
     margin-top: 5%!important;
 }
 
-#passrecover {
-    margin-top: 5%!important;
+#passrecover
+{
     width: 35%;
+    margin-top: 5%!important;
 }
 
-#sibar_li {
-    text-align: left;
+#sibar_li
+{
     font-size: 12px;
+
+    text-align: left;
 }
 
-#user_profile h3 {
+#user_profile h3
+{
     margin-top: 0;
     margin-bottom: 20px;
 }
 
-#text_welcome {
+#text_welcome
+{
     font-size: 12px;
 }
 
-#edit_content {
-    background-color: #F2F2F2;
-    border-bottom: 3px solid #CCCCCC;
+#edit_content
+{
+    border-bottom: 3px solid #ccc;
+    background-color: #f2f2f2;
 }
 
-#button_text p {
+#button_text p
+{
     font-size: 12px;
 }
 
-#button_content {
-    border-top-color: #FFFFFF!important;
+#button_content
+{
+    border-top-color: #fff!important;
 }
 
-#edit_content h5 {}
 
-#ul_content {
+
+#ul_content
+{
     margin-top: 10%;
+}
+
+@media only screen and (max-width: 768px)
+{
+    #user_profile_header
+    {
+        text-align: center;
+    }
+    #text_welcome
+    {
+        text-align: left;
+    }
+    #user_profile_btn_back a
+    {
+        width: 100%;
+    }
 }
 
 

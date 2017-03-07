@@ -24,8 +24,8 @@ Rails.application.routes.draw do
   resources :products
   get '/profile/:id' => 'users#show', as: :profile
   get '/orders/:id' => 'orders#show', as: :orders
+  get '/order_details/:id' => 'orders#order_details', as: :order_details
   devise_for :users, controllers: { registrations: 'registrations', omniauth_callbacks: 'omniauth_callbacks' }
-
 
   resource :favorite, only: [:show]
   resource :cart, only: [:show]

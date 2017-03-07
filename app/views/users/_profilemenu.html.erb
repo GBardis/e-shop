@@ -1,7 +1,7 @@
 <%= render "users/profile_nav"%>
 <div class="col-xs-12 col-sm-9 " id="user_profile">
   <div class="row">
-    <div class="col-xs-12 col-md-7 col-md-9">
+    <div class="col-xs-12 col-md-7 col-md-9" id="user_profile_header">
       <h3><strong>Καλώς Ήρθατε</strong></h3>
       <p id="text_welcome">
         Καλώς ήρθατε στο προφίλ σας. Επιλέξτε παρακάτω για να ενημερώσετε
@@ -9,7 +9,7 @@
   τις προηγούμενες αγορές σας
   </p>
     </div>
-    <div class="col-xs-12 col-md-5 col-md-3">
+    <div class="col-xs-12 col-md-5 col-md-3" id="user_profile_btn_back">
       <%= link_to root_path, class: "btn btn-danger btn-lg" do %>
         <i class="fa fa-angle-left"></i> Continue Shopping</a>
     <%end%>

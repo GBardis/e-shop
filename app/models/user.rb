@@ -2,7 +2,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
   validates_presence_of :email
-  has_many :orders
+  has_many :orders, dependent: :destroy
   has_many :authorizations
   has_many :messages
   has_many :comments

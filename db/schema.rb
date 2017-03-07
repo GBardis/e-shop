@@ -11,7 +11,8 @@
 # It's strongly recommended that you check this file into your version control system.
 
 
-ActiveRecord::Schema.define(version: 20170210224644) do
+ActiveRecord::Schema.define(version: 20170222011423) do
+
 
 
 
@@ -97,13 +98,13 @@ ActiveRecord::Schema.define(version: 20170210224644) do
   end
 
   create_table "order_items", force: :cascade do |t|
+    t.integer  "product_id"
     t.integer  "order_id"
     t.decimal  "unit_price",  precision: 12, scale: 3
     t.integer  "quantity"
     t.decimal  "total_price", precision: 12, scale: 3
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
-    t.integer  "product_id"
     t.index ["order_id"], name: "index_order_items_on_order_id", using: :btree
     t.index ["product_id"], name: "index_order_items_on_product_id", using: :btree
   end
@@ -120,9 +121,10 @@ ActiveRecord::Schema.define(version: 20170210224644) do
     t.decimal  "shipping",        precision: 12, scale: 3
     t.decimal  "total",           precision: 12, scale: 3
     t.integer  "order_status_id"
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
     t.integer  "user_id"
+    t.integer  "status",                                   default: 1
     t.index ["order_status_id"], name: "index_orders_on_order_status_id", using: :btree
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
