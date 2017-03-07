@@ -23,7 +23,8 @@
       <%end%>
     </div>
     <div class="col-md-3 pull-right">
-      <a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a>
+      <%=link_to "checkout",new_transaction_path, class: "btn btn-success btn-block" unless current_user.orders.last.blank?%>
+      <!--Checkout <i class="fa fa-angle-right"></i>-->
     </div>
   </div>
 </div>

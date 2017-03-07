@@ -57,7 +57,7 @@ gem 'bootstrap-social-rails'
 gem 'font-awesome-rails'
 gem 'font-awesome-sass'
 
- gem 'rmagick'
+gem 'rmagick'
 gem 'yaml_db'
 gem 'omniauth'
 gem 'omniauth-oauth2'
@@ -69,6 +69,11 @@ gem 'omniauth-linkedin-oauth2'
 gem 'omniauth-twitter'
 gem 'twitter'
 gem 'koala'
+
+## baintree ##
+gem 'braintree'
+gem 'figaro'
+gem 'gon'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'

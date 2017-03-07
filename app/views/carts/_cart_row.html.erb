@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container ">
   <table id="cart" class="table table-hover table-condensed">
     <thead>
       <tr>
@@ -36,7 +36,7 @@
             <%= f.hidden_field :product_id, value: product.id %>
           </td>
           <td data-th="Subtotal" class="text-center"><%= number_to_currency order_item.total_price %></td>
-          <td class="actions" >
+          <td class="actions">
             <%= button_tag(type: 'submit', class: "btn btn-info btn-sm ") do%>
               <i class="fa fa-refresh"></i>
             <%end%>
@@ -50,6 +50,3 @@
     <td colspan="2" class="hidden-xs"></td>
   </table>
 </div>
-<%= button_tag(type: 'submit', class: "btn btn-info btn-sm ") do%>
-  <i class="fa fa-refresh"></i>
-<%end%>

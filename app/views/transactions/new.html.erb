@@ -1,0 +1,7 @@
+<%= form_tag transactions_path do%>
+  <%= render 'transactions/customer_form' unless current_user.has_payment_info? %>
+  <p>Please enter your payment details:</p>
+  <div id="dropin"></div>
+  <%=submit_tag "Pay #{current_user.orders.last.subtotal}$", class: "button mt1" %>
+  <%= link_to "delete", transaction_path(current_user.braintree_customer_id), method: :delete, class: "btn btn-danger" %>
+<%end%>

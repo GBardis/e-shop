@@ -46,4 +46,8 @@ class User < ApplicationRecord
     end
     authorization.user
   end
+
+  def has_payment_info?
+    braintree_customer_id
+  end
 end

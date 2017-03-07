@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   resource :cart, only: [:show]
   resources :order_items, only: [:create, :update, :destroy] # , defaults: { format: 'js' } do
   # musts set default values because files are .js not erb #
+  resources :transactions, only: [:new, :create, :destroy]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
