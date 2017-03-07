@@ -13,9 +13,9 @@ class ApplicationController < ActionController::Base
     # current_user.orders.last
     # end
     if !session[:order_id].nil?
-      Order.find(session[:order_id])
-    elsif session[:order_id].nil?
       Order.new
+    elsif !session[:order_id].nil?
+      Order.find(session[:order_id])
     elsif current_user && current_user.orders.exists?
       current_user.orders.last
     elsif current_user && !current_user.orders.exists?

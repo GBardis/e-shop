@@ -6,16 +6,11 @@ class ProductsController < ApplicationController
   def index
     @products = if @category.present?
                   Product.where(category_id: @category).order(sort_column + ' ' + sort_direction).page params[:page]
-
                 else
-<<<<<<< HEAD
-                  Product.all.joins(:images).page params[:page]
-     end
-=======
                   Product.all.order(sort_column + ' ' + sort_direction).page params[:page]
 
-  end
->>>>>>> Add_Profile
+                end
+
     @categories = Category.all.where(parent_id: nil)
     @subcategories = Category.all.where.not(parent_id: nil)
 

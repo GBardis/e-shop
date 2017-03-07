@@ -1,6 +1,8 @@
 class OrdersController < ApplicationController
   def show
-    @orders = current_user.orders.order('created_at DESC') # unless current_user.orders.in_progress
+    if current_user
+      @orders = current_user.orders.order('created_at DESC') # unless current_user.orders.in_progress
+    end
   end
 
   def order_details
