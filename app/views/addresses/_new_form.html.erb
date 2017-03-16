@@ -1,0 +1,38 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title">Νέα Διεύθυνση Αποστολής</h4>
+    </div>
+    <%= form_tag address_create_path, method: :post, remote: true, html: { style: "display:inline;" } do  %>
+      <div class="modal-body">
+        <ul class="errors"></ul>
+        <div class="form-group">
+          <%= text_field_tag :first_name,"",placeholder: "Όνομα", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= text_field_tag :last_name,"",placeholder: "Επίθετο", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= text_field_tag :phone,"",placeholder: "Phone", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= text_field_tag :street_address,"",placeholder: "Διεύθυνση", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= text_field_tag :region,"",placeholder: "Νομός", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= text_field_tag :locality,"",placeholder: "Πόλη", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= text_field_tag :postal_code,"",placeholder: "T.K", class: "form-control" %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <%= submit_tag "Αλλαγή", class: "btn btn-primary" %>
+        <%= link_to "Cancel","#", class: "btn", data: {dismiss: "modal"} %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="modal-dialog" id="delete_modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h3>Διαγραφή Διεύθυνσης</h3>
+    </div>
+    <div class="modal-body">
+      <ul class="errors"></ul>
+      Θέλεται να Διαγράψεται την διεύθυνση σας?
+  </div>
+    <div class="modal-footer">
+      <%= link_to "Ναί, Διαγράψτε την διεύθυνση",address_path(@address.first.address_id),method: :delete ,remote: true, class: "btn btn-danger" %>
+      <%= link_to "Όχι, όχι παρακαλώ", "#", class: "btn btn-default",id: "button_delete", data: { dismiss: "modal" } %>
+    </div>
+  </div>
+</div>

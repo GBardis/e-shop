@@ -1,0 +1,31 @@
+<ul>
+  <li>
+    <strong>
+      <h2><%= address.street_address%></h2>
+    </strong>
+  </li>
+  <li>
+    <%= address.first_name%>
+  </li>
+  <li>
+    <%= address.last_name%>
+  </li>
+  <li>
+    <%= address.street_address%>
+  </li>
+  <li>
+    <%= address.locality%>
+  </li>
+  <li>
+    <%= address.region%>
+  </li>
+  <li>
+    <%= address.postal_code%>
+  </li>
+  <li style="margin-top:15px;">
+    <%= link_to "Επεξεργασία",edit_address_path(address.id),remote: true,class:"btn btn-primary"%>
+  </li>
+  <li>
+    <%= link_to "Διαγραφή" ,address_delete_path(address.id),remote: true, class: "btn"%>
+  </li>
+</ul>

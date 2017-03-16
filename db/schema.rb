@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170307154520) do
+ActiveRecord::Schema.define(version: 20170310171923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.string  "address_id"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_addresses_on_user_id", using: :btree
+  end
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "provider"
@@ -131,6 +137,12 @@ ActiveRecord::Schema.define(version: 20170307154520) do
     t.float    "overall_avg",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "payment_methods_tokens", force: :cascade do |t|
+    t.string  "token"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_payment_methods_tokens_on_user_id", using: :btree
   end
 
   create_table "products", force: :cascade do |t|

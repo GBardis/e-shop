@@ -1,0 +1,72 @@
+#address_header
+{
+    margin-bottom: 10px;
+
+    border-bottom: solid #ddd 1px;
+    background-color: #f2f2f2;
+}
+
+#address_text p
+{
+    font-size: 12px;
+
+    margin: 10px 0 10px;
+    padding-left: 15px;
+}
+#address_rows ul
+{
+    padding-right: 25px;
+
+    list-style-type: none;
+}
+#address_rows h2
+{
+    font-weight: bold;
+}
+#address_rows li
+{
+    padding-bottom: 5px;
+}
+#address_rows
+{
+    margin: auto;
+    margin-bottom: 15px;
+
+    text-align: center;
+
+    border: solid #ddd 1px;
+}
+#addresses_row
+{
+    margin-top: 5%;
+    padding: 15px;
+}
+#delete_modal
+{
+    margin-top: 10%;
+}
+#edit_modal
+{
+    margin-top: 10%;
+}
+#address_new a
+{
+    float: right;
+
+    margin-top: 10px;
+}
+#address_new
+{
+    padding-right: 0;
+}
+@media only screen and (max-width: 768px)
+{
+    #delete_modal
+    {
+        margin-top: 35%;
+    }
+    #button_delete
+    {
+        margin-top: 10px;
+    }
+}

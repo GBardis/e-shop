@@ -22,22 +22,24 @@
         <strong>Διευθύνσης</strong>
       </p>
     </li>
-    <a href="/about-us">
+    <%= link_to address_path(current_user) do  %>
       <li class="list-group-item" id="sibar_li">
         Αλλαγή Διεύθυνσης<i class="fa fa-chevron-right" aria-hidden="true" id="icon_right"></i>
       </li>
-    </a>
-  </ul>
-  <ul class="list-group" id="margin_ul">
-    <li class="list-group-item">
-      <p align="center">
-        <strong>Παραγγελίες</strong>
-      </p>
+    <%end%>
+  </a>
+</ul>
+<ul class="list-group" id="margin_ul">
+  <li class="list-group-item">
+    <p align="center">
+      <strong>Παραγγελίες</strong>
+    </p>
+  </li>
+  <%= link_to orders_path(current_user) do %>
+    <li class="list-group-item" id="sibar_li">
+      Ιστορικό Παραγγελιών<i class="fa fa-chevron-right" aria-hidden="true" id="icon_right"></i>
     </li>
-    <a href="/about-us">
-      <li class="list-group-item" id="sibar_li">
-        Ιστορικό Παραγγελιών<i class="fa fa-chevron-right" aria-hidden="true" id="icon_right"></i>
-      </li>
-    </a>
-  </ul>
+  <%end%>
+</a>
+</ul>
 </div>

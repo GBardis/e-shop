@@ -22,16 +22,27 @@ Rails.application.routes.draw do
   resources :images
   resources :messages
   resources :products
+
   get '/profile/:id' => 'users#show', as: :profile
+
   get '/orders/:id' => 'orders#show', as: :orders
   get '/order_details/:id' => 'orders#order_details', as: :order_details
-  devise_for :users, controllers: { registrations: 'registrations', omniauth_callbacks: 'omniauth_callbacks', sessions: 'sessions' }
+
+  resources :transactions, only: [:new, :create]
+  delete '/transactions' => 'transactions#destroy', as: :transaction
+
+  devise_for :users, controllers: { registrations: 'registrations', omniauth_callbacks: 'omniauth_callbacks' }
 
   resource :favorite, only: [:show]
+
   resource :cart, only: [:show]
+
   resources :order_items, only: [:create, :update, :destroy] # , defaults: { format: 'js' } do
   # musts set default values because files are .js not erb #
-  resources :transactions, only: [:new, :create, :destroy]
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :addresses do
+    get 'delete'
+  end
+  put '/address/:id' => 'addresses#update', as: :address_update
+  post '/address' => 'addresses#create', as: :address_create
 end

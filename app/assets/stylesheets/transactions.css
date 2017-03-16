@@ -1,0 +1,184 @@
+.wizard
+{
+    margin: 20px auto;
+
+    background: #fff;
+}
+
+.wizard .nav-tabs
+{
+    position: relative;
+
+    margin: 40px auto;
+    margin-bottom: 0;
+
+    border-bottom-color: #e0e0e0;
+}
+
+.wizard > div.wizard-inner
+{
+    position: relative;
+}
+
+.connecting-line
+{
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    right: 0;
+    left: 0;
+
+    width: 80%;
+    height: 2px;
+    margin: 0 auto;
+
+    background: #e0e0e0;
+}
+
+.wizard .nav-tabs > li.active > a,
+.wizard .nav-tabs > li.active > a:hover,
+.wizard .nav-tabs > li.active > a:focus
+{
+    cursor: default;
+
+    color: #555;
+    border: 0;
+    border-bottom-color: transparent;
+}
+
+span.round-tab
+{
+    font-size: 25px;
+    line-height: 70px;
+
+    position: absolute;
+    z-index: 2;
+    left: 0;
+
+    display: inline-block;
+
+    width: 70px;
+    height: 70px;
+
+    text-align: center;
+
+    border: 2px solid #e0e0e0;
+    border-radius: 100px;
+    background: #fff;
+}
+span.round-tab i
+{
+    color: #555;
+}
+.wizard li.active span.round-tab
+{
+    border: 2px solid #5bc0de;
+    background: #fff;
+}
+.wizard li.active span.round-tab i
+{
+    color: #5bc0de;
+}
+
+span.round-tab:hover
+{
+    color: #333;
+    border: 2px solid #333;
+}
+
+.wizard .nav-tabs > li
+{
+    width: 25%;
+}
+
+.wizard li:after
+{
+    position: absolute;
+    bottom: 0;
+    left: 46%;
+
+    margin: 0 auto;
+
+    content: ' ';
+    transition: .1s ease-in-out;
+
+    opacity: 0;
+    border: 5px solid transparent;
+    border-bottom-color: #5bc0de;
+}
+
+.wizard li.active:after
+{
+    position: absolute;
+    bottom: 0;
+    left: 46%;
+
+    margin: 0 auto;
+
+    content: ' ';
+
+    opacity: 1;
+    border: 10px solid transparent;
+    border-bottom-color: #5bc0de;
+}
+
+.wizard .nav-tabs > li a
+{
+    width: 70px;
+    height: 70px;
+    margin: 20px auto;
+    padding: 0;
+
+    border-radius: 100%;
+}
+
+.wizard .nav-tabs > li a:hover
+{
+    background: transparent;
+}
+
+.wizard .tab-pane
+{
+    position: relative;
+
+    padding-top: 50px;
+}
+
+.wizard h3
+{
+    margin-top: 0;
+}
+
+@media( max-width : 585px )
+{
+    .wizard
+    {
+        width: 90%;
+        height: auto !important;
+    }
+
+    span.round-tab
+    {
+        font-size: 16px;
+        line-height: 50px;
+
+        width: 50px;
+        height: 50px;
+    }
+
+    .wizard .nav-tabs > li a
+    {
+        line-height: 50px;
+
+        width: 50px;
+        height: 50px;
+    }
+
+    .wizard li.active:after
+    {
+        position: absolute;
+        left: 35%;
+
+        content: ' ';
+    }
+}

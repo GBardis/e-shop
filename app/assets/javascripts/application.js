@@ -15,6 +15,8 @@
 //= require jquery.turbolinks
 //= require jquery.raty
 //= require ratyrate
+//= require bootstrap-sprockets
+//= require bootstrap
 //= require tinymce
 //= require_tree .
 
