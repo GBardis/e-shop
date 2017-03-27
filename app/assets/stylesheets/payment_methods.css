@@ -1,0 +1,21 @@
+#payment_method_row
+{
+    margin-top: 5%;
+}
+#payment_details
+{
+    padding-left: 0;
+}
+#payment_container
+{
+    margin-top: 5%;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+
+    border: solid 1px #ddd;
+}
+#payment_buttons
+{
+    margin-top: 5%;
+}

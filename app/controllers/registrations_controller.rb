@@ -1,10 +1,4 @@
 class RegistrationsController < Devise::RegistrationsController
-  after_action :create_order
-
-  def create_order
-    Order.new
-  end
-
   private
 
   def sign_up_params

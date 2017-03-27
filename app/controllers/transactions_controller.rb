@@ -20,7 +20,9 @@ class TransactionsController < ApplicationController
                 Braintree::Transaction.sale(
                   amount: current_user.orders.last.subtotal,
                   payment_method_nonce: params[:payment_method_nonce],
-
+                  options: {
+                    store_in_vault: false
+                  },
                   device_data: params[:device_data]
                 )
               else
@@ -47,7 +49,7 @@ class TransactionsController < ApplicationController
 
                   options: {
 
-                    store_in_vault_on_success: true
+                    store_in_vault: false
                   },
                   device_data: params[:device_data]
                 )

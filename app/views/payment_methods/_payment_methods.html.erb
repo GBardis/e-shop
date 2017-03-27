@@ -1,0 +1,14 @@
+<%= render 'users/profile_nav'%>
+<div class="col-xs-12 col-sm-9 " id="user_profile" style="border: solid #ddd 1px;">
+  <div class="row" id="address_header">
+    <div class="col-xs-12" >
+      <h5 style=""><strong>Τρόποι Πληρωμής</strong></h5>
+    </div>
+  </div>
+  <div class="row" id="address_text">
+    <p >Εδώ μπορείτε να δείτε τις κάρτες που εχετε αποθηκεύσει και μπορείτε να τις να τις αλλάξετε ή να τις διαγράψετε</p>
+  </div>
+  <% @user_payment_methods.each do |payment_method|%>
+    <%= render 'payment_method_row' , payment_method: payment_method%>
+  <%end%>
+</div>

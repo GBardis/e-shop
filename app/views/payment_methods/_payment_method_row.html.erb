@@ -1,0 +1,31 @@
+<div class="row" id="payment_container">
+  <div class="col-md-2 col-xs-2" id="payment_method_row">
+    <td><%= image_tag payment_method.image_url%></td>
+  </div>
+  <div class="col-md-8 col-xs-8" id="payment_details">
+    <table class="table table-list-search">
+      <thead>
+        <tr>
+          <td>Κάτοχος Κάρτας</td>
+          <td>Τελευτέα Τέσσερα Ψηφία της Κάρτας</td>
+          <td>Ημερομηνία Δημιουργίας</td>
+        </tr>
+      </thead>
+      <tbody >
+        <tr style="padding-top:100px;">
+          <td><%= payment_method.cardholder_name%></td>
+          <td>xxxx-xxxx-xxxx-<%= payment_method.last_4%></td>
+          <td><%= payment_method.created_at.strftime("%d %b. %Y %T")%></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-2 col-xs-2" id="payment_buttons">
+    <%= link_to  edit_payment_method_path(payment_method.token),remote: true, class: "btn btn-primary" do%>
+      <i class="fa fa-pencil" aria-hidden="true"></i>
+    <%end%>
+    <%= link_to  edit_payment_method_path(payment_method.token),remote: true, class: "btn btn-danger" do %>
+      <i class="fa fa-trash" aria-hidden="true"></i>
+    <%end%>
+  </div>
+</div>

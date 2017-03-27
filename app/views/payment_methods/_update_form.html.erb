@@ -1,0 +1,71 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title">Ενημέρωση Μεθόδου Πληρωμής</h4>
+    </div>
+    <div class="container">
+      <%= form_tag payment_method_path,method: :put,remote: true , html: { style: "display:inline;" } do %>
+        <div class="col-md-12">
+          <fieldset>
+            <div class="control-group">
+              <label>Card Holder's Name</label>
+              <div class="controls">
+                <%= text_field_tag :cardholder_name,"",class: "form-control", pattern: "\w+ \w+.*",title: "First and last name", required:""%>
+              </div>
+            </div>
+            <div class="control-group">
+              <label>Card Number</label>
+              <div class="controls">
+                <div class="row">
+                  <div class="col-md-12">
+                    <%= text_field_tag :number,"",autocomplete: false ,class: "form-control"%>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="control-group">
+              <label >Card Expiry Date</label>
+              <div class="controls">
+                <div class="row">
+                  <div class="col-md-9">
+                    <%= select_month(Date.today ,class: "form-control")%>
+                  </div>
+                  <div class="col-md-3">
+                    <select class="form-control" name="cc_exp_yr">
+                      <option>2014</option>
+                      <option>2015</option>
+                      <option>2016</option>
+                      <option>2017</option>
+                      <option>2018</option>
+                      <option>2019</option>
+                      <option>2020</option>
+                      <option>2021</option>
+                      <option>2022</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="control-group">
+              <label>Card CVV</label>
+              <div class="controls">
+                <div class="row">
+                  <div class="col-md-3">
+                    <input class="form-control" autocomplete="off" maxlength="3" pattern="\d{3}"
+                                title="Three digits on back of card" required="" type="text">
+                  </div>
+                  <div class="col-md-8"></div>
+                </div>
+              </div>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="button" class="btn btn-default">Cancel</button>
+            </div>
+          <%end%>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+</div>

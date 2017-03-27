@@ -45,4 +45,6 @@ Rails.application.routes.draw do
   end
   put '/address/:id' => 'addresses#update', as: :address_update
   post '/address' => 'addresses#create', as: :address_create
+
+  resources :payment_methods
 end

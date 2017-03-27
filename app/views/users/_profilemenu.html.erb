@@ -46,10 +46,21 @@
         <h5 style=""><strong>Ιστορικό Παραγγελιών</strong></h5>
       </li>
       <li class="list-group-item" style="border-bottom: 1px solid black" id="button_text">
-        <p>Προβολή ιστορικού παραγγελίων, εμφάνιση λεπτομεριών παραγγελίας </p>
+        <p>Προβολή ιστορικού παραγγελίων,λεπτομεριών παραγγελίας </p>
       </li>
       <li class="list-group-item" id="button_content">
         <%=link_to "Παραγγελίες",orders_path(current_user),class: "btn btn-primary btn-md"   %>
+      </li>
+    </ul>
+    <ul class="list-group" id="ul_content">
+      <li class="list-group-item" id="edit_content" >
+        <h5 style=""><strong>Τρόποι Πληρωμής</strong></h5>
+      </li>
+      <li class="list-group-item" style="border-bottom: 1px solid black" id="button_text">
+        <p>Προβολή των καρτων οπου εχουν αποθηκευτεί</p>
+      </li>
+      <li class="list-group-item" id="button_content">
+        <%=link_to "Διαχείριση Συναλλαγών",payment_methods_path,class: "btn btn-primary btn-md"   %>
       </li>
     </ul>
   </div>
