@@ -5,14 +5,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_order
 
   def current_order
-    # if session[:order_id].nil?
-    #  Order.new
-
-    # elsif !session[:order_id].nil? && current_user && current_user.orders
-    # !session[:order_id].nil? && current_user && current_user.orders
-    # current_user.orders.last
-    # end
-    if !session[:order_id].nil?
+    if !session[:order_id].nil? && !current_user
       Order.find(session[:order_id])
     elsif session[:order_id].nil?
       Order.new
@@ -20,16 +13,6 @@ class ApplicationController < ActionController::Base
       current_user.orders.last
     elsif current_user && !current_user.orders.exists?
       Order.new
-    else
-      Order.new
     end
-    # end
-
-    # if !session[:order_id].nil?
-    #  Order.find(session[:order_id])
-    # else
-
-    #  Order.new
-    # end
   end
 end

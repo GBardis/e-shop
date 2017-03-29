@@ -8,13 +8,15 @@
   <div class="row" id="address_text">
     <p >Εδώ μπορείτε να δείτε τις διευθύνσεις σας και μπορείτε να τις να τις αλλάξετε ή να τις διαγράψετε</p>
   </div>
-  <div class="row" id="addresses_row">
-    <% @user_addresses.each do |address| %>
-      <div class="col-xs-12 col-sm-4 " id="address_rows">
-        <%= render 'addresses/address_row', address: address %>
-      </div>
-    <%end%>
-  </div>
+  <% if !current_user.braintree_customer_id.nil?%>
+    <div class="row" id="addresses_row">
+      <% @user_addresses.each do |address| %>
+        <div class="col-xs-12 col-sm-4 " id="address_rows">
+          <%= render 'addresses/address_row', address: address %>
+        </div>
+      <%end%>
+    </div>
+  <%end%>
 </div>
 <div class="col-sm-12 pull-right" id="address_new">
   <%= link_to "Νεα Διεύθυνση", new_address_path,remote: true,class:"btn btn-primary"%>

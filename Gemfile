@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+# ruby '2.2.6'
 gem 'devise'
 
 gem 'devise-i18n'
@@ -71,7 +71,7 @@ gem 'tinymce-rails'
 gem 'braintree'
 gem 'figaro'
 gem 'gon'
-
+gem 'rails_12factor'
 gem 'bootstrap-sass'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
@@ -116,7 +116,6 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'binding_of_caller'
   gem 'better_errors'
-  gem 'rails_12factor'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

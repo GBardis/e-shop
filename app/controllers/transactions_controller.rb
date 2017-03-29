@@ -1,59 +1,45 @@
 class TransactionsController < ApplicationController
-  #  before_action :authenticate_user!
   before_action :check_cart!
-
+  before_action :validate_authorization_for_user
   def new
     gon.client_token = generate_client_token
-    @addresses = Address.where(user_id: current_user.id)
-    @user_addresses = []
-    @addresses.each do |address|
-      @result_find = Braintree::Address.find(
-        current_user.braintree_customer_id,
-        address.address_id
-      )
-      @user_addresses << @result_find
+    unless current_user.braintree_customer_id.nil?
+      @addresses = Address.where(user_id: current_user.id)
+      @user_addresses = []
+      @addresses.each do |address|
+        @result_find = Braintree::Address.find(
+          current_user.braintree_customer_id,
+          address.address_id
+        )
+        @user_addresses << @result_find
+      end
     end
   end
 
   def create
-    @result = if current_user.has_payment_info?
-                Braintree::Transaction.sale(
-                  amount: current_user.orders.last.subtotal,
-                  payment_method_nonce: params[:payment_method_nonce],
-                  options: {
-                    store_in_vault: false
-                  },
-                  device_data: params[:device_data]
-                )
-              else
-                Braintree::Transaction.sale(
-                  amount: current_user.orders.last.subtotal,
-                  payment_method_nonce: params[:payment_method_nonce],
-                  shipping_address: ad.id,
-                  customer: {
-                    first_name: params[:first_name],
-                    last_name: params[:last_name],
-                    email: current_user.email,
-                    phone: params[:phone]
+    @result =
+      Braintree::Transaction.sale(
+        amount: current_user.orders.last.subtotal,
+        payment_method_nonce: params[:payment_method_nonce],
+        shipping_address_id: params[:address],
+        customer_id: current_user.braintree_customer_id,
+        customer: {
+          first_name: params[:first_name],
+          last_name: params[:last_name],
+          email: params[:email],
+          phone: params[:phone]
+        },
+        billing: {
+          first_name: params[:first_name],
+          last_name: params[:last_name],
+          street_address: params[:street_address],
+          postal_code: params[:postal_code],
+          locality: params[:locality],
+          region: params[:region]
+        },
 
-                  },
-                  billing: {
-                    first_name: params[:first_name],
-                    last_name: params[:last_name],
-                    phone: params[:phone],
-                    street_address: params[:street_address],
-                    postal_code: params[:postal_code],
-                    locality: params[:locality],
-                    region: params[:region]
-                  },
-
-                  options: {
-
-                    store_in_vault: false
-                  },
-                  device_data: params[:device_data]
-                )
-              end
+        device_data: params[:device_data]
+      )
 
     if @result.success?
       current_user.update(braintree_customer_id: @result.transaction.customer_details.id) unless current_user.has_payment_info?
@@ -86,20 +72,27 @@ class TransactionsController < ApplicationController
   private
 
   def check_cart!
-    if current_user.orders.last.blank?
+    if current_user
+      if current_user.orders.last.blank?
+        redirect_to root_url, alert: 'Please add some items to your cart before processing your transaction!'
+      end
+    elsif current_order.order_items.blank?
       redirect_to root_url, alert: 'Please add some items to your cart before processing your transaction!'
     end
   end
 
   def generate_client_token
-    if current_user.has_payment_info?
-      Braintree::ClientToken.generate(customer_id: current_user.braintree_customer_id)
-    else
-      Braintree::ClientToken.generate
-    end
+    Braintree::ClientToken.generate if current_user.has_payment_info?
   end
 
   def payment_method_token_params
     payment_method_token.require(:payment_method_token).permit(:token)
+  end
+
+  def validate_authorization_for_user
+    unless current_user
+      redirect_to new_user_session_path
+      flash[:notice] = 'Πρέπει να συνδεθείτε για να μπορέσετε να συνεχίσετε στην αγορα ή να κάνετε μια νέα εγγραφή'
+    end
   end
 end

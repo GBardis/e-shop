@@ -1,8 +1,6 @@
 class OrderItemsController < ApplicationController
-  # before_action :find_product
-
   def create
-    # if current_user.orders.last.order_items.empty?
+    # if current_user.orders.last.nil?
     @order = current_order
     @order.user_id = current_user.id if current_user
     @order_item = @order.order_items.new(order_item_params)
@@ -11,10 +9,14 @@ class OrderItemsController < ApplicationController
     respond_to do |format|
       format.js { render 'order_items/create.js.erb' }
     end
-    #  else
-    # @order = current_user.orders.last
-    # @order_item = @order.order_items.first
-    # @order_item.update_attribute(:quantity, @order_item.quantity + 1)
+    # else
+    # @order = if current_user
+    #         current_user.orders.last
+    #       else
+    #       current_order
+    #     end
+    #  @order_item = OrderItem.where(product_id: params[:product_id])
+    # @order_item.update(quantity: @order_item.quantity += 1)
     # @order_items = @order.order_items
     # respond_to do |format|
     #  format.js { render 'order_items/create.js.erb' }
@@ -23,38 +25,38 @@ class OrderItemsController < ApplicationController
   end
 
   def update
-    if current_user.orders.in_progress.exists?
-      @order = current_user.orders.last
-      @order_item = @order.order_items.find(params[:id])
-      @order_item.update_attributes(order_item_params)
-      @order_items = @order.order_items
-      respond_to do |format|
-        format.js { render 'order_items/update.js.erb' }
-      end
+    @order = if current_user
+               current_user.orders.last
+             else
+               current_order
+             end
+    @order_item = @order.order_items.find(params[:id])
+    @order_item.update_attributes(order_item_params)
+    @order_items = @order.order_items
+    respond_to do |format|
+      format.js { render 'order_items/update.js.erb' }
     end
   end
 
   def destroy
-    if current_user.orders.in_progress.exists?
-      @order = current_user.orders.last
-      @order_item = @order.order_items.find(params[:id])
-      @order_item.destroy
-      @order_items = @order.order_items
-      if @order.order_items.empty?
-        @order.destroy
-        session[:order_id] = nil
-      end
-      respond_to do |format|
-        format.js { render 'order_items/destroy.js.erb' }
-      end
+    @order = if current_user
+               current_user.orders.last
+             else
+               current_order
+             end
+    @order_item = @order.order_items.find(params[:id])
+    @order_item.destroy
+    @order_items = @order.order_items
+    if @order.order_items.empty?
+      @order.destroy
+      session[:order_id] = nil
+    end
+    respond_to do |format|
+      format.js { render 'order_items/destroy.js.erb' }
     end
   end
 
   private
-
-  def find_product
-    @product = Product.find(params[:product_id])
-  end
 
   def order_item_params
     params.require(:order_item).permit(:quantity, :product_id, :order_id, :user_id)

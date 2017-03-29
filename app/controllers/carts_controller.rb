@@ -1,9 +1,11 @@
 class CartsController < ApplicationController
-  before_action :validate_authorization_for_user
+  # before_action :validate_authorization_for_user
   def show
-    if current_user.orders.in_progress.exists?
-      @order_items = current_user.orders.last.order_items
-    end
+    @order_items = if current_user && current_user.orders.exists?
+                     current_user.orders.last.order_items
+                   else
+                     current_order.order_items
+                   end
   end
 
   def validate_authorization_for_user

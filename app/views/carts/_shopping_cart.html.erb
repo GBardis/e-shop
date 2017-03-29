@@ -9,7 +9,7 @@
 <% end %>
 <% if @order_items.size == 0 %>
   <p class="text-center">
-    There are no items in your shopping cart.  Please <%= link_to "go back", root_path %> and add some items to your cart.
+    Το Καλάθι είναι άδειο .Παρακαλώ και προσθέστε κάποιο προιόν.<%= link_to "Πίσω", root_path %>
   </p>
 <% else %>
   <% @order_items.each do |order_item| %>
@@ -23,7 +23,11 @@
       <%end%>
     </div>
     <div class="col-md-3 pull-right">
-      <%=link_to "checkout",new_transaction_path, class: "btn btn-success btn-block" unless current_user.orders.last.blank?%>
+      <%if current_user%>
+        <%=link_to "checkout",new_transaction_path, class: "btn btn-success btn-block" unless current_user.orders.last.blank?%>
+      <%else%>
+        <%=link_to "checkout",new_transaction_path, class: "btn btn-success btn-block"unless current_order.order_items.blank?%>
+      <%end%>
       <!--Checkout <i class="fa fa-angle-right"></i>-->
     </div>
   </div>

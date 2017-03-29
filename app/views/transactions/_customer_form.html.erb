@@ -1,15 +1,20 @@
-<div class="col-sm-4">
-  <p>Προσωπικά Στοιχεία</p>
-  <div class="form-group">
-    <%= text_field_tag :first_name,"",placeholder: "Όνομα", class: "form-control" %>
+<% if current_user.braintree_customer_id.nil?%>
+  <div class="col-sm-4">
+    <p>Προσωπικά Στοιχεία</p>
+    <div class="form-group">
+      <%= text_field_tag :first_name,"",placeholder: "Όνομα", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= text_field_tag :last_name, "",placeholder: "Επίθετο", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= text_field_tag :email, "",placeholder: "Phone", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= text_field_tag :phone, "",placeholder: "Phone", class: "form-control" %>
+    </div>
   </div>
-  <div class="form-group">
-    <%= text_field_tag :last_name, "",placeholder: "Επίθετο", class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= text_field_tag :phone, "",placeholder: "Phone", class: "form-control" %>
-  </div>
-</div>
+<%end%>
 <div class="col-sm-4">
   <p>Στοιχεία Χρέωσεις</p>
   <div class="form-group">
@@ -17,9 +22,6 @@
   </div>
   <div class="form-group">
     <%= text_field_tag :last_name,"",placeholder: "Επίθετο", class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= text_field_tag :phone,"",placeholder: "Phone", class: "form-control" %>
   </div>
   <div class="form-group">
     <%= text_field_tag :street_address,"",placeholder: "Διεύθυνση", class: "form-control" %>
@@ -52,7 +54,7 @@
   <%else%>
     <div class="form-group">
       <label class="addresses_select">Επιλέξτε μια διεύθυνση</label>
-      <%= select_tag "Διευθύνσεις", options_for_select(@user_addresses.collect{|ad| [ad.street_address,ad.id]}),class: "form-control",id: "addresses_select"%>
+      <%= select_tag :address, options_for_select(@user_addresses.collect{|ad| [ad.street_address,ad.id]}),class: "form-control",id: "addresses_select"%>
     </div>
   </div>
 <%end%>

@@ -5,11 +5,11 @@ class User < ApplicationRecord
   has_many :orders, dependent: :destroy
   has_many :authorizations
   has_many :messages
-  has_many :comments
+  has_many :comments, dependent: :destroy
   has_many :favorite_products, dependent: :destroy
   has_many :favorites, through: :favorite_products, source: :product
   has_many :payment_methods_tokens, dependent: :destroy
-  has_many :addresses
+  has_many :addresses, dependent: :destroy
 
   ratyrate_rater
   def self.new_with_session(params, session)
