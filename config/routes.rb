@@ -47,4 +47,7 @@ Rails.application.routes.draw do
   post '/address' => 'addresses#create', as: :address_create
 
   resources :payment_methods
+
+  get 'checkout/launch' => 'transactions#new_customer'
+  post 'checkout/launch' => 'transactions#create_customer'
 end

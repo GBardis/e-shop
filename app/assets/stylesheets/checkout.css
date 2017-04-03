@@ -1,0 +1,50 @@
+#launch_header
+{
+    border-bottom: solid 1px black;
+}
+#checkout_login
+{
+    margin-top: 5%;
+}
+
+#checkout_login p
+{
+    margin-bottom: 10%;
+}
+#guest_user_login
+{
+    width: 45%;
+    margin-right: 5%;
+    margin-bottom: 10%;
+
+    background-color: #eee;
+}
+#checkout_login h3
+{
+    margin-top: 15px;
+    margin-bottom: 5%;
+
+    text-align: center;
+}
+#guest_btn
+{
+    font-size: 20px;
+
+    float: right;
+
+    margin-bottom: 4%;
+}
+#register_user_btn
+{
+    font-size: 20px;
+
+    margin-top: 20%;
+    margin-bottom: 19px;
+}
+#register_user_login
+{
+    width: 45%;
+    margin-right: 5%;
+
+    background-color: #eee;
+}

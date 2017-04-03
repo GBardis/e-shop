@@ -1,0 +1,20 @@
+<div class="row" id="launch_header">
+  <h2>Ολοκλήρωση αγοράς</h2>
+</div>
+<div class="row" id="checkout_login">
+  <div class="col-xs-12 col-md-6" id="guest_user_login">
+    <h3>Οι επισκέπτες και νέοι πελάτες</h3>
+    <p>Ολοκληρώστε την παραγγελία σας ως επισκέπτης χωρίς εγγραφή ή μπορείτε να δημιουργήσετε ένα λογαριασμό για να μπορείτε ολοκλήρωση της παραγγελίας πιο γρήγορα σε μελλοντικές παραγγελίες!</p>
+    <%= form_tag checkout_launch_path do %>
+      <div class="form-group">
+        <%= text_field_tag :email,"",placeholder: "Email", class: "form-control"%>
+      </div>
+      <%=submit_tag "Αγορά Σαν Επισκέπτης" , class: "btn btn-success btn-block", id: "guest_btn" %>
+    <%end%>
+  </div>
+  <div class="col-xs-12 col-md-6" id="register_user_login">
+    <h3>Εχετε Ήδη Λογαριασμό?</h3>
+    <p>Αν έχετε ήδη έναν λογαριασμό μαζί μας, το μόνο που έχετε να κάνετε είναι να συνδεθείτε παρακάτω και επιβεβαιώστε τα στοιχεία σας για να ολοκληρώσετε την παραγγελία σας!</p>
+    <%= link_to "Συνδεθείτε",new_user_session_path,class:"btn btn-success btn-block", id:"register_user_btn"%>
+  </div>
+</div>

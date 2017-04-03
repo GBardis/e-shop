@@ -1,19 +1,21 @@
-<% if current_user.braintree_customer_id.nil?%>
-  <div class="col-sm-4">
-    <p>Προσωπικά Στοιχεία</p>
-    <div class="form-group">
-      <%= text_field_tag :first_name,"",placeholder: "Όνομα", class: "form-control" %>
+<%if current_user%>
+  <% if current_user.braintree_customer_id.nil?%>
+    <div class="col-sm-4">
+      <p>Προσωπικά Στοιχεία</p>
+      <div class="form-group">
+        <%= text_field_tag :first_name,"",placeholder: "Όνομα", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= text_field_tag :last_name, "",placeholder: "Επίθετο", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= text_field_tag :email, "",placeholder: "Phone", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= text_field_tag :phone, "",placeholder: "Phone", class: "form-control" %>
+      </div>
     </div>
-    <div class="form-group">
-      <%= text_field_tag :last_name, "",placeholder: "Επίθετο", class: "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= text_field_tag :email, "",placeholder: "Phone", class: "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= text_field_tag :phone, "",placeholder: "Phone", class: "form-control" %>
-    </div>
-  </div>
+  <%end%>
 <%end%>
 <div class="col-sm-4">
   <p>Στοιχεία Χρέωσεις</p>

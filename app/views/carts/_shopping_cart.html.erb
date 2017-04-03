@@ -26,8 +26,7 @@
       <%if current_user%>
         <%=link_to "checkout",new_transaction_path, class: "btn btn-success btn-block" unless current_user.orders.last.blank?%>
       <%else%>
-        <%=link_to "checkout",new_transaction_path, class: "btn btn-success btn-block"unless current_order.order_items.blank?%>
-      <%end%>
+        <%=link_to "checkout",checkout_launch_path, class: "btn btn-success btn-block" unless current_order.order_items.blank?%><%end%>
       <!--Checkout <i class="fa fa-angle-right"></i>-->
     </div>
   </div>

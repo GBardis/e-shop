@@ -1,17 +1,38 @@
 class TransactionsController < ApplicationController
   before_action :check_cart!
-  before_action :validate_authorization_for_user
-  def new
+  # before_action :validate_authorization_for_user
+
+  def new_customer
     gon.client_token = generate_client_token
-    unless current_user.braintree_customer_id.nil?
-      @addresses = Address.where(user_id: current_user.id)
-      @user_addresses = []
-      @addresses.each do |address|
-        @result_find = Braintree::Address.find(
-          current_user.braintree_customer_id,
-          address.address_id
-        )
-        @user_addresses << @result_find
+  end
+
+  def create_customer
+    unless current_user
+      @result = Braintree::Customer.create(
+        id: gon.client_token,
+        email: params[:email]
+      )
+      if @result.success?
+        @user_id = @result.customer.id
+        redirect_to new_transaction_path
+      end
+    end
+  end
+
+  def new
+    gon.client_token = generate_client_token if current_user
+
+    if current_user
+      unless current_user.braintree_customer_id.nil?
+        @addresses = Address.where(user_id: current_user.id)
+        @user_addresses = []
+        @addresses.each do |address|
+          @result_find = Braintree::Address.find(
+            current_user.braintree_customer_id,
+            address.address_id
+          )
+          @user_addresses << @result_find
+        end
       end
     end
   end
@@ -82,7 +103,11 @@ class TransactionsController < ApplicationController
   end
 
   def generate_client_token
-    Braintree::ClientToken.generate if current_user.has_payment_info?
+    if current_user
+      Braintree::ClientToken.generate if current_user.has_payment_info?
+    else
+      Braintree::ClientToken.generate
+    end
   end
 
   def payment_method_token_params

@@ -1,0 +1,67 @@
+.footer-links
+{
+    padding: 25px 0 40px;
+
+    border-top: 1px solid #bcbcbc;
+    background: #e8e8e8;
+}
+.footer-links h5
+{
+    margin-bottom: 20px;
+
+    text-transform: uppercase;
+}
+.footer-links ul
+{
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+.footer-links li
+{
+    font-size: 12px;
+
+    padding: 2px 0;
+}
+.footer-links li,
+.footer-links li a,
+.footer-links .last h4.lead
+{
+    color: #8b8b8b;
+}
+.footer-links li a:hover,
+.footer-links .last li a
+{
+    color: #333;
+}
+.footer-links .last h4.lead
+{
+    font-size: 24px;
+
+    margin-bottom: 0;
+}
+.footer-links .last h4.lead span
+{
+    color: #151515;
+}
+
+/* Copyright Styles Starts */
+
+.copyright
+{
+    font-size: 13px;
+
+    padding: 18px 0 8px;
+
+    background: #252a2f;
+}
+.copyright,
+.copyright a
+{
+    color: #ffb400;
+}
+.copyright p
+{
+    padding-top: 4px;
+}

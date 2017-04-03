@@ -3,6 +3,10 @@
     <%= render 'transactions/customer_form' %>
     <div id="dropin"></div>
     <%#= link_to "delete",transaction_path(),method: :delete, class: "btn btn-danger" %>
-    <%=submit_tag "Pay #{current_user.orders.last.subtotal}$", class: "button mt1" %>
-  </div>
+    <%if current_user%>
+      <%=submit_tag "Pay #{current_user.orders.last.subtotal}$", class: "button mt1" %>
+    <%else%>
+      <%=submit_tag "Pay #{current_order.subtotal}$", class: "button mt1" %>
+    </div>
+  <%end%>
 <%end%>

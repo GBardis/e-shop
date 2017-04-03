@@ -1,0 +1,101 @@
+<div class="footer-links">
+  <!-- Container Starts -->
+  <div class="container">
+    <!-- Information Links Starts -->
+    <div class="col-md-2 col-sm-6">
+      <h5>πληροφοριες</h5>
+      <ul>
+        <li><a href="about.html">Σχετικά με εμάς</a></li>
+        <li><a href="#">Πληροφορίες αποστολής</a></li>
+        <li><a href="#">Πολιτική Προστασίας Προσωπικών Δεδομένων</a></li>
+        <li><a href="#">Όροι &amp; Συνθήκες</a></li>
+      </ul>
+    </div>
+    <!-- Information Links Ends -->
+    <!-- My Account Links Starts -->
+    <div class="col-md-2 col-sm-6">
+      <h5>Λογαργιασμός</h5>
+    </h5>
+    <% if current_user%>
+      <ul>
+        <li><%= link_to "Παραγγελίες",orders_path(current_user)%></li>
+        <li><%= link_to "Διευθύνσεις",address_path(current_user)%></li>
+        <li><%= link_to "Προφίλ",profile_path(current_user)%></li>
+      </ul>
+    <%else%>
+      <ul>
+        <li><%= link_to "Παραγγελίες",new_user_session_path%></li>
+        <li><%= link_to "Διευθύνσεις",new_user_session_path%></li>
+        <li><%= link_to "Προφίλ",new_user_session_path%></li>
+      </ul>
+    <%end%>
+  </div>
+  <!-- My Account Links Ends -->
+  <!-- Customer Service Links Starts -->
+  <div class="col-md-2 col-sm-6">
+    <h5>Υπηρεσιες</h5>
+    <ul>
+      <li><%= link_to"Επικοινωνία", new_message_path%></li>
+      <li><a href="#">Επιστροφές</a></li>
+    </ul>
+  </div>
+  <!-- Customer Service Links Ends -->
+  <!-- Follow Us Links Starts -->
+  <div class="col-md-2 col-sm-6">
+    <h5>Ακολουθηστε μας</h5>
+    <ul>
+      <li><a href="#">Facebook</a></li>
+      <li><a href="#">Twitter</a></li>
+    </ul>
+  </div>
+  <!-- Follow Us Links Ends -->
+  <!-- Contact Us Starts -->
+  <div class="col-md-4 col-sm-12 last">
+    <h5>Επικοινωνηστε Μαζι μας</h5>
+    <ul>
+      <li>Η Εταιρία μας</li>
+      <li>
+        Λεωφόρος Βεΐκου 37, Γαλάτσι 111 46, Ελλάδα
+			</li>
+      <li>
+        Email: <a href="#">email@email.com</a>
+      </li>
+    </ul>
+    <h4 class="lead">
+      Tηλ: <span>210 2224672</span>
+    </h4>
+  </div>
+  <!-- Contact Us Ends -->
+</div>
+<!-- Container Ends -->
+</div>
+<div class="copyright">
+  <!-- Container Starts -->
+  <div class="container">
+    <!-- Starts -->
+    <p class="pull-left">
+      &nbsp; @<%= Time.current.year %>    Άποψη.Designed By George Bardis</a>
+  </p>
+  <!-- Ends -->
+  <!-- Payment Gateway Links Starts -->
+  <!--<ul class="pull-right list-inline">
+      <li>
+        <img src="images/payment-icon/cirrus.png" alt="PaymentGateway">
+      </li>
+      <li>
+        <img src="images/payment-icon/paypal.png" alt="PaymentGateway">
+      </li>
+      <li>
+        <img src="images/payment-icon/visa.png" alt="PaymentGateway">
+      </li>
+      <li>
+        <img src="images/payment-icon/mastercard.png" alt="PaymentGateway">
+      </li>
+      <li>
+        <img src="images/payment-icon/americanexpress.png" alt="PaymentGateway">
+      </li>
+    </ul>
+    <!-- Payment Gateway Links Ends -->
+</div>
+<!-- Container Ends -->
+</div>
