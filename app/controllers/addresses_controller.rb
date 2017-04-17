@@ -7,9 +7,11 @@ class AddressesController < ApplicationController
   end
 
   def create
+
     if current_user.braintree_customer_id.nil?
       @result = Braintree::Customer.create(
-        id: gon.client_token,
+        first_name: current_user.name,
+        last_name: current_user.last_name,
         email: current_user.email
       )
       if @result.success?

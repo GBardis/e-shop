@@ -23,8 +23,8 @@
     </div>
     <%= yield %>
     <%=render "layouts/footer"%>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
   </body>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-  <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </html>

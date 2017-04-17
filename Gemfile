@@ -19,7 +19,6 @@ gem 'htmlbeautifier'
 gem 'ruby-beautify'
 
 gem 'rubocop'
-
 gem 'paperclip'
 
 # gem 'simple_form'
@@ -66,9 +65,9 @@ gem 'omniauth-twitter'
 gem 'twitter'
 gem 'koala'
 gem 'tinymce-rails'
-
+gem 'wicked'
 ## baintree ##
-gem 'braintree'
+gem "braintree", "~> 2.73.0"
 gem 'figaro'
 gem 'gon'
 gem 'rails_12factor'
@@ -119,4 +118,4 @@ group :development do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+#gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

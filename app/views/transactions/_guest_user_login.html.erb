@@ -5,11 +5,11 @@
   <div class="col-xs-12 col-md-6" id="guest_user_login">
     <h3>Οι επισκέπτες και νέοι πελάτες</h3>
     <p>Ολοκληρώστε την παραγγελία σας ως επισκέπτης χωρίς εγγραφή ή μπορείτε να δημιουργήσετε ένα λογαριασμό για να μπορείτε ολοκλήρωση της παραγγελίας πιο γρήγορα σε μελλοντικές παραγγελίες!</p>
-    <%= form_tag checkout_launch_path do %>
+    <%= form_tag create_customer_transactions_path do %>
       <div class="form-group">
         <%= text_field_tag :email,"",placeholder: "Email", class: "form-control"%>
       </div>
-      <%=submit_tag "Αγορά Σαν Επισκέπτης" , class: "btn btn-success btn-block", id: "guest_btn" %>
+      <%= submit_tag "Αγορά Σαν Επισκέπτης" , class: "btn btn-success btn-block", id: "guest_btn" %>
     <%end%>
   </div>
   <div class="col-xs-12 col-md-6" id="register_user_login">

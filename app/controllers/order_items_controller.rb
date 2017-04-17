@@ -26,10 +26,10 @@ class OrderItemsController < ApplicationController
 
   def update
     @order = if current_user
-               current_user.orders.last
-             else
-               current_order
-             end
+      current_user.orders.last
+    else
+      current_order
+    end
     @order_item = @order.order_items.find(params[:id])
     @order_item.update_attributes(order_item_params)
     @order_items = @order.order_items
@@ -40,10 +40,10 @@ class OrderItemsController < ApplicationController
 
   def destroy
     @order = if current_user
-               current_user.orders.last
-             else
-               current_order
-             end
+      current_user.orders.last
+    else
+      current_order
+    end
     @order_item = @order.order_items.find(params[:id])
     @order_item.destroy
     @order_items = @order.order_items

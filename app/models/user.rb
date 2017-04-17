@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+  :recoverable, :rememberable, :trackable, :validatable, :omniauthable
   validates_presence_of :email
   has_many :orders, dependent: :destroy
   has_many :authorizations
@@ -52,4 +52,5 @@ class User < ApplicationRecord
   def has_payment_info?
     braintree_customer_id
   end
+
 end

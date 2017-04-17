@@ -1,5 +1,23 @@
-<%if current_user%>
-  <% if current_user.braintree_customer_id.nil?%>
+<div class="container">
+  <%if current_user%>
+    <% if current_user.braintree_customer_id.nil?%>
+      <div class="col-sm-4">
+        <p>Προσωπικά Στοιχεία</p>
+        <div class="form-group">
+          <%= text_field_tag :first_name,"",placeholder: "Όνομα", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= text_field_tag :last_name, "",placeholder: "Επίθετο", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= text_field_tag :email, "",placeholder: "Phone", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= text_field_tag :phone, "",placeholder: "Phone", class: "form-control" %>
+        </div>
+      </div>
+    <%end%>
+  <%else%>
     <div class="col-sm-4">
       <p>Προσωπικά Στοιχεία</p>
       <div class="form-group">
@@ -16,47 +34,53 @@
       </div>
     </div>
   <%end%>
-<%end%>
-<div class="col-sm-4">
-  <p>Στοιχεία Χρέωσεις</p>
-  <div class="form-group">
-    <%= text_field_tag :first_name,"",placeholder: "Όνομα", class: "form-control" %>
+  <div class="col-sm-4">
+    <p>Στοιχεία Χρέωσεις</p>
+    <div class="form-group">
+      <%= text_field_tag :first_name,"",placeholder: "Όνομα", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= text_field_tag :last_name,"",placeholder: "Επίθετο", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= text_field_tag :street_address,"",placeholder: "Διεύθυνση", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= text_field_tag :region,"",placeholder: "Νομός", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= text_field_tag :locality,"",placeholder: "Πόλη", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= text_field_tag :postal_code,"",placeholder: "T.K", class: "form-control" %>
+    </div>
   </div>
-  <div class="form-group">
-    <%= text_field_tag :last_name,"",placeholder: "Επίθετο", class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= text_field_tag :street_address,"",placeholder: "Διεύθυνση", class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= text_field_tag :region,"",placeholder: "Νομός", class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= text_field_tag :locality,"",placeholder: "Πόλη", class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= text_field_tag :postal_code,"",placeholder: "T.K", class: "form-control" %>
-  </div>
+  <div class="col-sm-4">
+    <%if current_user.addresses.blank?%>
+      <p>Διεύθυνση Αποστολής</p>
+      <div class="form-group">
+        <%= text_field_tag :first_name_ship, "",placeholder: "Όνομα", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= text_field_tag :last_name_ship, "",placeholder: "Επώνυμο'", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= text_field_tag :street_address_ship, "",placeholder: "Διεύθυνση", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= text_field_tag :region_ship, "",placeholder: "Νομός", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= text_field_tag :locality_ship, "",placeholder: "Πόλη", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= text_field_tag :postal_code_ship, "",placeholder: "T.K", class: "form-control" %>
+      </div>
+    <%else%>
+      <div class="form-group">
+        <label class="addresses_select">Επιλέξτε μια διεύθυνση</label>
+        <%= select_tag :address, options_for_select(@user_addresses.collect{|ad| [ad.street_address,ad.id]}),class: "form-control",id: "addresses_select"%>
+      </div>
+    </div>
+  <%end%>
 </div>
-<div class="col-sm-4">
-  <%if @user_addresses.nil?%>
-    <p>Διεύθυνση Αποστολής</p>
-    <div class="form-group">
-      <%= text_field_tag :street_address_ship, "",placeholder: "Διεύθυνση", class: "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= text_field_tag :region_ship, "",placeholder: "Νομός", class: "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= text_field_tag :locality_ship, "",placeholder: "Πόλη", class: "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= text_field_tag :postal_code__ship, "",placeholder: "T.K", class: "form-control" %>
-    </div>
-  <%else%>
-    <div class="form-group">
-      <label class="addresses_select">Επιλέξτε μια διεύθυνση</label>
-      <%= select_tag :address, options_for_select(@user_addresses.collect{|ad| [ad.street_address,ad.id]}),class: "form-control",id: "addresses_select"%>
-    </div>
-  </div>
-<%end%>

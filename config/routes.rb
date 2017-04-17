@@ -28,7 +28,12 @@ Rails.application.routes.draw do
   get '/orders/:id' => 'orders#show', as: :orders
   get '/order_details/:id' => 'orders#order_details', as: :order_details
 
-  resources :transactions, only: [:new, :create]
+  resources :transactions, only: [:new, :create] do
+    collection do
+      get 'new_customer', to: 'transactions#new_customer'
+      post 'create_customer',to: 'transactions#create_customer'
+    end
+  end
   delete '/transactions' => 'transactions#destroy', as: :transaction
 
   devise_for :users, controllers: { registrations: 'registrations', omniauth_callbacks: 'omniauth_callbacks' }
@@ -48,6 +53,6 @@ Rails.application.routes.draw do
 
   resources :payment_methods
 
-  get 'checkout/launch' => 'transactions#new_customer'
-  post 'checkout/launch' => 'transactions#create_customer'
+  #get 'checkout/launch' => 'transactions#new_customer'
+  #post 'checkout/launch' => 'transactions#create_customer'
 end

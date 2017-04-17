@@ -55,7 +55,7 @@
         <% if current_user%>
           <%=link_to "checkout",new_transaction_path, class: "btn-md" unless current_user.orders.last.blank?%>
         <%else%>
-          <%=link_to "checkout",checkout_launch_path, class: "btn-md" unless current_order.order_items.blank?%>
+          <%= link_to "checkout",new_customer_transactions_path,method: :get, class: "btn-md" unless current_order.order_items.blank?%>
         <%end%>
       </p>
     </li>
