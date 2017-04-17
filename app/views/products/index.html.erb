@@ -8,13 +8,6 @@
       <%= sortable "updated_at", "Ημερομηνία" %>
     </li>
   </ul>
-  <% if current_user%>
-    <% current_user.orders.each do |order|%>
-      <% order.order_items.each do |item| %>
-        <%= @products.find(item.product.id).title%>
-      <% end %>
-    <% end %>
-  <% end %>
   <div id="categories-list" class="row list-group">
     <% @products.each do |product| %>
       <%= render "product_row", product: product, order_item: @order_item %>

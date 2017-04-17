@@ -55,9 +55,11 @@ class TransactionsController < ApplicationController
         device_data: params[:device_data]
       )
       if @result.success?
-        redirect_to root_url, notice: 'H Συναλλαγή σας ολοκληρώθηκε με επιτυχία'
         @order = Order.where(id: current_order.id, user_id: current_user.id)
+        #order change status to invoiced
         @order.update(status: 3)
+        session[:order_id] = nil
+        redirect_to root_url, notice: 'H Συναλλαγή σας ολοκληρώθηκε με επιτυχία'
       else
         flash[:alert] = 'Κάτα δεν πήγε καλά, προσπαθήστε ξανά!'
         gon.client_token = generate_client_token

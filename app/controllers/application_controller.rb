@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-
+  before_action :order
   before_action :current_order
   helper_method :current_order
 
@@ -9,10 +9,18 @@ class ApplicationController < ActionController::Base
       Order.find(session[:order_id])
     elsif session[:order_id].nil? && !current_user
       Order.new
-    elsif current_user && current_user.orders.exists?
-      current_user.orders.last
-    elsif current_user && !current_user.orders.exists?
+    elsif current_user && !@order_inprogress.blank?
+      current_user.orders.in_progress.last
+    elsif current_user && @order_inprogress.nil?
       Order.new
+    end
+  end
+
+  private
+
+  def order
+    if current_user.orders.exists?
+      @order_inprogress = Order.where(user_id: current_user.id , status: "in_progress").take
     end
   end
 end

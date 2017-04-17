@@ -57,10 +57,10 @@ gem 'yaml_db'
 gem 'omniauth'
 gem 'omniauth-oauth2'
 gem 'omniauth-facebook'
-gem 'omniauth-github'
+#gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
 # gem 'google-api-client'
-gem 'omniauth-linkedin-oauth2'
+#gem 'omniauth-linkedin-oauth2'
 gem 'omniauth-twitter'
 gem 'twitter'
 gem 'koala'
@@ -115,6 +115,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'binding_of_caller'
   gem 'better_errors'
+  # gem 'bullet'
+  # gem "uniform_notifier"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

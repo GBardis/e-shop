@@ -1,4 +1,4 @@
-<%if current_user &&  current_user.orders.exists?%>
+<%if current_user && current_user.orders.exists?%>
   <% if current_user.orders.last.order_items.size == 0  %>
     <div id="cart" class="btn-group btn-block">
       <button type="button" data-toggle="dropdown" class="btn btn-block btn-lg dropdown-toggle">
@@ -11,10 +11,9 @@
           <i class="fa fa-shopping-cart"></i>
           <span class="hidden-md">Καλάθι:</span>
           <span id="cart-total">
-            <% if current_user.orders.last%>
+            <% if current_user.orders.in_progress%>
               <%=current_user.orders.last.order_items.size%>-(<%= number_to_currency current_user.orders.last.subtotal%>)
-
-          <%end%>
+            <%end%>
           </span>
           <i class="fa fa-caret-down"></i>
         </button>
@@ -33,8 +32,6 @@
             <span class="hidden-md">Καλάθι:</span>
             <span id="cart-total">
               <%=current_order.order_items.size%>-(<%= number_to_currency current_order.subtotal%>)
-
-
             </span>
             <i class="fa fa-caret-down"></i>
           </button>

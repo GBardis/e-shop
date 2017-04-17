@@ -1,11 +1,8 @@
 class CartsController < ApplicationController
   # before_action :validate_authorization_for_user
+  before_action :order
   def show
-    @order_items = if current_user && current_user.orders.exists?
-                     current_user.orders.last.order_items
-                   else
-                     current_order.order_items
-                   end
+    @order_items = @order_inprogress
   end
 
   def validate_authorization_for_user
@@ -13,5 +10,15 @@ class CartsController < ApplicationController
       redirect_to new_user_session_path
       flash[:notice] = 'Πρέπει να συνδεθείτε για να μπορείτε να δείτε το καλάθι'
     end
+  end
+end
+private
+
+def order
+  if current_user && current_user.orders.exists?
+    @order = Order.where(user_id: current_user.id ,status: 'in_progress')
+    @order_inprogress = @order.order_items
+  else
+    @order_inprogress = current_order.order_items
   end
 end

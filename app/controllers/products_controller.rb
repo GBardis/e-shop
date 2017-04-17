@@ -5,12 +5,12 @@ class ProductsController < ApplicationController
 
   def index
     @products = if @category.present?
-                  Product.where(category_id: @category).order(sort_column + ' ' + sort_direction).page params[:page]
+      Product.where(category_id: @category).order(sort_column + ' ' + sort_direction).page params[:page]
 
-                else
-                  Product.all.order(sort_column + ' ' + sort_direction).page params[:page]
+    else
+      Product.all.order(sort_column + ' ' + sort_direction).page params[:page]
 
-  end
+    end
     @categories = Category.all.where(parent_id: nil)
     @subcategories = Category.all.where.not(parent_id: nil)
     # if current_user.orders.last.order_items.empty?

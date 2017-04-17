@@ -1,6 +1,6 @@
 class OrderItemsController < ApplicationController
   def create
-    # if current_user.orders.last.nil?
+    # if current_user.orders.in_progress.nil?
     @order = current_order
     @order.user_id = current_user.id if current_user
     @order_item = @order.order_items.new(order_item_params)
@@ -11,7 +11,7 @@ class OrderItemsController < ApplicationController
     end
     # else
     # @order = if current_user
-    #         current_user.orders.last
+    #         current_user.orders.in_progress
     #       else
     #       current_order
     #     end
@@ -26,7 +26,7 @@ class OrderItemsController < ApplicationController
 
   def update
     @order = if current_user
-      current_user.orders.last
+      current_user.orders.in_progress.last
     else
       current_order
     end
@@ -40,7 +40,7 @@ class OrderItemsController < ApplicationController
 
   def destroy
     @order = if current_user
-      current_user.orders.last
+      current_user.orders.in_progress.last
     else
       current_order
     end

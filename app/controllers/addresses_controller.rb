@@ -120,10 +120,6 @@ end
 
 private
 
-def find_all_user_addresses
-  @addresses = Address.where(user_id: current_user.id)
-end
-
 def generate_client_token
   if current_user.has_payment_info?
     Braintree::ClientToken.generate(customer_id: current_user.braintree_customer_id)

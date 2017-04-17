@@ -53,7 +53,7 @@
       <p class="text-right btn-block1">
         <%= link_to "Καλαθι" , cart_path, class: "btn-md" %>
         <% if current_user%>
-          <%=link_to "checkout",new_transaction_path, class: "btn-md" unless current_user.orders.last.blank?%>
+          <%=link_to "checkout",new_transaction_path, class: "btn-md" unless current_user.orders.in_progress.blank?%>
         <%else%>
           <%= link_to "checkout",new_customer_transactions_path,method: :get, class: "btn-md" unless current_order.order_items.blank?%>
         <%end%>
