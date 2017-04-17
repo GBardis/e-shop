@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_category
+  before_action :set_order_item
   helper_method :sort_column, :sort_direction
 
   def index
@@ -12,6 +13,7 @@ class ProductsController < ApplicationController
   end
     @categories = Category.all.where(parent_id: nil)
     @subcategories = Category.all.where.not(parent_id: nil)
+
     @order_item = current_order.order_items.new
   end
 
@@ -63,6 +65,10 @@ class ProductsController < ApplicationController
 
   def set_category
     @category = Category.find(params[:category_id]) if params[:category_id]
+  end
+
+  def set_order_item
+    @order_item = OrderItem.find(params[:product_id]) if params[:product_id]
   end
 
   def product_params

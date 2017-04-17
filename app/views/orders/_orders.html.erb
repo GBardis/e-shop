@@ -1,5 +1,5 @@
 <%= render "users/profile_nav"%>
-<div class="col-xs-12 col-sm-7 " id="user_profile">
+<div class="col-xs-12 col-sm-9 " id="user_profile">
   <div class="row">
     <div class="col-xs-12">
       <ul class="list-group" >
@@ -7,7 +7,7 @@
           <h5 style=""><strong>Παραγγελίες</strong></h5>
         </li>
         <li class="list-group-item" style="border-bottom: 1px solid black" id="button_text">
-          <p >Εδώ μπορείτε να δείτε τις παλίες παραγγελίες και την κατάσταση τωω παραγγελιών </p>
+          <p >Εδώ μπορείτε να δείτε τις παλίες παραγγελίες και την κατάσταση των παραγγελιών </p>
         </li>
         <li class="list-group-item" id="button_content">
           <%=link_to "Επεξεργασία ",edit_user_registration_path(),class: "btn btn-primary btn-md"   %>
@@ -15,6 +15,9 @@
       </ul>
     </div>
   </div>
-  <div class="row">
+  <div class="row" id="order_row">
+    <% @orders.each do |order|%>
+      <%= render 'orders/orders_row', order: order%>
+    <%end%>
   </div>
 </div>
