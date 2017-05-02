@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
       Order.new
     elsif current_user && !@order_inprogress.blank?
       current_user.orders.in_progress.last
-    elsif current_user && @order_inprogress.nil?
+    elsif current_user && @order_inprogress.blank?
       Order.new
     end
   end
@@ -19,8 +19,9 @@ class ApplicationController < ActionController::Base
   private
 
   def order
-    if current_user.orders.exists?
-      @order_inprogress = Order.where(user_id: current_user.id , status: "in_progress").take
+    if current_user
+      @order_inprogress = Order.where(user_id: current_user.id , status: 1)
+      #byebug
     end
   end
 end

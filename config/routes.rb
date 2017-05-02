@@ -45,9 +45,10 @@ Rails.application.routes.draw do
   resources :order_items, only: [:create, :update, :destroy] # , defaults: { format: 'js' } do
   # musts set default values because files are .js not erb #
 
-  resources :addresses do
+  resources :addresses, only:[:edit,:new] do
     get 'delete'
   end
+  get '/address' => 'addresses#show'
   put '/address/:id' => 'addresses#update', as: :address_update
   post '/address' => 'addresses#create', as: :address_create
 

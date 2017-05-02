@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :set_category
   before_action :set_order_item
+  before_action :set_category
   helper_method :sort_column, :sort_direction
 
   def index
@@ -13,16 +13,9 @@ class ProductsController < ApplicationController
     end
     @categories = Category.all.where(parent_id: nil)
     @subcategories = Category.all.where.not(parent_id: nil)
-    # if current_user.orders.last.order_items.empty?
+
     @order_item = current_order.order_items.new
-    # else
-    # @product = Product.find_by(product_id: @order_item.product_id)
-    #  @product = Product.find(params[:product_id])
-    # @order = current_user.orders.last
-    # @order_item = @order.order_items.find(:first, conditions: { product_id: @product.id })
-    # @order_item.update_attribute(:quantity, @order_item.quantity + 1)
-    # @order_items = @order.order_items
-    # end
+
   end
 
   def show

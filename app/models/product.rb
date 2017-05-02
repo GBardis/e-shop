@@ -18,4 +18,15 @@ class Product < ApplicationRecord
   def create_associated_image(image)
     images.create(image: image)
   end
+
+  def slug
+    title.downcase.gsub(" ", "-")
+  end
+
+  def to_param
+    "#{id}-#{slug}"
+  end
+
+
+
 end

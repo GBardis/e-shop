@@ -1,27 +1,20 @@
 class OrderItemsController < ApplicationController
+
   def create
-    # if current_user.orders.in_progress.nil?
     @order = current_order
     @order.user_id = current_user.id if current_user
-    @order_item = @order.order_items.new(order_item_params)
-    @order.save
+    if !@order_item = @order.order_items.exists?
+      @order_item = @order.order_items.new(order_item_params)
+      @order.save
+    else
+      @order_item = @order.order_items
+      @order_item.update(quantity: @order_item.last.quantity += 1 )
+      @order_items = @order.order_items
+    end
     session[:order_id] = @order.id
     respond_to do |format|
       format.js { render 'order_items/create.js.erb' }
     end
-    # else
-    # @order = if current_user
-    #         current_user.orders.in_progress
-    #       else
-    #       current_order
-    #     end
-    #  @order_item = OrderItem.where(product_id: params[:product_id])
-    # @order_item.update(quantity: @order_item.quantity += 1)
-    # @order_items = @order.order_items
-    # respond_to do |format|
-    #  format.js { render 'order_items/create.js.erb' }
-    # end
-    # end
   end
 
   def update
@@ -47,7 +40,7 @@ class OrderItemsController < ApplicationController
     @order_item = @order.order_items.find(params[:id])
     @order_item.destroy
     @order_items = @order.order_items
-    if @order.order_items.empty?
+    if !@order.order_items.exists?
       @order.destroy
       session[:order_id] = nil
     end

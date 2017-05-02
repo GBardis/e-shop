@@ -1,42 +1,43 @@
-<ul class="dropdown-menu pull-right">
-  <li>
-    <table class="table table-striped hcart">
-      <tbody>
-        <%#= form_for order_item, remote: true do |f| %>
-          <% current_order.order_items.each do |order_item| %>
-            <tr style="background-color:#22292E;">
-              <td class="text-center">
-                <%= link_to product_path(order_item.product) do%>
-                  <%= image_tag order_item.product.images.first.image.url, class: "img-responsive",width: "50", height: "50"%>
-                <%end%>
-              </td>
-              <td class="text-left">
-                <%= link_to product_path(order_item.product) do%>
-                  <%= order_item.product.title %>
-                <%end%>
-              </td>
-              <td class="text-right"><%#= f.number_field :quantity, value: order_item.quantity.to_i%></td>
-              <td class="text-right"><%= number_to_currency order_item.unit_price %></td>
-              <td class="text-center">
-                <a href="#">
-                  <%= link_to order_item,  method: :delete, remote: true do  %>
-                    <i class="fa fa-times"></i>
-                  <%end%>
-                </a>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </li>
+  <% if current_user%>
+  <ul class="dropdown-menu pull-right">
     <li>
-      <table class="table table-bordered total">
+      <table class="table table-striped hcart">
         <tbody>
-          <!--<tr>
+          <%#= form_for order_item, remote: true do |f| %>
+            <% current_user.orders.in_progress.last.order_items.each do |order_item| %>
+              <tr style="background-color:#22292E;">
+                <td class="text-center">
+                  <%= link_to product_path(order_item.product) do%>
+                    <%= image_tag order_item.product.images.first.image.url, class: "img-responsive",width: "50", height: "50"%>
+                  <%end%>
+                </td>
+                <td class="text-left">
+                  <%= link_to product_path(order_item.product) do%>
+                    <%= order_item.product.title.humanize %>
+                  <%end%>
+                </td>
+                <td class="text-right"><%= order_item.quantity.to_i%></td>
+                <td class="text-right"><%= number_to_currency order_item.unit_price %></td>
+                <td class="text-center">
+                  <a href="#">
+                    <%= link_to order_item,  method: :delete, remote: true do  %>
+                      <i class="fa fa-times"></i>
+                    <%end%>
+                  </a>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </li>
+      <li>
+        <table class="table table-bordered total">
+          <tbody>
+            <!--<tr>
             <td class="text-right"><strong>Sub-Total</strong></td>
             <td class="text-left"><%#= number_to_currency order_item.total_price %></td>
           </tr>-->
-          <!--  <tr>
+            <!--  <tr>
           <td class="text-right"><strong>Eco Tax (-2.00)</strong></td>
           <td class="text-left">$4.00</td>
         </tr>
@@ -44,21 +45,85 @@
           <td class="text-right"><strong>VAT (17.5%)</strong></td>
           <td class="text-left">$192.68</td>
         </tr>-->
-          <tr>
-            <td class="text-right"><strong>Total</strong></td>
-            <td class="text-left"><%= number_to_currency current_order.subtotal%></td>
-          </tr>
-        </tbody>
-      </table>
-      <p class="text-right btn-block1">
-        <%= link_to "Καλαθι" , cart_path, class: "btn-md" %>
-        <% if current_user%>
-          <%=link_to "checkout",new_transaction_path, class: "btn-md" unless current_user.orders.in_progress.blank?%>
-        <%else%>
-          <%= link_to "checkout",new_customer_transactions_path,method: :get, class: "btn-md" unless current_order.order_items.blank?%>
-        <%end%>
-      </p>
-    </li>
-  </ul>
-  <%# end %>
-</div>
+            <tr>
+              <td class="text-right"><strong>Total</strong></td>
+              <td class="text-left"><%= number_to_currency current_user.orders.in_progress.last.subtotal%></td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="text-right btn-block1">
+          <%= link_to "Καλαθι" , cart_path, class: "btn-md" %>
+          <% if current_user%>
+            <%=link_to "checkout",new_transaction_path, class: "btn-md" unless current_user.orders.in_progress.blank?%>
+          <%else%>
+            <%= link_to "checkout",new_customer_transactions_path,method: :get, class: "btn-md" unless current_order.order_items.blank?%>
+          <%end%>
+        </p>
+      </li>
+    </ul>
+  </div>
+<%else%>
+  <ul class="dropdown-menu pull-right">
+    <li>
+      <table class="table table-striped hcart">
+        <tbody>
+          <%#= form_for order_item, remote: true do |f| %>
+            <% current_order.order_items.each do |order_item| %>
+              <tr style="background-color:#22292E;">
+                <td class="text-center">
+                  <%= link_to product_path(order_item.product) do%>
+                    <%= image_tag order_item.product.images.first.image.url, class: "img-responsive",width: "50", height: "50"%>
+                  <%end%>
+                </td>
+                <td class="text-left">
+                  <%= link_to product_path(order_item.product) do%>
+                    <%= order_item.product.title.humanize %>
+                  <%end%>
+                </td>
+                <td class="text-right"><%= order_item.quantity.to_i%></td>
+                <td class="text-right"><%= number_to_currency order_item.unit_price %></td>
+                <td class="text-center">
+                  <a href="#">
+                    <%= link_to order_item,  method: :delete, remote: true do  %>
+                      <i class="fa fa-times"></i>
+                    <%end%>
+                  </a>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </li>
+      <li>
+        <table class="table table-bordered total">
+          <tbody>
+            <!--<tr>
+          <td class="text-right"><strong>Sub-Total</strong></td>
+          <td class="text-left"><%#= number_to_currency order_item.total_price %></td>
+        </tr>-->
+            <!--  <tr>
+        <td class="text-right"><strong>Eco Tax (-2.00)</strong></td>
+        <td class="text-left">$4.00</td>
+      </tr>
+      <tr>
+        <td class="text-right"><strong>VAT (17.5%)</strong></td>
+        <td class="text-left">$192.68</td>
+      </tr>-->
+            <tr>
+              <td class="text-right"><strong>Total</strong></td>
+              <td class="text-left"><%= number_to_currency current_order.subtotal%></td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="text-right btn-block1">
+          <%= link_to "Καλαθι" , cart_path, class: "btn-md" %>
+          <% if current_user%>
+            <%=link_to "checkout",new_transaction_path, class: "btn-md" unless current_user.orders.in_progress.blank?%>
+          <%else%>
+            <%= link_to "checkout",new_customer_transactions_path,method: :get, class: "btn-md" unless current_order.order_items.blank?%>
+          <%end%>
+        </p>
+      </li>
+    </ul>
+  </div>
+<%end%>
