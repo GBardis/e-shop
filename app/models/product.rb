@@ -6,8 +6,10 @@ class Product < ApplicationRecord
   has_many :favorite_products, dependent: :destroy
   has_many :favorited_by, through: :favorite_products, source: :user, dependent: :destroy
   has_many :order_items
+  after_create :update_slug
+  before_update :assign_slug
   # has_many :orders, through: :order_items
-
+  validates_presence_of :slug
   default_scope { where(active: true) }
 
   paginates_per 5
@@ -24,9 +26,17 @@ class Product < ApplicationRecord
   end
 
   def to_param
-    "#{id}-#{slug}"
+    slug
   end
 
+  private
 
+  def assign_slug
+    self.slug = "#{ title.parameterize }"
+  end
+
+  def update_slug
+    update_attributes slug: assign_slug
+  end
 
 end

@@ -1,6 +1,8 @@
 class ProductsController < ApplicationController
+  before_action :page_title, only: [:index]
   before_action :set_order_item
   before_action :set_category
+  before_action :seo, only: [:show]
   helper_method :sort_column, :sort_direction
 
   def index
@@ -16,23 +18,24 @@ class ProductsController < ApplicationController
 
     @order_item = current_order.order_items.new
 
+    @meta_title = meta_title 'ΑΡΧΙΚΗ'
+    @meta_description = "Είδη δώρων, κάρτες και παιχνίδια"
   end
 
   def show
-    @product = Product.find(params[:id])
+
+    @product = Product.find_by_slug(params[:id])
     @order_item = current_order.order_items.new
 
-    @comments = Comment.where(product_id: @product).order('created_at DESC')
-
-    @image_urls = []
-    @product.images.each do |image|
-      @image_urls.push(image.image.url)
-    end
+    # @image_urls = []
+    # @product.images.each do |image|
+    #   @image_urls.push(image.image.url)
+    # end
   end
 
   def favorite
     type = params[:type]
-    @product = Product.find(params[:id])
+    @product = Product.find_by_slug(params[:id])
     if type == 'favorite'
       current_user.favorites << @product
       respond_to do |format|
@@ -55,6 +58,24 @@ class ProductsController < ApplicationController
   end
 
   private
+
+  def page_title
+    @meta_title = meta_title 'ΑΡΧΙΚΗ'
+    @meta_description = "Είδη δώρων, κάρτες και παιχνίδια"
+  end
+
+  def seo
+    @product = Product.find_by_slug(params[:id])
+    @meta_title = meta_title @product.title
+    @comments = Comment.where(product_id: @product).order('created_at DESC')
+    @canonical_url = "/products/#{@product.slug}"
+    @og_properties = {
+      title: @meta_title,
+      type:  'website',
+      image: view_context.image_url('favicon/favicon_1'),  # this file should exist in /app/assets/images/logo.png
+      url: @canonical_url
+    }
+  end
 
   def sort_column
     %w(price created_at).include?(params[:sort]) ? params[:sort] : 'created_at'

@@ -1,11 +1,17 @@
 class CartsController < ApplicationController
   # before_action :validate_authorization_for_user
+  before_action :page_title
   def show
     if current_user && !@order_inprogress.blank?
       @order = Order.where(user_id: current_user.id ,status: 'in_progress').take(1)
       @order_items = @order.last.order_items
     else
       @order_items = current_order.order_items
+    end
+
+    private
+    def page_title
+      @meta_title = meta_title 'Αγαπημένα'
     end
 
     def validate_authorization_for_user

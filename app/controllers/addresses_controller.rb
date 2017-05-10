@@ -1,13 +1,13 @@
 class AddressesController < ApplicationController
   before_action :validate_authorization_for_user
   before_action :find_addresses
+  before_action :page_title
 
   def new
     gon.client_token = generate_client_token
   end
 
   def create
-
     if current_user.braintree_customer_id.nil?
       @result = Braintree::Customer.create(
         first_name: current_user.name,
@@ -119,6 +119,10 @@ class AddressesController < ApplicationController
 end
 
 private
+
+def page_title
+  @meta_title = meta_title 'Διαχείριση Διευθύνσεων'
+end
 
 def generate_client_token
   if current_user.has_payment_info?

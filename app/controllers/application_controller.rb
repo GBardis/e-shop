@@ -4,6 +4,14 @@ class ApplicationController < ActionController::Base
   before_action :current_order
   helper_method :current_order
 
+  BRAND_NAME = 'ΑΠΟΨΗ'.freeze
+
+  def meta_title(title)
+    [title, BRAND_NAME].reject(&:empty?).join(' | ')
+  end
+
+
+
   def current_order
     if !session[:order_id].nil? && !current_user
       Order.find(session[:order_id])
@@ -21,7 +29,6 @@ class ApplicationController < ActionController::Base
   def order
     if current_user
       @order_inprogress = Order.where(user_id: current_user.id , status: 1)
-      #byebug
     end
   end
 end
