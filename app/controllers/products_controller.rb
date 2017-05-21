@@ -6,27 +6,23 @@ class ProductsController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    @products = if @category.present?
-      Product.where(category_id: @category).order(sort_column + ' ' + sort_direction).page params[:page]
-
-    else
-      Product.all.order(sort_column + ' ' + sort_direction).page params[:page]
-
-    end
     @categories = Category.all.where(parent_id: nil)
     @subcategories = Category.all.where.not(parent_id: nil)
 
+    @products = if @category.present?
+      Product.includes(:images).where(category_id: @category).order(sort_column + ' ' + sort_direction).page params[:page]
+      #byebug
+    else
+      Product.includes(:images).order(sort_column + ' ' + sort_direction).page params[:page]
+    end
     @order_item = current_order.order_items.new
-
     @meta_title = meta_title 'ΑΡΧΙΚΗ'
     @meta_description = "Είδη δώρων, κάρτες και παιχνίδια"
   end
 
   def show
-
-    @product = Product.find_by_slug(params[:id])
+    @product = Product.find_by_slug!(params[:id])
     @order_item = current_order.order_items.new
-
     # @image_urls = []
     # @product.images.each do |image|
     #   @image_urls.push(image.image.url)
@@ -65,16 +61,21 @@ class ProductsController < ApplicationController
   end
 
   def seo
-    @product = Product.find_by_slug(params[:id])
-    @meta_title = meta_title @product.title
-    @comments = Comment.where(product_id: @product).order('created_at DESC')
-    @canonical_url = "/products/#{@product.slug}"
-    @og_properties = {
-      title: @meta_title,
-      type:  'website',
-      image: view_context.image_url('favicon/favicon_1'),  # this file should exist in /app/assets/images/logo.png
-      url: @canonical_url
-    }
+    begin
+      @product = Product.includes(:images).find_by_slug!(params[:id])
+      @meta_title = meta_title @product.title
+      @comments = Comment.where(product_id: @product).order('created_at DESC')
+      @canonical_url = "/products/#{@product.slug}"
+      @og_properties = {
+        title: @meta_title,
+        type:  'website',
+        image: view_context.image_url('favicon/favicon_1'),  # this file should exist in /app/assets/images/logo.png
+        url: @canonical_url
+      }
+    rescue ActiveRecord::RecordNotFound
+      flash[:notice] = "Το προιόν που ψάχνεται δεν υπάρχει "
+      redirect_to root_path
+    end
   end
 
   def sort_column
@@ -86,7 +87,12 @@ class ProductsController < ApplicationController
   end
 
   def set_category
-    @category = Category.find(params[:category_id]) if params[:category_id]
+    begin
+      @category = Category.find(params[:category_id]) if params[:category_id]
+    rescue ActiveRecord::RecordNotFound
+      flash[:notice] = "H κατηγορία που ψάχνεται δεν υπάρχει που ψάχνεται δεν υπάρχει "
+      redirect_to root_path
+    end
   end
 
   def set_order_item

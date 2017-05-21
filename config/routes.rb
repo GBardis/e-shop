@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  #get '/:anything',to: "errors#error_404", :constraints => { :anything => /.*/ }, via: :all
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'products#index'
   post '/rate' => 'rater#create', :as => 'rate'
@@ -56,4 +57,7 @@ Rails.application.routes.draw do
 
   #get 'checkout/launch' => 'transactions#new_customer'
   #post 'checkout/launch' => 'transactions#create_customer'
+
+  #this line must be always at the end of the routes to work properly, RoutingError Handling
+  match '*a', :to => 'errors#error_404',via: :all
 end
