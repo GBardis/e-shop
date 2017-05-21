@@ -3,12 +3,14 @@ class OrderItemsController < ApplicationController
   def create
     @order = current_order
     @order.user_id = current_user.id if current_user
-    if !@order_item = @order.order_items.exists?
-      @order_item = @order.order_items.new(order_item_params)
+    @order_item = @order.order_items.find_or_initialize_by(order_item_params)
+    @product = Product.find(@order_item.product_id)
+
+    if !@order.order_items.exists?(product_id: @product.id)
       @order.save
     else
-      @order_item = @order.order_items
-      @order_item.update(quantity: @order_item.last.quantity += 1 )
+      @order_item = @order.order_items.find_by(product_id: @product.id)
+      @order_item.update(quantity: @order_item.quantity + 1 )
       @order_items = @order.order_items
     end
     session[:order_id] = @order.id

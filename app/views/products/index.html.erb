@@ -10,7 +10,7 @@
   </ul>
   <div id="categories-list" class="row list-group">
     <% @products.each do |product| %>
-      <%= render "product_row", product: product, order_item: @order_item %>
+      <%= render "product_row", product: product, order_item: @order_item ,cached: true%>
     <% end %>
   </div>
 </div>

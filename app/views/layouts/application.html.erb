@@ -1,9 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>EShop</title>
+    <title><%= @meta_title ? @meta_title : ApplicationController::BRAND_NAME %></title>
+    <% if @meta_description.present? %>
+      <meta name="description" content="<%= @meta_description %>">
+    <% end %>
+    <% if @og_properties.present? %>
+      <%= meta_og_tags @og_properties %>
+    <% end %>
+    <%= favicon_link_tag 'favicon/favicon_1' %>
     <%= include_gon %>
     <%= csrf_meta_tags %>
+    <meta content="Are you interested in bicycles? Do you like Mountain
+    biking? Or maybe chillin sunday ride over the park?. Read more on
+    AmberBit!" name="description">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

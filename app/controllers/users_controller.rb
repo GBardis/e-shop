@@ -1,7 +1,14 @@
 class UsersController < ApplicationController
   before_action :validate_authorization_for_user
   before_action :require_owner
+  before_action :page_title
   def show; end
+
+  private
+
+  def page_title
+    @meta_title = meta_title "#{current_user.name} #{current_user.lastname}"
+  end
 
   def validate_authorization_for_user
     unless current_user
