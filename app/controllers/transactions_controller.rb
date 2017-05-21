@@ -1,4 +1,5 @@
 class TransactionsController < ApplicationController
+  include AddressesHelper
   #include Wicked::Wizard
   #steps :confirm_profile ,:transactions_details,:checkout
   before_action :check_cart!
@@ -17,15 +18,8 @@ class TransactionsController < ApplicationController
     if current_user
       unless current_user.braintree_customer_id.nil?
         @addresses = Address.where(user_id: current_user.id)
-        @user_addresses = []
-        @addresses.each do |address|
-          @result_find = Braintree::Address.find(
-            current_user.braintree_customer_id,
-            address.address_id
-          )
-          @user_addresses << @result_find
-          session[:address] = 1
-        end
+        addresses(@addresses)
+        session[:address] = 1
       else
         session[:address] = 0
       end

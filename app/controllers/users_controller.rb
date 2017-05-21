@@ -17,14 +17,12 @@ class UsersController < ApplicationController
     end
   end
   def require_owner
-    @user = User.find_by(id: params[:id])
-    if @user.nil?
-      flash[:notice] = 'Δεν έχετε δικαίωμα προσπέλασης'
-      redirect_to profile_path(current_user)
-    else
+    begin
+      @user = User.find_by(id: params[:id])
+    rescue ActiveRecord::RecordNotFound
       unless current_user.id ==  @user.id
-        flash[:notice] = 'Δεν έχετε δικαίωμα προσπέλασης'
         redirect_to profile_path(current_user)
+        flash[:notice] = 'Δεν έχετε δικαίωμα προσπέλασης'
       end
     end
   end

@@ -23,9 +23,13 @@
   </head>
   <body>
     <div class="page-header" id="top_header">
-      <%= render "layouts/header_top"%>
+      <% cache do %>
+        <%= render "layouts/header_top"%>
+      <% end %>
       <div class="container">
-        <%= render "layouts/header_bottom"%>
+        <% cache do %>
+          <%= render "layouts/header_bottom"%>
+        <% end %>
       </div>
     </div>
     <div class="container" id="flash_messages" >

@@ -1,4 +1,4 @@
-  <% if current_user%>
+  <% if current_user %>
   <ul class="dropdown-menu pull-right">
     <li>
       <table class="table table-striped hcart">
@@ -17,7 +17,7 @@
                   <%end%>
                 </td>
                 <td class="text-right"><%= order_item.quantity.to_i%></td>
-                <td class="text-right"><%= number_to_currency order_item.unit_price %></td>
+                <td class="text-right"><%= product_price(order_item) %></td>
                 <td class="text-center">
                   <a href="#">
                     <%= link_to order_item,  method: :delete, remote: true do  %>
@@ -47,7 +47,7 @@
         </tr>-->
             <tr>
               <td class="text-right"><strong>Total</strong></td>
-              <td class="text-left"><%= number_to_currency current_user.orders.in_progress.last.subtotal%></td>
+              <td class="text-left"><%= total%></td>
             </tr>
           </tbody>
         </table>
@@ -81,7 +81,7 @@
                   <%end%>
                 </td>
                 <td class="text-right"><%= order_item.quantity.to_i%></td>
-                <td class="text-right"><%= number_to_currency order_item.unit_price %></td>
+                <td class="text-right"><%= product_price %></td>
                 <td class="text-center">
                   <a href="#">
                     <%= link_to order_item,  method: :delete, remote: true do  %>
@@ -111,7 +111,7 @@
       </tr>-->
             <tr>
               <td class="text-right"><strong>Total</strong></td>
-              <td class="text-left"><%= number_to_currency current_order.subtotal%></td>
+              <td class="text-left"><%= total%></td>
             </tr>
           </tbody>
         </table>

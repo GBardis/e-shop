@@ -46,10 +46,10 @@ Rails.application.routes.draw do
   resources :order_items, only: [:create, :update, :destroy] # , defaults: { format: 'js' } do
   # musts set default values because files are .js not erb #
 
-  resources :addresses, only:[:edit,:new] do
+  resources :addresses, only:[:index,:edit,:new,:destroy] do
     get 'delete'
   end
-  get '/address' => 'addresses#show'
+  #get '/address' => 'addresses#show'
   put '/address/:id' => 'addresses#update', as: :address_update
   post '/address' => 'addresses#create', as: :address_create
 
@@ -58,6 +58,6 @@ Rails.application.routes.draw do
   #get 'checkout/launch' => 'transactions#new_customer'
   #post 'checkout/launch' => 'transactions#create_customer'
 
-  #this line must be always at the end of the routes to work properly, RoutingError Handling
-  match '*a', :to => 'errors#error_404',via: :all
+  #this line must be always at the end of the routes file to work properly, RoutingError Handling
+  #match '*a', :to => 'errors#error_404',via: :all
 end

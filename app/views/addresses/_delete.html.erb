@@ -7,7 +7,7 @@
     <div class="modal-body">
       <ul class="errors"></ul>
       Θέλεται να Διαγράψεται την διεύθυνση σας?
-  </div>
+    </div>
     <div class="modal-footer">
       <%= link_to "Ναί, Διαγράψτε την διεύθυνση",address_path(@address.first.address_id),method: :delete ,remote: true, class: "btn btn-danger" %>
       <%= link_to "Όχι, όχι παρακαλώ", "#", class: "btn btn-default",id: "button_delete", data: { dismiss: "modal" } %>

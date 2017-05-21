@@ -1,4 +1,5 @@
 class AddressesController < ApplicationController
+  include AddressesHelper
   before_action :validate_authorization_for_user
   before_action :find_addresses
   before_action :page_title
@@ -11,7 +12,7 @@ class AddressesController < ApplicationController
     if current_user.braintree_customer_id.nil?
       @result = Braintree::Customer.create(
         first_name: current_user.name,
-        last_name: current_user.last_name,
+        last_name: current_user.lastname,
         email: current_user.email
       )
       if @result.success?
@@ -30,30 +31,16 @@ class AddressesController < ApplicationController
     if @result.success?
       @user_current_address = current_user.addresses
       @user_current_address.create(address_id: @result.address.id, user_id: current_user.id)
-
+      addresses(@addresses)
+      flash[:notice] = 'Η νέα διεύθυνση αποθηκεύτηκε'
     end
 
-    @user_addresses = []
-    @addresses.each do |address|
-      @result_find = Braintree::Address.find(
-        current_user.braintree_customer_id,
-        address.address_id
-      )
-      @user_addresses << @result_find
-    end
-    flash[:noitce] = 'Η νέα διεύθυνση αποθηκεύτηκε' if @result.success?
   end
 
-  def show
+  def index
     unless current_user.braintree_customer_id.nil?
-      @user_addresses = []
-      @addresses.each do |address|
-        @result = Braintree::Address.find(
-          current_user.braintree_customer_id,
-          address.address_id
-        )
-        @user_addresses << @result
-      end
+      #addresses it is called from AddressesHelper
+      addresses(@addresses)
     end
   end
 
@@ -77,15 +64,10 @@ class AddressesController < ApplicationController
       locality: params[:locality],
       postal_code: params[:postal_code]
     )
-    @user_addresses = []
-    @addresses.each do |address|
-      @result_find = Braintree::Address.find(
-        current_user.braintree_customer_id,
-        address.address_id
-      )
-      @user_addresses << @result_find
+    if @result.success?
+      addresses(@addresses)
+      flash[:notice] = "Η Διεύθυνση ενημερώθηκε"
     end
-    flash[:notice] = "Η Διεύθυνση #{@result.address.street_address} ενημερώθηκε".html_safe if @result.success?
   end
 
   def delete
@@ -98,44 +80,40 @@ class AddressesController < ApplicationController
       current_user.braintree_customer_id,
       @address.first.address_id
     )
-
     if @result.success?
       @address.first.delete
-      @user_addresses = []
-      @addresses.each do |address|
-        @result_find = Braintree::Address.find(
-          current_user.braintree_customer_id,
-          address.address_id
-        )
-        @user_addresses << @result_find
-      end
+      addresses(@addresses)
+      flash[:notice] = 'Η διεύθυνση διαγράφηκε'
     end
-    flash[:notice] = 'Η διεύθυνση διαγράφηκε' if @result.success?
+
   end
 
   def validate_authorization_for_user
-    redirect_to new_user_session_path unless current_user
+    if !current_user
+      redirect_to new_user_session_path
+      flash[:notice] = 'Δεν έχετε δικαίωμα προσπέλασης'
+    end
   end
-end
 
-private
+  private
 
-def page_title
-  @meta_title = meta_title 'Διαχείριση Διευθύνσεων'
-end
-
-def generate_client_token
-  if current_user.has_payment_info?
-    Braintree::ClientToken.generate(customer_id: current_user.braintree_customer_id)
-  else
-    Braintree::ClientToken.generate
+  def page_title
+    @meta_title = meta_title 'Διαχείριση Διευθύνσεων'
   end
-end
 
-def find_addresses
-  @addresses = Address.where(user_id: current_user.id)
-end
+  def generate_client_token
+    if current_user.has_payment_info?
+      Braintree::ClientToken.generate(customer_id: current_user.braintree_customer_id)
+    else
+      Braintree::ClientToken.generate
+    end
+  end
 
-def address_params
-  params.require(:address).permit(:user_id, :address_id)
+  def find_addresses
+    @addresses = Address.where(user_id: current_user.id)
+  end
+
+  def address_params
+    params.require(:address).permit(:user_id, :address_id)
+  end
 end
