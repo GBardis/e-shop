@@ -67,7 +67,7 @@ gem 'koala'
 gem 'tinymce-rails'
 gem 'wicked'
 ## baintree ##
-gem "braintree", "~> 2.73.0"
+gem "braintree", "~> 2.76.0"
 gem 'figaro'
 gem 'gon'
 gem 'rails_12factor'
@@ -77,7 +77,7 @@ gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
-gem 'puma', '~> 3.4.0'
+gem 'puma', '>=3.8.2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
